@@ -1,0 +1,4576 @@
+# Copyright (C) 2026 MoksaWeb
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Moksa Coupons for WooCommerce 0.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/moforcoupon\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-29T02:12:26+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: moforcoupon\n"
+
+#. Plugin Name of the plugin
+#: moforcoupon.php
+msgid "Moksa Coupons for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: moforcoupon.php
+msgid "https://moksaweb.com/moforcoupon"
+msgstr ""
+
+#. Description of the plugin
+#: moforcoupon.php
+msgid "AI-powered WooCommerce coupon toolkit. Create coupons with natural language, plus BOGO, cart conditions, role restrictions, scheduling and URL coupons. Exposes coupon abilities to the WordPress Abilities API, AI Client and MCP."
+msgstr ""
+
+#. Author of the plugin
+#: moforcoupon.php
+msgid "MoksaWeb"
+msgstr ""
+
+#. Author URI of the plugin
+#: moforcoupon.php
+msgid "https://moksaweb.com/"
+msgstr ""
+
+#: src/Admin/CouponSections.php:89
+msgid "Moksa 優惠券設定"
+msgstr ""
+
+#: src/Admin/CouponSections.php:124
+msgid "尚未啟用任何優惠券設定區塊。"
+msgstr ""
+
+#: src/Admin/FieldsHelpers.php:26
+#: src/Modules/AdvancedRules/Fields.php:315
+#: src/Modules/FreeGift/Fields.php:107
+msgid "搜尋商品…"
+msgstr ""
+
+#: src/Admin/FieldsHelpers.php:45
+#: src/Modules/AdvancedRules/Fields.php:316
+msgid "搜尋分類…"
+msgstr ""
+
+#: src/Admin/OrderCouponPreview.php:59
+msgid "運費"
+msgstr ""
+
+#: src/Admin/OrderCouponPreview.php:161
+msgid "已套用優惠券"
+msgstr ""
+
+#. translators: 1: required PHP, 2: current PHP.
+#: src/Compatibility/Requirements.php:24
+#, php-format
+msgid "Moksa Coupons requires PHP %1$s or higher. You are running %2$s."
+msgstr ""
+
+#. translators: 1: required WP, 2: current WP.
+#: src/Compatibility/Requirements.php:34
+#, php-format
+msgid "Moksa Coupons requires WordPress %1$s or higher. You are running %2$s."
+msgstr ""
+
+#: src/Compatibility/Requirements.php:41
+msgid "Moksa Coupons requires WooCommerce to be active."
+msgstr ""
+
+#. translators: 1: required WC, 2: current WC.
+#: src/Compatibility/Requirements.php:45
+#, php-format
+msgid "Moksa Coupons requires WooCommerce %1$s or higher. You are running %2$s."
+msgstr ""
+
+#: src/Coupon/CouponService.php:43
+#: src/Modules/Bogo/BogoOps.php:42
+#: src/Modules/CouponCore/CouponOps.php:41
+msgid "優惠券代碼不可空白。"
+msgstr ""
+
+#. translators: %s: comma-separated list of valid discount types.
+#: src/Coupon/CouponService.php:56
+#, php-format
+msgid "折扣類型須為:%s。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:67
+msgid "折扣金額須為數字。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:71
+msgid "折扣金額不可為負。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:75
+#: src/Modules/Bogo/BogoOps.php:109
+#: src/Modules/Summary/Panel.php:120
+msgid "百分比折扣不可超過 100。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:107
+msgid "最低 / 最高消費須為數字。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:137
+#: src/Modules/CouponCore/CouponOps.php:401
+msgid "到期日格式無效,請用 YYYY-MM-DD。"
+msgstr ""
+
+#. translators: 1: verb, 2: coupon code, 3: type label, 4: amount.
+#: src/Coupon/CouponService.php:203
+#, php-format
+msgid "%1$s優惠券 %2$s:%3$s %4$s"
+msgstr ""
+
+#: src/Coupon/CouponService.php:212
+#: src/Modules/AiAssistant/Agent.php:290
+#: src/Modules/Frontend/Hints.php:55
+msgid "含免運"
+msgstr ""
+
+#. translators: %s: expiry date.
+#: src/Coupon/CouponService.php:216
+#, php-format
+msgid "%s 到期"
+msgstr ""
+
+#. translators: %d: usage limit.
+#: src/Coupon/CouponService.php:220
+#, php-format
+msgid "限用 %d 次"
+msgstr ""
+
+#. translators: %s: minimum spend.
+#: src/Coupon/CouponService.php:224
+#, php-format
+msgid "最低消費 %s"
+msgstr ""
+
+#. translators: 1: the 折 number as written, 2: the percent discount amount.
+#: src/Coupon/CouponService.php:254
+#, php-format
+msgid "「%1$s 折」的 percent amount 是 %2$s"
+msgstr ""
+
+#: src/Coupon/CouponService.php:259
+msgid "折扣換算"
+msgstr ""
+
+#: src/Coupon/CouponService.php:443
+msgid "優惠券儲存失敗。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:533
+#: src/Modules/CouponCore/CouponOps.php:162
+#: src/Modules/CouponCore/CouponOps.php:221
+#: src/Modules/CouponCore/CouponOps.php:269
+#: src/Modules/CouponCore/CouponOps.php:469
+#: src/Modules/CouponCore/CouponOps.php:492
+#: src/Modules/CouponSend/SendOps.php:33
+#: src/Modules/CouponSend/SendService.php:82
+#: src/Modules/UrlCoupons/ShareAbility.php:96
+msgid "找不到該優惠券。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:536
+#: src/Modules/CouponCore/CouponOps.php:497
+msgid "無法產生唯一的新代碼。"
+msgstr ""
+
+#: src/Coupon/CouponService.php:547
+msgid "複製失敗。"
+msgstr ""
+
+#: src/Coupon/Meta/CouponSettings.php:325
+msgid "Moksa 優惠券進階設定(分組:排程 / 條件 / BOGO / 贈品 / 運費…)"
+msgstr ""
+
+#: src/Coupon/Meta/CouponSettings.php:355
+msgid "階梯折扣列。階梯依 moforcoupon.tiers.basis(subtotal 小計 / quantity 件數 / weight 重量,預設 subtotal)衡量。每列:{ threshold 門檻, kind percent|fixed, value(percent 為 0-100 百分比、fixed 為固定金額)}。可混用 percent 與 fixed,符合的階梯中取折抵金額最大者。"
+msgstr ""
+
+#: src/Coupon/Meta/CouponSettings.php:372
+msgid "進階規則樹(群組 AND/OR)。頂層 match=all/any 組「群組」,每群組 match=all/any 組「規則」。每條規則 = { type, op, value }。型別與值形狀:數值(op gte/lte/gt/lt/eq/neq,value 為數字字串)subtotal 小計 / quantity 件數 / cart_weight 重量kg / order_count 訂單數 / total_spent 累積消費 / hours_since_registered 註冊後小時 / hours_since_last_order 上次下單後小時;配對(op 數值,value={a:商品或分類ID, b:門檻})product_quantity / category_spent;清單ID(op in/not_in,value=整數陣列)product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone;代碼(op in/not_in,value=字串陣列)shipping_country 國碼大寫 / payment_method / coupon_applied / stock_status(instock,outofstock,onbackorder)/ weekday(0-6)/ user_role;自訂分類法(op in/not_in,value={tax:分類法, terms:[詞彙ID]})custom_taxonomy;自訂meta(value={key, value})custom_user_meta(op eq/neq)/ custom_cart_item_meta(op in/not_in);時間(op gte/lte)time_of_day(value HH:MM)/ date(value Y-m-d H:i)。付款方式於結帳時才驗。"
+msgstr ""
+
+#: src/Coupon/Meta/CouponSettings.php:464
+msgid "沒有權限修改此優惠券的進階設定。"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:196
+msgid "Moksa 優惠券設定(整數)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:203
+msgid "Moksa 優惠券設定(ID 清單)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:215
+msgid "Moksa 優惠券設定(星期 0–6)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:227
+msgid "Moksa 優惠券設定(代碼清單)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:239
+msgid "Moksa 優惠券設定(國家代碼清單,大寫)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:251
+msgid "Moksa 優惠券設定(啟用旗標 yes/空)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:258
+msgid "Moksa 優惠券設定(模式代碼)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:265
+msgid "Moksa 優惠券設定(多行文字)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:272
+msgid "Moksa 優惠券設定(網址代稱)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:279
+msgid "Moksa 優惠券設定(金額 / 數值)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:286
+msgid "Moksa 優惠券設定(排程時間,站台時區)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:293
+msgid "Moksa 優惠券設定(階梯折扣,JSON)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:300
+msgid "Moksa 優惠券設定(進階規則,JSON)"
+msgstr ""
+
+#: src/Coupon/Meta/RestMeta.php:308
+msgid "Moksa 優惠券設定(文字)"
+msgstr ""
+
+#: src/Coupon/OrderCouponNote.php:62
+msgid "Moksa 優惠券效果"
+msgstr ""
+
+#. translators: 1: coupon code, 2: formatted saving.
+#: src/Coupon/OrderCouponNote.php:93
+#, php-format
+msgid "買 X 送 Y「%1$s」:贈品優惠,省 %2$s"
+msgstr ""
+
+#. translators: 1: coupon code, 2: effect description, 3: this order's shipping.
+#: src/Coupon/OrderCouponNote.php:111
+#, php-format
+msgid "運費覆寫「%1$s」:%2$s(本單運費 %3$s)"
+msgstr ""
+
+#. translators: 1: coupon code, 2: gift product name.
+#: src/Coupon/OrderCouponNote.php:126
+#, php-format
+msgid "免費贈品「%1$s」:已加入贈品 %2$s"
+msgstr ""
+
+#: src/Coupon/OrderCouponNote.php:147
+#: src/Modules/Frontend/CouponCard.php:105
+#: src/Modules/ShippingOverride/Fields.php:67
+msgid "免運費"
+msgstr ""
+
+#. translators: %s: percent off shipping.
+#: src/Coupon/OrderCouponNote.php:150
+#, php-format
+msgid "運費折扣 %s%%"
+msgstr ""
+
+#. translators: 1: currency symbol, 2: fixed amount off shipping.
+#: src/Coupon/OrderCouponNote.php:153
+#, php-format
+msgid "運費折抵 %1$s%2$s"
+msgstr ""
+
+#: src/Coupon/OrderCouponNote.php:155
+msgid "運費調整"
+msgstr ""
+
+#: src/Coupon/TypeMeta.php:24
+#: src/Modules/Bogo/Fields.php:107
+#: src/Modules/FreeGift/Fields.php:84
+#: src/Modules/Frontend/CouponCard.php:75
+#: src/Modules/Summary/Panel.php:98
+#: src/Support/CouponType.php:20
+msgid "百分比折扣"
+msgstr ""
+
+#: src/Coupon/TypeMeta.php:29
+#: src/Modules/Frontend/CouponCard.php:76
+msgid "購物車折抵"
+msgstr ""
+
+#: src/Coupon/TypeMeta.php:34
+#: src/Modules/Frontend/CouponCard.php:77
+msgid "商品折抵"
+msgstr ""
+
+#: src/Coupon/TypeMeta.php:39
+#: src/Modules/Bogo/Fields.php:42
+#: src/Modules/Frontend/CouponCard.php:78
+#: src/Modules/Summary/Panel.php:101
+#: src/Support/CouponType.php:23
+msgid "買 X 送 Y"
+msgstr ""
+
+#: src/Coupon/TypeMeta.php:56
+#: src/Modules/Templates/Catalog.php:1027
+#: src/Modules/Templates/TemplatePage.php:338
+msgid "其他"
+msgstr ""
+
+#: src/Mcp/Server.php:287
+#: src/Modules/CouponList/ListTable.php:128
+#: src/Modules/ImportExport/ImportExport.php:108
+#: src/Modules/ImportExport/ImportExport.php:192
+#: src/Modules/Remarketing/Ability.php:125
+#: src/Modules/Templates/TemplatePage.php:262
+#: src/Modules/UrlCoupons/ShareAbility.php:86
+#: src/Settings/SettingsScreen.php:346
+#: src/Support/GuardedOps.php:23
+msgid "權限不足。"
+msgstr ""
+
+#: src/Mcp/Server.php:295
+msgid "工具執行失敗,請稍後再試。"
+msgstr ""
+
+#: src/Mcp/Server.php:331
+msgid "進階規則型別"
+msgstr ""
+
+#: src/Mcp/Server.php:332
+msgid "26 種 AND/OR 進階規則型別、運算子與值形狀。"
+msgstr ""
+
+#: src/Mcp/Server.php:337
+msgid "優惠券進階設定 schema"
+msgstr ""
+
+#: src/Mcp/Server.php:338
+msgid "create / update 的 moforcoupon 進階設定物件 JSON schema。"
+msgstr ""
+
+#: src/Mcp/Server.php:343
+msgid "優惠券範本庫"
+msgstr ""
+
+#: src/Mcp/Server.php:344
+msgid "內建優惠券範本(id / 名稱 / 說明 / 分類 / 型別)。"
+msgstr ""
+
+#: src/Mcp/Server.php:411
+msgid "用一句行銷想法引導建立優惠券"
+msgstr ""
+
+#: src/Mcp/Server.php:415
+msgid "行銷活動想法,例如「週年慶全站 9 折」"
+msgstr ""
+
+#: src/Mcp/Server.php:422
+msgid "依商店情境發想優惠券活動點子"
+msgstr ""
+
+#: src/Mcp/Server.php:426
+msgid "目標,例如 提高客單價 / 新客獲取"
+msgstr ""
+
+#. translators: %s: the marketing idea.
+#: src/Mcp/Server.php:447
+#, php-format
+msgid "請依這個行銷想法用 moforcoupon 工具建立一張優惠券:「%s」。先用 find-coupon-by-code 確認代碼不重複;需要進階條件時用 list-rule-types / get-settings-schema 查清楚,再呼叫 create-coupon 或 create-tiered-coupon。"
+msgstr ""
+
+#. translators: %s: the campaign goal.
+#: src/Mcp/Server.php:455
+#, php-format
+msgid "請針對「%s」這個目標,用 list-templates 參考內建範本,提出 3 個適合本店的優惠券活動點子並說明設定。"
+msgstr ""
+
+#: src/Mcp/Server.php:458
+msgid "請用 list-templates 參考內建範本,提出 3 個適合本店的優惠券活動點子並說明設定。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:34
+msgid "Moksa 優惠券管理"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:36
+#: src/Modules/AdminMenu/Dashboard.php:56
+#: src/Modules/AdminMenu/Menu.php:100
+#: src/Modules/AdminMenu/Menu.php:101
+msgid "新增優惠券"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:38
+msgid "在這裡集中管理所有優惠券、查看報表與調整設定。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:42
+msgid "優惠券總數"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:43
+msgid "啟用中"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:44
+msgid "草稿 / 待審"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:51
+#: src/Modules/AdminMenu/Menu.php:91
+#: src/Modules/AdminMenu/Menu.php:92
+msgid "全部優惠券"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:52
+msgid "檢視、編輯與搜尋所有優惠券。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:57
+msgid "建立一張新的優惠券。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:62
+#: src/Modules/AdminMenu/Menu.php:112
+#: src/Modules/AdminMenu/Menu.php:113
+#: src/Modules/Templates/Module.php:24
+#: src/Modules/Templates/TemplatePage.php:37
+#: src/Modules/Templates/TemplatePage.php:38
+#: src/Modules/Templates/TemplatePage.php:63
+#: src/Settings/SettingsScreen.php:113
+msgid "優惠券範本"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:63
+msgid "挑一個範本一鍵建立草稿券。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:68
+#: src/Modules/AdminMenu/Menu.php:126
+#: src/Settings/SettingsScreen.php:47
+#: src/Settings/SettingsScreen.php:48
+#: src/Settings/SettingsScreen.php:261
+msgid "優惠券設定"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:69
+msgid "啟用 / 關閉各項功能模組。"
+msgstr ""
+
+#: src/Modules/AdminMenu/Dashboard.php:75
+#: src/Modules/Reports/Module.php:23
+#: src/Modules/Reports/ReportsPage.php:28
+#: src/Modules/Reports/ReportsPage.php:29
+#: src/Modules/Reports/ReportsPage.php:41
+#: src/Settings/SettingsScreen.php:114
+msgid "優惠券報表"
+msgstr ""
+
+#: src/Modules/AdminMenu/Menu.php:67
+msgid "Moksa 優惠券"
+msgstr ""
+
+#: src/Modules/AdminMenu/Menu.php:68
+#: src/Settings/SettingsPage.php:17
+msgid "優惠券"
+msgstr ""
+
+#: src/Modules/AdminMenu/Menu.php:80
+#: src/Modules/AdminMenu/Menu.php:81
+msgid "儀表板"
+msgstr ""
+
+#: src/Modules/AdminMenu/Menu.php:127
+#: src/Plugin.php:80
+#: src/Modules/Frontend/blocks/coupon-cards/index.js:26
+msgid "設定"
+msgstr ""
+
+#: src/Modules/AdminMenu/Module.php:24
+msgid "優惠券管理選單"
+msgstr ""
+
+#: src/Modules/AdminMenu/Module.php:32
+msgid "把優惠券管理收進獨立頂層選單(收編全部券 / 新增 / 報表 / 設定)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Engine.php:148
+msgid "此優惠券不符合使用條件。"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:39
+msgid "大於等於 ≥"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:40
+msgid "小於等於 ≤"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:41
+msgid "大於 >"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:42
+msgid "小於 <"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:43
+msgid "等於 ="
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:44
+msgid "不等於 ≠"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:47
+msgid "屬於"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:48
+msgid "不屬於"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:51
+msgid "在(含)之後"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:52
+msgid "在(含)之前"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:55
+msgid "等於"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:56
+msgid "不等於"
+msgstr ""
+
+#. translators: %s: the basis unit (cart subtotal).
+#: src/Modules/AdvancedRules/Fields.php:60
+#: src/Modules/DiscountTiers/Fields.php:80
+#: src/Modules/DiscountTiers/Fields.php:203
+msgid "購物車小計"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:65
+msgid "商品總件數"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:70
+msgid "顧客歷史訂單數"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:75
+msgid "此券已被使用次數(可做前 N 名限定)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:80
+msgid "顧客累積消費"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:85
+#: src/Modules/DiscountTiers/Fields.php:82
+msgid "購物車重量(kg)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:90
+msgid "特定商品的件數"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:95
+msgid "某分類累積消費"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:100
+msgid "買過特定商品"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:105
+msgid "買過某分類"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:110
+msgid "註冊後經過小時數"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:115
+msgid "上次下單後經過小時數"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:120
+msgid "購物車已套用優惠券"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:125
+msgid "購物車含庫存狀態"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:130
+msgid "運送區域(Zone)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:135
+msgid "購物車含自訂分類法"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:140
+msgid "自訂使用者 Meta"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:145
+msgid "購物車項目 Meta"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:150
+msgid "購物車含商品"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:155
+msgid "購物車含分類"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:160
+msgid "收件國家 / 地區"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:165
+#: src/Modules/CouponConditions/Fields.php:91
+#: src/Modules/CouponConditions/Fields.php:524
+#: src/Modules/Summary/Panel.php:77
+msgid "付款方式"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:170
+#: src/Modules/Summary/Panel.php:72
+msgid "會員角色"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:175
+msgid "星期"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:180
+msgid "時間(時:分)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:185
+msgid "日期時間"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:199
+#: src/Modules/Summary/Panel.php:75
+msgid "進階規則"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:224
+msgid "用「群組」與 AND/OR 自由組合條件。整體可設「符合全部 / 任一群組」,每個群組內也可設「符合全部 / 任一條件」。在既有的單項條件之外額外把關。付款方式條件於結帳時驗證。"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:230
+msgid "啟用進階規則"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:235
+msgid "規則 JSON(進階 / 後備)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:242
+#: src/Modules/CouponConditions/Fields.php:466
+#: src/Modules/CouponConditions/Fields.php:501
+msgid "不符時顯示訊息"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:283
+msgid "星期日"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:284
+msgid "星期一"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:285
+msgid "星期二"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:286
+msgid "星期三"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:287
+msgid "星期四"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:288
+msgid "星期五"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:289
+msgid "星期六"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:293
+msgid "有庫存"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:294
+msgid "無庫存"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:295
+msgid "可延期交貨"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:298
+msgid "符合全部"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:299
+msgid "符合任一"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:300
+msgid "群組:"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:301
+msgid "此群組條件:"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:302
+msgid "+ 新增條件"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:303
+msgid "+ 新增群組"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:304
+msgid "刪除"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:305
+msgid "刪除群組"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:306
+msgid "輸入 ID,以逗號分隔"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:307
+msgid "輸入優惠券代碼,以逗號分隔"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:308
+msgid "ID"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:309
+msgid "數值"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:310
+msgid "分類法代稱"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:311
+msgid "詞彙 ID(逗號)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:312
+msgid "Meta 鍵"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:313
+msgid "Meta 值"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:314
+msgid "選擇…"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:411
+#: src/Modules/CouponCore/ToolsAbility.php:587
+msgid "其他地區(未涵蓋)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Fields.php:418
+#: src/Modules/CouponConditions/Fields.php:427
+msgid "訪客(未登入)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Module.php:25
+#: src/Modules/Templates/Catalog.php:1045
+#: src/Settings/SettingsScreen.php:68
+msgid "進階規則(AND/OR)"
+msgstr ""
+
+#: src/Modules/AdvancedRules/Module.php:33
+msgid "用群組與 AND/OR 自由組合條件(小計 / 件數 / 商品 / 分類 / 地區 / 付款 / 角色 / 星期 / 時間…)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:39
+msgid "AI Client 不可用(需 WordPress 7.0)。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:74
+msgid "AI 暫時無法回應,請稍後再試。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:120
+msgid "AI 多次嘗試後仍未完成,請換個問法。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:196
+#: src/Modules/AiAssistant/Rest.php:143
+msgid "不支援的操作。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:204
+msgid "無法準備此操作。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:250
+msgid "進階設定"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:251
+#: src/Modules/AiAssistant/Agent.php:257
+#: src/Modules/AiAssistant/Agent.php:269
+#: src/Modules/AiAssistant/Agent.php:307
+msgid "是"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:256
+#: src/Modules/AutoApply/Fields.php:47
+#: src/Modules/Summary/Panel.php:78
+msgid "自動套用"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:257
+#: src/Modules/AiAssistant/Agent.php:307
+msgid "否"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:262
+#: src/Modules/DiscountCap/Module.php:22
+#: src/Modules/Templates/Catalog.php:1043
+#: src/Settings/SettingsScreen.php:69
+msgid "折扣上限"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:268
+#: src/Modules/AiAssistant/Agent.php:289
+#: src/Modules/Frontend/Hints.php:59
+msgid "不可與其他券並用"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:280
+#: src/Modules/Reports/ReportsPage.php:80
+msgid "代碼"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:281
+msgid "折扣類型"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:282
+#: src/Modules/Bogo/Fields.php:116
+#: src/Modules/DiscountTiers/Fields.php:93
+#: src/Modules/DiscountTiers/Fields.php:181
+#: src/Modules/FreeGift/Fields.php:93
+#: src/Modules/ShippingOverride/Fields.php:77
+#: src/Modules/Templates/TemplatePage.php:227
+msgid "折扣值"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:283
+msgid "說明"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:284
+#: src/Modules/Reports/ReportsPage.php:87
+msgid "到期日"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:285
+msgid "使用次數上限"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:286
+#: src/Modules/Templates/TemplatePage.php:234
+msgid "每人使用上限"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:287
+msgid "購物車最低"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:288
+msgid "購物車最高"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:291
+#: src/Modules/Bogo/Fields.php:68
+#: src/Modules/DiscountTiers/Fields.php:144
+msgid "指定商品"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:292
+#: src/Modules/CouponConditions/Fields.php:339
+msgid "排除商品"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:293
+#: src/Modules/DiscountTiers/Fields.php:145
+msgid "指定分類"
+msgstr ""
+
+#: src/Modules/AiAssistant/Agent.php:294
+#: src/Modules/CouponConditions/Fields.php:340
+msgid "排除分類"
+msgstr ""
+
+#: src/Modules/AiAssistant/Config.php:51
+msgid "你是 WooCommerce 商家的「優惠券助手」。常用工具:list-coupons 列出、get-coupon 查明細、find-coupon-by-code 查代碼是否重複、coupon-usage-summary 查用量、get-coupon-report 查績效報表(以上唯讀);create-coupon 建立、update-coupon 更新、toggle-coupon 啟用停用、delete-coupon 刪除、bulk-generate-coupons 量產、extend-expiry 延長到期、duplicate-coupon 複製、create-tiered-coupon 建階梯券、apply-template 套用範本(以上破壞性)。破壞性操作只會「提出」,系統會要使用者按「確認執行」才生效,你不必再追問確認。建立優惠券時:折扣類型只有 percent(百分比)、fixed_cart(購物車固定額)、fixed_product(商品固定額);percent 的 amount 是百分比數字,不可超過 100;到期日用 YYYY-MM-DD。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Config.php:52
+msgid " 進階能力(都透過 create-coupon / update-coupon 的 moforcoupon 設定物件,或專用捷徑):階梯折扣(tiers,或用 create-tiered-coupon)、折扣上限(discount_cap)、自動套用(auto_apply)、互斥不可疊加(exclude_coupons)、排程起訖、會員角色、購物車最低、商品 / 分類、收件地區、付款方式、星期時段、買 X 送 Y、免費贈品、運費覆寫,以及 26 種型別的 AND/OR「進階規則」(moforcoupon.advanced_rules)。不確定有哪些規則型別或商家的付款 / 運送代碼時,先用 list-rule-types / get-settings-schema / list-payment-gateways / list-shipping-zones / list-countries 查清楚;不確定範本時用 list-templates,別硬猜。建立前先用工具確認(如代碼是否重複),簡短清楚回覆;查不到或失敗就明說,不要編造。每次都以文字作結,不要只停在工具呼叫。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Config.php:56
+msgid "請一律用使用者提問的語言回覆(介面為繁體中文時即用繁體中文)。"
+msgstr ""
+
+#. translators: %s: today's date in Y-m-d format.
+#: src/Modules/AiAssistant/Config.php:61
+#, php-format
+msgid "今天的日期是 %s。使用者只給月 / 日或相對日期(如「12 月 31 日」「下個月底」)時,一律解析成今年;若該日期今年已過才用明年。絕對不要使用過去的年份。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Config.php:67
+msgid "台灣折扣換算(務必照公式逐步計算,不要憑直覺):「N 折」是折後要付的價格比例,percent 的 amount = 100 減去付款百分比。個位數「N 折」的付款百分比 = N×10,所以 amount = 100 − N×10:9 折→付 90→amount = 10;8 折→amount = 20;7 折→amount = 30;5 折→amount = 50。兩位數「NN 折」的付款百分比 = NN,所以 amount = 100 − NN:85 折→amount = 15;79 折→amount = 21。特別記住:「9 折」的 amount 一定是 10,不是 9、也不是 1。只有當使用者直接講折扣本身(「折 N%」「打 N% 的折扣」「省 N%」)或固定金額(「折 N 元」)時,才照字面填。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:24
+msgid "Moksa 優惠券 AI — 用一句話建立 / 查詢優惠券"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:36
+msgid "需 WordPress 7.0 並在「設定 → Connectors」設定 AI 金鑰"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:69
+msgid "嗨,我是優惠券助手。試試:「建立一張 8 折券 SUMMER20,8/31 到期」或「列出啟用中的優惠券」。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:73
+msgid "建立 9 折券 VIP10,列出啟用中的優惠券,量產 50 張 SALE- 折 100"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "例如:建立一張 85 折券 AUTUMN15"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:86
+msgid "送出"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:87
+msgid "處理中"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:88
+msgid "清除"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:89
+msgid "發生錯誤"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:90
+msgid "(無回覆)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:91
+msgid "確認執行"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:92
+#: src/Modules/Templates/TemplatePage.php:252
+msgid "取消"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:93
+msgid "已取消。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:94
+msgid "執行中…"
+msgstr ""
+
+#: src/Modules/AiAssistant/Rest.php:132
+msgid "確認已失效或不存在,請重新操作。"
+msgstr ""
+
+#: src/Modules/AiAssistant/Rest.php:135
+msgid "權限不符,無法執行。"
+msgstr ""
+
+#: src/Modules/AutoApply/Fields.php:48
+msgid "顧客進入購物車時自動帶入此優惠券(仍須符合條件才會套用)。注意:設定「使用次數上限 / 每人限用次數 / Email 限制」時無法自動套用。"
+msgstr ""
+
+#: src/Modules/AutoApply/Module.php:23
+#: src/Modules/Templates/Catalog.php:1046
+#: src/Settings/SettingsScreen.php:75
+msgid "自動套用優惠券"
+msgstr ""
+
+#: src/Modules/AutoApply/Module.php:31
+msgid "購物車符合條件時自動帶入優惠券,免輸入代碼"
+msgstr ""
+
+#: src/Modules/Birthday/AccountField.php:22
+msgid "生日(用於生日優惠券)"
+msgstr ""
+
+#: src/Modules/Birthday/Module.php:24
+#: src/Settings/SettingsScreen.php:182
+msgid "生日優惠券"
+msgstr ""
+
+#: src/Modules/Birthday/Module.php:32
+msgid "顧客在帳戶填生日,生日當天自動發放一張專屬優惠券"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:29
+msgid "建立買 X 送 Y 優惠券"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:30
+msgid "建立一張「買 X 送 Y(BOGO)」優惠券:顧客買滿指定商品 / 分類達數量後,購物車中的贈品商品可享免費 / 百分比 / 固定折扣,可設定一次或可重複。破壞性 —— 呼叫只會「提出」,使用者按確認後才建立。"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:37
+msgid "優惠券代碼,如 BUY2GET1"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:42
+msgid "購買條件商品 ID(與分類擇一或併用)"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:47
+msgid "購買條件商品分類 term ID"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:51
+msgid "需購買的件數 N(預設 1)"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:56
+msgid "贈品商品 ID"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:61
+msgid "贈品商品分類 term ID"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:65
+msgid "贈送 / 折扣件數 M(預設 1)"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:70
+msgid "折扣方式:free 免費 / percent 百分比 / fixed_per_item 每件固定額"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:74
+msgid "折扣值;percent 為 0–100,fixed_per_item 為金額,free 免填"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:79
+msgid "once 只一次 / repeat 可重複(預設 once)"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:83
+msgid "重複上限(0=不限,僅 repeat 有效)"
+msgstr ""
+
+#: src/Modules/Bogo/Ability.php:87
+#: src/Modules/CouponCore/Ability.php:469
+msgid "到期日 YYYY-MM-DD,可空"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/Bogo/BogoOps.php:48
+#: src/Modules/CouponCore/CouponOps.php:47
+#, php-format
+msgid "優惠券代碼 %s 已存在,請換一個。"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/Bogo/BogoOps.php:87
+#, php-format
+msgid "已建立買 X 送 Y 優惠券 %s。"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:103
+msgid "請指定購買條件的商品或分類。"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:106
+msgid "請指定贈品的商品或分類。"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:112
+msgid "每件固定折扣需大於 0。"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:124
+#: src/Modules/FreeGift/Fields.php:83
+msgid "免費"
+msgstr ""
+
+#. translators: %s: per-item discount amount.
+#: src/Modules/Bogo/BogoOps.php:127
+#, php-format
+msgid "每件折 %s"
+msgstr ""
+
+#. translators: %s: percent discount.
+#: src/Modules/Bogo/BogoOps.php:130
+#, php-format
+msgid "%s%% 折扣"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:132
+msgid "(可重複)"
+msgstr ""
+
+#: src/Modules/Bogo/BogoOps.php:132
+msgid "(限一次)"
+msgstr ""
+
+#. translators: 1: code, 2: trigger qty, 3: reward qty, 4: reward desc, 5: repeat note.
+#: src/Modules/Bogo/BogoOps.php:136
+#, php-format
+msgid "建立買 X 送 Y 優惠券 %1$s:每買 %2$d 件指定商品 → %3$d 件贈品 %4$s %5$s"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:67
+msgid "購買條件(買 X)"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:69
+msgid "指定商品分類"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:74
+msgid "需購買數量"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:85
+msgid "贈品 / 折扣(送 Y)"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:86
+#: src/Modules/FreeGift/Fields.php:64
+msgid "贈品商品"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:87
+msgid "贈品商品分類"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:92
+msgid "贈送 / 折扣數量"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:104
+#: src/Modules/DiscountTiers/Fields.php:92
+#: src/Modules/DiscountTiers/Fields.php:180
+#: src/Modules/Summary/Panel.php:104
+msgid "折扣方式"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:106
+msgid "免費(100% 折扣)"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:108
+#: src/Modules/FreeGift/Fields.php:85
+msgid "每件固定折扣"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:118
+msgid "百分比:0–100;每件固定:金額。選「免費」時免填。"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:133
+msgid "套用次數"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:135
+msgid "只套用一次"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:136
+msgid "可重複(購物車滿足幾組就送幾組)"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:144
+msgid "重複上限"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:146
+msgid "0 = 不限。僅在「可重複」時有效。"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:158
+msgid "提示訊息(贈品未加入時)"
+msgstr ""
+
+#: src/Modules/Bogo/Fields.php:160
+msgid "可用 {bogo_qty} {coupon_code}。留空用預設訊息。"
+msgstr ""
+
+#: src/Modules/Bogo/Frontend.php:208
+msgid "每次只能使用一張買 X 送 Y 優惠券。"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/Bogo/Frontend.php:284
+#, php-format
+msgid "您已符合「%s」的買 X 送 Y 資格 —— 把贈品加入購物車即可享有折扣。"
+msgstr ""
+
+#: src/Modules/Bogo/Module.php:25
+#: src/Modules/Bogo/Type.php:28
+#: src/Modules/Templates/Catalog.php:1038
+#: src/Settings/SettingsScreen.php:73
+msgid "買 X 送 Y(BOGO)"
+msgstr ""
+
+#: src/Modules/Bogo/Module.php:33
+msgid "買指定商品送贈品 / 折扣,支援可重複"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:36
+msgid "回饋金 / 點數"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:60
+msgid "把「折扣類型」設為「回饋金 / 點數(Cashback)」時,此券不直接折購物車,而是在訂單付款後依下列設定回饋。回饋會透過 moforcoupon_cashback_awarded 事件交給你串接的錢包 / 點數系統處理。"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:67
+msgid "回饋方式"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:69
+msgid "訂單金額百分比"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:70
+#: src/Modules/DiscountTiers/Fields.php:175
+msgid "固定金額"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:79
+msgid "回饋值"
+msgstr ""
+
+#: src/Modules/Cashback/Fields.php:85
+msgid "百分比填 5 = 回饋訂單金額的 5%;固定金額填 100 = 回饋 100(商店幣別)。"
+msgstr ""
+
+#: src/Modules/Cashback/Module.php:28
+#: src/Modules/Cashback/Type.php:29
+#: src/Settings/SettingsScreen.php:76
+msgid "回饋金 / 點數(Cashback)"
+msgstr ""
+
+#: src/Modules/Cashback/Module.php:36
+msgid "訂單完成後回饋金額 / 點數(透過 moforcoupon_cashback_awarded hook 串接錢包或點數系統)"
+msgstr ""
+
+#. translators: %s: cashback amount.
+#: src/Modules/Cashback/Runtime.php:88
+#, php-format
+msgid "已回饋 %s(透過 moforcoupon_cashback_awarded 串接的錢包 / 點數系統)。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:49
+#: src/Modules/Summary/Panel.php:70
+msgid "排程"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:56
+msgid "角色限制"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:63
+msgid "購物車條件"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:70
+#: src/Modules/Summary/Panel.php:71
+msgid "顧客條件"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:77
+msgid "商品條件"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:84
+#: src/Modules/Summary/Panel.php:76
+msgid "收件地區"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:98
+msgid "星期 / 時段"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:117
+msgid "啟用排程"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:118
+msgid "僅在下方起訖時間內(站台時區)可使用此優惠券。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:121
+#: src/Modules/CouponConditions/Fields.php:366
+msgid "開始時間"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:122
+#: src/Modules/CouponConditions/Fields.php:367
+msgid "結束時間"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:127
+msgid "尚未開始的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:134
+msgid "已過期的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:150
+msgid "啟用角色限制"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:157
+msgid "限制類型"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:159
+msgid "僅允許這些角色"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:160
+msgid "排除這些角色"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:169
+msgid "無權限時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:185
+msgid "最低購物車小計"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:188
+msgid "注意:此與 WooCommerce 原生「最低消費」語意不同(可選含稅與否),請勿同時設定兩者。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:195
+msgid "小計含稅計算"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:202
+msgid "最低商品數量"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:214
+msgid "未達條件時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:230
+msgid "啟用顧客條件"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:231
+msgid "依顧客的歷史訂單數 / 累積消費限制使用(僅對登入顧客生效;訪客視為無消費紀錄)。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:238
+msgid "僅限首次消費"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:239
+msgid "只有尚未完成過任何訂單的顧客可使用。注意:未登入訪客視為首購(以訪客結帳的回頭客可能繞過)。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:246
+msgid "最少歷史訂單數"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:249
+msgid "留空=不限。顧客已完成的訂單數須達此值。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:260
+msgid "最多歷史訂單數"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:263
+msgid "留空=不限。顧客訂單數超過此值即不可用。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:274
+msgid "最低累積消費"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:277
+msgid "留空=不限。顧客累積消費金額須達此值。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:284
+msgid "最高累積消費"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:287
+msgid "留空=不限。顧客累積消費超過此值即不可用。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:294
+msgid "不符條件時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:306
+msgid "購物車需含下列商品 / 分類才能使用此券(與 WooCommerce 原生「適用商品」不同:這是使用門檻,不是折扣範圍)。留空=不限。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:307
+msgid "需含商品"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:312
+msgid "商品比對方式"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:314
+#: src/Modules/CouponConditions/Fields.php:326
+msgid "含任一即可"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:315
+#: src/Modules/CouponConditions/Fields.php:327
+msgid "需全部包含"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:319
+msgid "需含分類"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:324
+msgid "分類比對方式"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:335
+msgid "不符商品條件時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:338
+msgid "購物車「含」下列商品 / 分類時不可使用此券(例:特定品不適用)。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:345
+msgid "含排除商品時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:361
+msgid "啟用星期 / 時段限制"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:362
+msgid "僅在下列星期與時段(站台時區)可使用此優惠券。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:368
+msgid "時段留空=整天。結束早於開始視為跨夜(例 22:00–02:00)。星期不選=不限。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:373
+msgid "不在時段時的訊息"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:382
+msgid "可使用的星期"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:417
+msgid "使用者角色"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:442
+msgid "依「收件地址的國家」限制此優惠券(購物車階段即驗證)。與「運費覆寫」不同——那是改運費,這是限地區。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:447
+msgid "啟用收件地區限制"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:454
+#: src/Modules/CouponConditions/Fields.php:489
+msgid "限制方式"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:456
+msgid "只允許下列國家 / 地區"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:457
+msgid "排除下列國家 / 地區"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:477
+msgid "限制此優惠券可搭配的付款方式。付款方式在結帳時才確定,因此於結帳驗證(不符會擋下結帳)。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:482
+msgid "啟用付款方式限制"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:491
+msgid "只允許下列付款方式"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:492
+msgid "排除下列付款方式"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:511
+msgid "國家 / 地區"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:512
+msgid "選擇國家 / 地區…"
+msgstr ""
+
+#: src/Modules/CouponConditions/Fields.php:525
+msgid "選擇付款方式…"
+msgstr ""
+
+#: src/Modules/CouponConditions/Module.php:26
+msgid "優惠券條件(排程 / 角色 / 購物車)"
+msgstr ""
+
+#: src/Modules/CouponConditions/Module.php:34
+msgid "排程起訖、角色限制、最低小計 / 數量、顧客歷史、商品 / 分類、星期 / 時段"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:135
+msgid "此優惠券尚未開始。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:138
+msgid "此優惠券已超出可使用的時間。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:170
+msgid "您目前的帳號沒有使用此優惠券的權限。"
+msgstr ""
+
+#. translators: %s: formatted minimum subtotal.
+#: src/Modules/CouponConditions/Validator.php:213
+#, php-format
+msgid "購物車小計需達 %s 才能使用此優惠券。"
+msgstr ""
+
+#. translators: %d: minimum item count.
+#: src/Modules/CouponConditions/Validator.php:233
+#, php-format
+msgid "購物車需至少 %d 件商品才能使用此優惠券。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:367
+msgid "購物車不符合此優惠券的商品條件。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:372
+msgid "購物車包含不適用此優惠券的商品。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:474
+msgid "此優惠券不適用於您的收件地區。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:559
+msgid "此優惠券不適用於您選擇的付款方式。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:631
+msgid "此優惠券目前不在可使用的時段。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:699
+msgid "此優惠券僅限首次消費的顧客使用。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:702
+msgid "您的歷史訂單數不符合此優惠券的使用資格。"
+msgstr ""
+
+#: src/Modules/CouponConditions/Validator.php:704
+msgid "您的累積消費金額不符合此優惠券的使用資格。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:40
+msgid "Moksa Coupons"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:41
+msgid "WooCommerce 優惠券建立、查詢與管理能力"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:60
+msgid "列出優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:61
+msgid "列出優惠券,可依狀態(publish 啟用 / draft 停用)、折扣類型、關鍵字篩選,回傳精簡清單(預設 20 筆、上限 50)。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:68
+msgid "狀態:publish(啟用)/ draft(停用)/ any。不給=全部"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:73
+msgid "折扣類型篩選(選填)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:77
+msgid "代碼 / 描述關鍵字(選填)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:81
+msgid "最多幾筆(預設 20,上限 50)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:103
+msgid "查優惠券明細"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:104
+msgid "取單張優惠券的完整設定(代碼、折扣類型與金額、到期日、使用次數與上限、最低消費、限定商品等)。可給代碼或 ID。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:111
+#: src/Modules/CouponCore/Ability.php:168
+#: src/Modules/CouponCore/Ability.php:231
+#: src/Modules/CouponCore/Ability.php:259
+#: src/Modules/UrlCoupons/ShareAbility.php:38
+msgid "優惠券代碼或 ID"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:130
+msgid "查代碼是否存在"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:131
+msgid "檢查某個優惠券代碼是否已存在,回傳是否存在與其 ID。建立前可先用這個避免重複。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:138
+msgid "要檢查的優惠券代碼"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:160
+msgid "查優惠券用量"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:161
+msgid "查某張優惠券的使用次數、總上限與每人上限、剩餘可用次數。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:195
+#: src/Modules/Templates/TemplatePage.php:251
+msgid "建立優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:196
+msgid "建立一張新的 WooCommerce 優惠券。這是破壞性操作 —— 呼叫只會「提出」,使用者按「確認執行」後才真正建立,你不需要自己再追問確認。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:209
+msgid "更新優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:210
+msgid "更新一張既有優惠券的欄位(折扣、到期日、使用上限等;代碼不可改)。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:223
+msgid "啟用/停用優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:224
+msgid "啟用(publish)或停用(draft)一張優惠券。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:235
+msgid "true=啟用、false=停用"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:251
+msgid "刪除優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:252
+msgid "刪除一張優惠券(預設移到垃圾桶,force=true 永久刪除)。破壞性、不可逆 —— 呼叫只會「提出」,使用者確認後才執行。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:263
+msgid "true=永久刪除、false=移到垃圾桶(預設)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:279
+msgid "量產優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:280
+msgid "一次量產多張使用相同設定、代碼唯一的優惠券(行銷活動用)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:293
+msgid "延長到期日"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:294
+msgid "把一或多張優惠券的到期日延長到指定日期。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:302
+#: src/Modules/CouponCore/ToolsAbility.php:438
+#: src/Modules/CouponCore/ToolsAbility.php:463
+msgid "優惠券代碼或 ID 陣列"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:306
+msgid "新的到期日 YYYY-MM-DD"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:322
+msgid "複製優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:323
+msgid "把一張既有優惠券複製成一張新草稿(沿用所有折扣設定與排程 / 角色 / 購物車條件,使用次數歸零、代碼自動加上 -COPY-)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:330
+msgid "要複製的來源優惠券代碼或 ID"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:451
+msgid "優惠券代碼,如 SUMMER25"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:457
+msgid "折扣類型:percent(百分比)/ fixed_cart(購物車固定額)/ fixed_product(商品固定額)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:461
+msgid "折扣量;percent 時為百分比數字(25 = 25%)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:465
+#: src/Modules/Templates/TemplatePage.php:242
+msgid "優惠券說明(選填)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:501
+msgid "是否自動套用(顧客進購物車自動帶入;需啟用「自動套用」模組,且券無使用次數 / Email 限制)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:505
+msgid "百分比折扣的最高折抵金額(例:8 折最多折 500;需啟用「折扣上限」模組)。0 或不填=不限"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:509
+msgid "是否不可與其他優惠券並用(互斥券;需啟用「疊加控制」模組)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:523
+msgid "要更新的優惠券代碼或 ID"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:536
+msgid "要量產的張數(1–500)"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:540
+msgid "代碼前綴(選填,如 SALE-)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:53
+msgid "建立"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:74
+msgid "、含進階設定"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:81
+msgid "、自動套用"
+msgstr ""
+
+#. translators: %s: max discount amount.
+#: src/Modules/CouponCore/CouponOps.php:89
+#, php-format
+msgid "、最多折 %s"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:96
+msgid "、不可與其他券並用"
+msgstr ""
+
+#. translators: 1: coupon code, 2: coupon id.
+#: src/Modules/CouponCore/CouponOps.php:142
+#, php-format
+msgid "已建立優惠券 %1$s(#%2$d)。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:170
+msgid "沒有可更新的欄位。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:178
+msgid "更新"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/CouponCore/CouponOps.php:203
+#, php-format
+msgid "已更新優惠券 %s。"
+msgstr ""
+
+#. translators: 1: enable/disable verb, 2: coupon code.
+#: src/Modules/CouponCore/CouponOps.php:229
+#, php-format
+msgid "%1$s優惠券 %2$s"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:230
+#: src/Modules/CouponList/ListTable.php:70
+#: src/Modules/CouponList/ListTable.php:97
+#: src/Modules/CouponList/ListTable.php:169
+#: src/Modules/Reports/ReportsPage.php:162
+msgid "啟用"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:230
+#: src/Modules/CouponList/ListTable.php:70
+#: src/Modules/CouponList/ListTable.php:98
+#: src/Modules/CouponList/ListTable.php:169
+#: src/Modules/Reports/ReportsPage.php:163
+msgid "停用"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:246
+msgid "切換狀態失敗。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:251
+msgid "已啟用優惠券。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:252
+msgid "已停用優惠券。"
+msgstr ""
+
+#. translators: 1: coupon code, 2: permanently/to trash.
+#: src/Modules/CouponCore/CouponOps.php:278
+#, php-format
+msgid "刪除優惠券 %1$s(%2$s)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:280
+msgid "永久刪除"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:280
+msgid "移到垃圾桶"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:295
+msgid "刪除失敗。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:299
+msgid "已刪除優惠券。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:316
+msgid "數量須為 1–500。"
+msgstr ""
+
+#. translators: 1: count, 2: prefix, 3: discount summary.
+#: src/Modules/CouponCore/CouponOps.php:331
+#, php-format
+msgid "量產 %1$d 張優惠券(前綴 \"%2$s\"):%3$s"
+msgstr ""
+
+#. translators: %d: number of coupons created.
+#: src/Modules/CouponCore/CouponOps.php:368
+#, php-format
+msgid "已量產 %d 張優惠券。"
+msgstr ""
+
+#. translators: 1: requested count, 2: shortfall count.
+#: src/Modules/CouponCore/CouponOps.php:375
+#, php-format
+msgid "(要求 %1$d 張,有 %2$d 張因代碼重複或儲存失敗未建立)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:406
+msgid "延長的到期日不可早於今天。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:416
+#: src/Modules/CouponCore/CouponOps.php:697
+#: src/Modules/CouponCore/CouponOps.php:759
+msgid "找不到任何符合的優惠券。"
+msgstr ""
+
+#. translators: 1: count, 2: date.
+#: src/Modules/CouponCore/CouponOps.php:423
+#, php-format
+msgid "將 %1$d 張優惠券的到期日延長至 %2$s"
+msgstr ""
+
+#. translators: %d: number updated.
+#: src/Modules/CouponCore/CouponOps.php:450
+#: src/Modules/CouponCore/CouponOps.php:806
+#, php-format
+msgid "已更新 %d 張優惠券的到期日。"
+msgstr ""
+
+#. translators: %s: source coupon code.
+#: src/Modules/CouponCore/CouponOps.php:477
+#, php-format
+msgid "複製優惠券 %s 為新草稿(沿用所有設定與條件,使用次數歸零)"
+msgstr ""
+
+#. translators: 1: source code, 2: new draft code.
+#: src/Modules/CouponCore/CouponOps.php:511
+#, php-format
+msgid "已將 %1$s 複製為草稿 %2$s(使用次數已歸零,啟用前可先檢查)。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:533
+msgid "請至少提供一階折扣(tiers)。"
+msgstr ""
+
+#. translators: 1: coupon code, 2: number of tiers.
+#: src/Modules/CouponCore/CouponOps.php:563
+#, php-format
+msgid "建立階梯折扣券 %1$s(%2$d 階,依購物車門檻給不同百分比)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:564
+msgid "(自動代碼)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:585
+msgid "找不到指定的優惠券範本(用 list-templates 查可用 id)。"
+msgstr ""
+
+#. translators: %s: template label.
+#: src/Modules/CouponCore/CouponOps.php:593
+#, php-format
+msgid "套用範本「%s」建立一張草稿優惠券"
+msgstr ""
+
+#. translators: 1: coupon code, 2: coupon id.
+#: src/Modules/CouponCore/CouponOps.php:618
+#, php-format
+msgid "已依範本建立草稿優惠券 %1$s(#%2$d),啟用前可先檢查。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:640
+msgid "找不到垃圾桶中的該優惠券,請提供已刪除優惠券的數字 ID。"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/CouponCore/CouponOps.php:646
+#, php-format
+msgid "從垃圾桶還原優惠券 %s 為草稿(啟用前可先檢查)"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:662
+msgid "還原失敗。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:673
+msgid "已從垃圾桶還原為草稿。"
+msgstr ""
+
+#. translators: 1: count, 2: date.
+#: src/Modules/CouponCore/CouponOps.php:705
+#, php-format
+msgid "立即停用 %1$d 張優惠券(到期日設為 %2$s,即刻失效)"
+msgstr ""
+
+#. translators: %d: number expired.
+#: src/Modules/CouponCore/CouponOps.php:732
+#, php-format
+msgid "已將 %d 張優惠券設為立即失效。"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponOps.php:764
+msgid "到期日格式不正確(請用 YYYY-MM-DD)。"
+msgstr ""
+
+#. translators: %d: number of coupons.
+#: src/Modules/CouponCore/CouponOps.php:774
+#, php-format
+msgid "清除 %d 張優惠券的到期日(改為永久有效)"
+msgstr ""
+
+#. translators: 1: number of coupons, 2: new expiry date.
+#: src/Modules/CouponCore/CouponOps.php:779
+#, php-format
+msgid "將 %1$d 張優惠券的到期日設為 %2$s"
+msgstr ""
+
+#: src/Modules/CouponCore/CouponRest.php:89
+#: src/Modules/UrlCoupons/Rest.php:56
+#: src/Modules/UrlCoupons/Rest.php:87
+msgid "找不到優惠券。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:46
+msgid "列出進階規則型別"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:47
+msgid "列出「進階規則(AND/OR)」可用的全部 26 種條件型別、各自允許的運算子(op)與 value 形狀。建構 moforcoupon.advanced_rules 前先查它。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:63
+msgid "取得進階設定 schema"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:64
+msgid "回傳 create-coupon / update-coupon 的 moforcoupon 進階設定物件完整 JSON schema(排程 / 條件 / 階梯 / 進階規則 / BOGO / 贈品 / 運費…)。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:80
+msgid "列出付款方式"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:81
+msgid "列出本店所有付款方式的 id、名稱與是否啟用 —— 設定「付款方式條件」或 payment_method 規則時用真實 id。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:97
+msgid "列出運送區域"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:98
+msgid "列出 WooCommerce 運送區域的 id 與名稱(含「其他地區」zone 0)—— shipping_zone 規則用真實 id。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:114
+msgid "列出國家代碼"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:115
+msgid "列出國家 / 地區的 ISO 代碼與名稱 —— 設定「收件地區條件」或 shipping_country 規則用大寫代碼(如 TW)。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:131
+msgid "驗證進階規則樹"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:132
+msgid "對一棵「進階規則」樹做乾跑:回傳是否有有效規則、正規化結果、用到的型別、被丟掉的未知型別;若給 sample_cart 還會回傳是否通過。不寫入。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:139
+msgid "規則樹物件或其 JSON 字串"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:143
+msgid "可選的情境(subtotal/qty/products/categories/country/payment/roles/weight…),用來試算是否通過"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:170
+msgid "優惠券績效報表"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:171
+msgid "每張優惠券的使用訂單數與折抵總額(只算已付款訂單),依折抵金額由高到低排序。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:178
+msgid "最多回傳幾筆(預設 20)"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:183
+msgid "排序:discount(折抵,預設)/ orders(訂單數)"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:187
+msgid "忽略 1 小時快取重新計算"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:209
+msgid "優惠券營收總覽"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:210
+msgid "近 N 天內帶券已付款訂單的營收、折抵總額、訂單數、平均客單價,以及每日趨勢。回答「優惠券帶來多少生意」。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:217
+msgid "統計近幾天(1–365,預設 30)"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:242
+msgid "列出優惠券範本"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:243
+msgid "列出內建的優惠券範本(id、名稱、說明、分類、折扣型別、所需模組)。要一鍵建券時搭配 apply-template。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:250
+msgid "只列某分類(acquisition/aov/shipping/promo/seasonal/bonus/member)"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:272
+msgid "列出排程 / 到期狀況"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:273
+msgid "列出優惠券的到期日、排程起訖與活動分組(campaign),依到期日排序;可只看某 campaign。管理多階段活動或快到期的券時用。唯讀。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:280
+msgid "只列此活動分組的券"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:306
+msgid "建立階梯折扣券"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:307
+msgid "用簡單的階梯表建立一張「依購物車門檻給不同折扣」的百分比券(例:滿1000折10%、滿2000折20%)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:314
+#: src/Modules/Templates/TemplatePage.php:223
+msgid "優惠券代碼"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:319
+msgid "階梯依據:subtotal 小計(預設)/ quantity 件數 / weight 重量"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:323
+msgid "階梯列,每階 { threshold 門檻, kind percent|fixed, value }。percent 的 value 是 0-100 百分比(10=折10%=9折);fixed 的 value 是固定折抵金額。可混用。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:340
+msgid "折扣套用範圍:cart(整車,預設)/ products / categories"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:367
+msgid "套用優惠券範本"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:368
+msgid "套用一個內建範本建立草稿優惠券(先用 list-templates 取得 template_id)。可微調 code / amount / date_expires / usage_limit 等。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:375
+msgid "範本 id(來自 list-templates)"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:379
+msgid "可選微調"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:405
+msgid "還原刪除的優惠券"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:406
+msgid "把垃圾桶中的優惠券還原為草稿(提供數字 ID)。破壞性 —— 呼叫只會「提出」,使用者確認後才還原。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:413
+msgid "已刪除優惠券的數字 ID"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:429
+msgid "立即失效"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:430
+msgid "把一或多張優惠券立即設為失效(到期日設為昨天)。比停用更明確地「立刻結束活動」。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:454
+msgid "批次調整到期日"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:455
+msgid "一次把多張優惠券的到期日設為同一天(date_expires 留空 = 清除到期日改永久)。管理活動延期 / 提前結束很方便。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:467
+msgid "新的到期日 YYYY-MM-DD;留空 = 清除到期日"
+msgstr ""
+
+#: src/Modules/CouponList/ListTable.php:45
+#: src/Modules/CouponList/ListTable.php:50
+#: src/Modules/Reports/ReportsPage.php:83
+msgid "狀態"
+msgstr ""
+
+#: src/Modules/CouponList/ListTable.php:86
+#: src/Modules/Frontend/CouponCard.php:52
+msgid "複製"
+msgstr ""
+
+#: src/Modules/CouponList/ListTable.php:161
+msgid "已複製為草稿券,使用次數歸零,啟用前可先檢查。"
+msgstr ""
+
+#: src/Modules/CouponList/ListTable.php:163
+msgid "複製優惠券失敗。"
+msgstr ""
+
+#. translators: 1: number of coupons, 2: 啟用/停用 label.
+#: src/Modules/CouponList/ListTable.php:173
+#, php-format
+msgid "已%2$s %1$d 張優惠券。"
+msgstr ""
+
+#: src/Modules/CouponList/Module.php:24
+msgid "優惠券列表增強"
+msgstr ""
+
+#: src/Modules/CouponList/Module.php:32
+msgid "在優惠券列表加上啟用 / 停用狀態欄、批次啟停、一鍵複製券"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:27
+#: src/Settings/SettingsScreen.php:128
+msgid "優惠券寄送"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:35
+msgid "用自然語言把優惠券寄給顧客,可鎖定只限該 Email 使用"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:53
+msgid "寄送優惠券"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:54
+msgid "把一張既有優惠券寄到指定 Email(可選擇鎖定只限該 Email 使用)。破壞性 —— 呼叫只會「提出」,使用者確認後才寄送。"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:61
+msgid "要寄送的優惠券代碼或 ID"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:65
+msgid "收件人 Email"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:69
+msgid "附加給顧客的訊息(選填)"
+msgstr ""
+
+#: src/Modules/CouponSend/Module.php:73
+msgid "是否鎖定此優惠券只限該 Email 使用(寫入 WooCommerce 的 Email 限制)"
+msgstr ""
+
+#: src/Modules/CouponSend/SendOps.php:37
+#: src/Modules/CouponSend/SendService.php:78
+msgid "收件人 Email 無效。"
+msgstr ""
+
+#. translators: 1: coupon code, 2: recipient email, 3: optional restriction note.
+#: src/Modules/CouponSend/SendOps.php:51
+#, php-format
+msgid "將優惠券 %1$s 寄送至 %2$s%3$s"
+msgstr ""
+
+#: src/Modules/CouponSend/SendOps.php:54
+msgid "(並鎖定只限此 Email 使用)"
+msgstr ""
+
+#. translators: %s: recipient email.
+#: src/Modules/CouponSend/SendOps.php:77
+#, php-format
+msgid "已將優惠券寄送至 %s。"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/CouponSend/SendService.php:47
+#, php-format
+msgid "您的優惠券:%s"
+msgstr ""
+
+#. translators: %s: site name.
+#: src/Modules/CouponSend/SendService.php:51
+#, php-format
+msgid "您好,%s 送您一張優惠券。"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/CouponSend/SendService.php:56
+#: src/Modules/ExpiryReminder/Runtime.php:109
+#, php-format
+msgid "優惠券代碼:%s"
+msgstr ""
+
+#: src/Modules/CouponSend/SendService.php:61
+msgid "點此自動套用優惠券"
+msgstr ""
+
+#: src/Modules/CouponSend/SendService.php:102
+msgid "寄送失敗(請檢查站台郵件設定)。"
+msgstr ""
+
+#: src/Modules/DiscountCap/Fields.php:46
+msgid "折扣上限金額"
+msgstr ""
+
+#: src/Modules/DiscountCap/Fields.php:49
+msgid "百分比折扣的最高折抵金額(例:打 8 折,但最多折 500)。留空 = 不限。"
+msgstr ""
+
+#: src/Modules/DiscountCap/Module.php:30
+msgid "百分比折扣設定最高折抵金額(例:8 折最多折 500)"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:38
+#: src/Modules/DiscountTiers/Module.php:25
+#: src/Modules/DiscountTiers/Nudge.php:78
+#: src/Modules/Frontend/CouponCard.php:88
+#: src/Modules/Summary/Panel.php:74
+#: src/Modules/Templates/Catalog.php:1044
+#: src/Settings/SettingsScreen.php:70
+msgid "階梯折扣"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:62
+msgid "同一張優惠券依「階梯依據」(購物車小計 / 件數 / 重量)分級給不同折扣;每一階可選百分比或固定金額,也可以混用。啟用後完全依下表計算,優惠券原本的折扣值會被忽略。"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:69
+msgid "啟用階梯折扣"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:70
+msgid "勾選後此優惠券依下方階梯計算折扣。"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:78
+msgid "階梯依據"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:81
+msgid "購物車件數"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:89
+msgid "階梯折扣設定表"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:90
+msgid "階梯"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:91
+msgid "門檻 ≥(依上方依據)"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:94
+msgid "動作"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:115
+msgid "+ 新增階梯"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:129
+msgid "門檻達到才套用該階;同時符合多階時,取「折抵金額最大」的一階。折扣值留空 = 該階不啟用。百分比填 10 = 折 10%(9 折);固定金額填 200 = 折 200 元。"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:136
+msgid "折扣套用範圍"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:138
+msgid "整張購物車"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:139
+msgid "只限指定商品"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:140
+msgid "只限指定分類"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:147
+msgid "門檻一律以整車的「階梯依據」判斷;「折扣套用範圍」只決定折扣算在哪些商品上(固定金額會按比例分攤到範圍內的商品)。會員角色限制請用「條件」分頁。"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:173
+msgid "百分比 %"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:177
+msgid "10=折10% / 200=折200元"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:178
+msgid "刪除此階"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Fields.php:179
+msgid "門檻"
+msgstr ""
+
+#. translators: %s: the basis unit (cart subtotal).
+#. translators: %s: the basis unit (item count).
+#. translators: %s: the basis unit (weight kg).
+#: src/Modules/DiscountTiers/Fields.php:203
+#: src/Modules/DiscountTiers/Fields.php:205
+#: src/Modules/DiscountTiers/Fields.php:207
+#, php-format
+msgid "門檻 ≥(%s)"
+msgstr ""
+
+#. translators: %s: the basis unit (item count).
+#: src/Modules/DiscountTiers/Fields.php:205
+msgid "件數"
+msgstr ""
+
+#. translators: %s: the basis unit (weight kg).
+#: src/Modules/DiscountTiers/Fields.php:207
+msgid "重量 kg"
+msgstr ""
+
+#: src/Modules/DiscountTiers/Module.php:33
+msgid "同一張券依購物車門檻給不同折扣(例:未滿 1000 折 10%、滿 1000 折 20%)"
+msgstr ""
+
+#. translators: %s: fixed discount amount.
+#: src/Modules/DiscountTiers/Nudge.php:61
+#, php-format
+msgid "即可折 %s"
+msgstr ""
+
+#. translators: %s: discount percent.
+#: src/Modules/DiscountTiers/Nudge.php:66
+#, php-format
+msgid "折扣升級至 %s%%"
+msgstr ""
+
+#. translators: 1: amount/qty/weight to add, 2: the upgraded deal.
+#: src/Modules/DiscountTiers/Nudge.php:72
+#, php-format
+msgid "%1$s,%2$s!"
+msgstr ""
+
+#. translators: %s: number of additional items.
+#: src/Modules/DiscountTiers/Nudge.php:89
+#, php-format
+msgid "購物車再加 %s 件"
+msgstr ""
+
+#. translators: %s: additional weight in kg.
+#: src/Modules/DiscountTiers/Nudge.php:93
+#, php-format
+msgid "購物車再加 %s kg"
+msgstr ""
+
+#. translators: %s: additional spend (price HTML).
+#: src/Modules/DiscountTiers/Nudge.php:96
+#, php-format
+msgid "購物車再加 %s"
+msgstr ""
+
+#: src/Modules/ExpiryReminder/Module.php:24
+#: src/Settings/SettingsScreen.php:171
+msgid "優惠券到期提醒"
+msgstr ""
+
+#: src/Modules/ExpiryReminder/Module.php:32
+msgid "每天自動 Email 提醒顧客「專屬優惠券即將到期」,鼓勵在期限前使用"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/ExpiryReminder/Runtime.php:97
+#, php-format
+msgid "您的優惠券「%s」即將到期"
+msgstr ""
+
+#. translators: 1: site name, 2: expiry date.
+#: src/Modules/ExpiryReminder/Runtime.php:103
+#, php-format
+msgid "提醒您,%1$s 的專屬優惠券將於 %2$s 到期,別忘了在期限前使用!"
+msgstr ""
+
+#: src/Modules/ExpiryReminder/Runtime.php:114
+msgid "點此立即使用"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:34
+msgid "贈品"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:60
+msgid "啟用贈品"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:61
+msgid "套用此優惠券時,自動把下方贈品加入購物車(顧客無法改數量或移除;移除優惠券時自動撤回)。"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:69
+msgid "數量"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:81
+msgid "贈品定價"
+msgstr ""
+
+#: src/Modules/FreeGift/Fields.php:95
+msgid "百分比:0–100;每件固定:折抵金額。選「免費」時免填。"
+msgstr ""
+
+#: src/Modules/FreeGift/GiftHandler.php:168
+msgid "贈品數量無法變更。"
+msgstr ""
+
+#: src/Modules/FreeGift/Module.php:24
+#: src/Settings/SettingsScreen.php:72
+msgid "加贈品 / 免費贈品"
+msgstr ""
+
+#: src/Modules/FreeGift/Module.php:32
+msgid "套用優惠券時自動加入贈品(免費或折扣),數量鎖定、撤券即撤回"
+msgstr ""
+
+#: src/Modules/Frontend/CouponCard.php:44
+#: src/Modules/UrlCoupons/Module.php:89
+msgid "已複製"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/Frontend/CouponCard.php:48
+#, php-format
+msgid "複製代碼 %s"
+msgstr ""
+
+#. translators: %s: expiry date.
+#: src/Modules/Frontend/CouponCard.php:58
+#, php-format
+msgid "有效期限至 %s"
+msgstr ""
+
+#: src/Modules/Frontend/CouponCard.php:66
+msgid "立即套用"
+msgstr ""
+
+#: src/Modules/Frontend/CouponCard.php:79
+#: src/Modules/Frontend/CouponCard.php:105
+msgid "優惠"
+msgstr ""
+
+#: src/Modules/Frontend/CouponCard.php:92
+#: src/Modules/Summary/Panel.php:102
+#: src/Support/CouponType.php:24
+msgid "回饋金"
+msgstr ""
+
+#. translators: %s: percent number.
+#: src/Modules/Frontend/CouponCard.php:98
+#, php-format
+msgid "%s%% OFF"
+msgstr ""
+
+#: src/Modules/Frontend/CouponCard.php:103
+msgid "買就送"
+msgstr ""
+
+#: src/Modules/Frontend/Fields.php:34
+msgid "前台顯示"
+msgstr ""
+
+#: src/Modules/Frontend/Fields.php:60
+msgid "在前台優惠券清單顯示"
+msgstr ""
+
+#: src/Modules/Frontend/Fields.php:61
+msgid "勾選後,此優惠券會出現在 [moforcoupon_coupons] 短代碼的卡片清單中。"
+msgstr ""
+
+#: src/Modules/Frontend/Fields.php:68
+msgid "前台說明文字"
+msgstr ""
+
+#: src/Modules/Frontend/Fields.php:70
+msgid "顯示在卡片上的行銷說明(留空則用優惠券描述)。"
+msgstr ""
+
+#. translators: %s: formatted minimum amount.
+#: src/Modules/Frontend/Hints.php:29
+#, php-format
+msgid "滿 %s"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:35
+msgid "限會員"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:39
+msgid "限新客首購"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:43
+msgid "限指定商品"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:47
+msgid "限特定收件地區"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:51
+msgid "限特定付款方式"
+msgstr ""
+
+#: src/Modules/Frontend/Hints.php:63
+msgid "特價商品不適用"
+msgstr ""
+
+#: src/Modules/Frontend/Module.php:24
+#: src/Settings/SettingsScreen.php:126
+msgid "前台優惠券顯示"
+msgstr ""
+
+#: src/Modules/Frontend/Module.php:32
+msgid "用 [moforcoupon_coupons] 短代碼在前台顯示可用優惠券卡片"
+msgstr ""
+
+#: src/Modules/Frontend/Shortcode.php:73
+msgid "目前沒有可用的優惠券。"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:64
+#: src/Modules/ImportExport/ImportExport.php:65
+msgid "匯入 / 匯出"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:82
+msgid "優惠券匯入 / 匯出"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:84
+msgid "匯出"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:85
+msgid "將所有優惠券(含階梯 / 進階規則設定)匯出成 CSV,可用於備份、稽核或大量編輯。"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:89
+msgid "下載 CSV"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:92
+msgid "匯入"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:93
+msgid "上傳同格式的 CSV。以「code」欄比對:已存在則更新,不存在則新建為草稿。"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:98
+msgid "匯入 CSV"
+msgstr ""
+
+#. translators: 1: created count, 2: updated count, 3: failed count.
+#: src/Modules/ImportExport/ImportExport.php:378
+#, php-format
+msgid "匯入完成:新建 %1$d、更新 %2$d、失敗 %3$d。"
+msgstr ""
+
+#: src/Modules/ImportExport/ImportExport.php:385
+msgid "匯入失敗:請選擇有效的 CSV 檔。"
+msgstr ""
+
+#: src/Modules/ImportExport/Module.php:23
+msgid "CSV 匯入 / 匯出"
+msgstr ""
+
+#: src/Modules/ImportExport/Module.php:31
+msgid "把優惠券匯出成 CSV 備份 / 稽核,或用 CSV 大量新建與更新"
+msgstr ""
+
+#: src/Modules/Metaboxes/Module.php:28
+msgid "集中設定 Metabox"
+msgstr ""
+
+#: src/Modules/Metaboxes/Module.php:36
+msgid "把優惠券各設定區塊集中到單一個 metabox,用 WooCommerce 風格的左側分頁呈現"
+msgstr ""
+
+#: src/Modules/MyAccount/Endpoint.php:38
+#: src/Modules/MyAccount/Endpoint.php:43
+msgid "我的優惠券"
+msgstr ""
+
+#: src/Modules/MyAccount/Endpoint.php:52
+msgid "請先登入以查看您的優惠券。"
+msgstr ""
+
+#: src/Modules/MyAccount/Endpoint.php:74
+msgid "您目前沒有專屬優惠券。"
+msgstr ""
+
+#: src/Modules/MyAccount/Endpoint.php:78
+msgid "以下是專屬於您的優惠券,可直接複製代碼或一鍵套用:"
+msgstr ""
+
+#: src/Modules/MyAccount/Module.php:26
+#: src/Settings/SettingsScreen.php:129
+msgid "會員中心優惠券"
+msgstr ""
+
+#: src/Modules/MyAccount/Module.php:34
+msgid "在 WooCommerce「我的帳戶」顯示顧客專屬優惠券,可複製或一鍵套用"
+msgstr ""
+
+#: src/Modules/Referral/Module.php:24
+msgid "推薦好友券(Referral)"
+msgstr ""
+
+#: src/Modules/Referral/Module.php:32
+msgid "顧客分享專屬連結,朋友完成首購後雙方各得一張優惠券"
+msgstr ""
+
+#: src/Modules/Referral/Service.php:156
+msgid "推薦好友"
+msgstr ""
+
+#: src/Modules/Referral/Service.php:157
+msgid "把您的專屬連結分享給朋友;朋友完成首次訂單後,您就能獲得回饋優惠券。"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:30
+msgid "查詢再行銷設定"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:31
+msgid "讀取「訂單完成後自動發券」目前的設定:範本券、發放條件、金額門檻、有效天數、是否寄信。唯讀。"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:54
+msgid "設定再行銷規則"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:55
+msgid "設定「訂單完成後自動發券」:範本券代碼、發放條件(all / first_order / min_total)、金額門檻、有效天數、是否寄信。會驗證範本券是否存在。"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:62
+msgid "是否啟用自動發券"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:66
+msgid "範本優惠券代碼(會複製成顧客專屬券)"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:71
+#: src/Settings/SettingsScreen.php:148
+msgid "發放條件"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:75
+msgid "條件為 min_total 時的金額門檻"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:79
+msgid "回購券有效天數(0 = 沿用範本到期)"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:83
+msgid "是否同時 Email 通知顧客"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:132
+msgid "找不到指定的範本優惠券代碼。"
+msgstr ""
+
+#: src/Modules/Remarketing/Ability.php:152
+msgid "再行銷設定已更新。"
+msgstr ""
+
+#: src/Modules/Remarketing/Module.php:24
+msgid "訂單完成後自動發券(再行銷)"
+msgstr ""
+
+#: src/Modules/Remarketing/Module.php:32
+msgid "訂單完成後依條件把指定範本券複製成顧客專屬券,自動進入會員中心並可寄出"
+msgstr ""
+
+#: src/Modules/Remarketing/Runtime.php:79
+msgid "感謝您的訂購!送您下次購物可用的優惠券。"
+msgstr ""
+
+#: src/Modules/Reports/Module.php:31
+msgid "每張券的使用訂單數與折抵總額(獨立後台頁)"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:43
+msgid "依已付款訂單統計每張優惠券的使用訂單數與折抵總額(每小時快取一次)。"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:64
+msgid "重新整理"
+msgstr ""
+
+#. translators: 1: number of coupons, 2: total orders, 3: total discount.
+#: src/Modules/Reports/ReportsPage.php:67
+#, php-format
+msgid "共 %1$s 張券被使用、%2$s 筆訂單,累計折抵 %3$s。"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:81
+#: src/Modules/TypeIcons/ListColumn.php:30
+#: src/Modules/TypeIcons/ListColumn.php:35
+#: src/Modules/TypeIcons/ListColumn.php:39
+msgid "類型"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:82
+msgid "折扣量"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:84
+msgid "使用訂單數"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:85
+#: src/Modules/Reports/ReportsPage.php:122
+msgid "折抵總額"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:86
+msgid "使用次數 / 上限"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:95
+msgid "尚無優惠券使用紀錄。"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:120
+msgid "近 30 天帶券訂單"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:121
+msgid "帶券訂單營收"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:123
+msgid "平均客單價(帶券)"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:136
+msgid "日期"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:136
+msgid "帶券訂單"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:137
+msgid "折抵"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:137
+msgid "營收"
+msgstr ""
+
+#: src/Modules/Reports/ReportsPage.php:164
+#: src/Modules/Reports/ReportsPage.php:165
+msgid "已刪除"
+msgstr ""
+
+#: src/Modules/Savings/Frontend.php:40
+msgid "您總共省了"
+msgstr ""
+
+#: src/Modules/Savings/Module.php:24
+msgid "結帳省額提示"
+msgstr ""
+
+#: src/Modules/Savings/Module.php:32
+msgid "在購物車與結帳頁顯示「您總共省了 NT$X」彙總,強化省錢感受"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:37
+#: src/Modules/ShippingOverride/Module.php:25
+#: src/Modules/Templates/Catalog.php:1037
+#: src/Settings/SettingsScreen.php:71
+msgid "運費覆寫"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:59
+msgid "套用此優惠券時改寫所有運送方式的運費。與 WooCommerce 原生「提供免費運送」不同(那只啟用專屬的免運方式)。"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:64
+msgid "運費覆寫方式"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:66
+msgid "不覆寫"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:68
+msgid "運費百分比折扣"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:69
+msgid "運費固定折扣"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Fields.php:79
+msgid "百分比:0–100;固定:折抵金額。選「免運費」或「不覆寫」時免填。"
+msgstr ""
+
+#: src/Modules/ShippingOverride/Module.php:33
+msgid "套用優惠券時免運 / 折運費(百分比或固定額)"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:35
+#: src/Modules/StackingControl/Module.php:26
+#: src/Modules/Templates/Catalog.php:1041
+#: src/Settings/SettingsScreen.php:74
+msgid "疊加控制"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:61
+#: src/Modules/Templates/TemplatePage.php:246
+msgid "不可與其他優惠券並用"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:62
+msgid "勾選後,購物車已有其他優惠券時無法再套用此券(反向亦然);下方「允許並用」清單為例外。"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:69
+msgid "允許並用的券碼"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:71
+msgid "僅在勾選上方「不可並用」時生效:清單內的券碼仍可與此券一起使用。以逗號或換行分隔。"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:78
+msgid "禁止並用的券碼"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:80
+msgid "這些券碼不可與此券一起使用(不論是否勾選「不可並用」)。以逗號或換行分隔。"
+msgstr ""
+
+#: src/Modules/StackingControl/Fields.php:87
+msgid "衝突時顯示的訊息"
+msgstr ""
+
+#: src/Modules/StackingControl/Module.php:34
+msgid "互斥券、允許 / 禁止並用的券碼清單"
+msgstr ""
+
+#. translators: %s: the conflicting coupon code.
+#: src/Modules/StackingControl/Validator.php:53
+#, php-format
+msgid "此優惠券無法與「%s」一起使用。"
+msgstr ""
+
+#: src/Modules/StoreCredit/Checkout.php:27
+msgid "儲值金折抵"
+msgstr ""
+
+#. translators: %s: order number.
+#: src/Modules/StoreCredit/Checkout.php:74
+#, php-format
+msgid "訂單 #%s 使用儲值金"
+msgstr ""
+
+#. translators: %s: formatted balance.
+#: src/Modules/StoreCredit/Checkout.php:90
+#, php-format
+msgid "您目前的儲值金餘額:%s(結帳時自動折抵)"
+msgstr ""
+
+#: src/Modules/StoreCredit/Module.php:24
+#: src/Settings/SettingsScreen.php:77
+msgid "儲值金 / 回饋金錢包"
+msgstr ""
+
+#: src/Modules/StoreCredit/Module.php:32
+msgid "把回饋金(cashback)記成顧客的儲值金餘額,結帳時自動折抵下次訂單"
+msgstr ""
+
+#. translators: %s: order number.
+#: src/Modules/StoreCredit/Module.php:45
+#, php-format
+msgid "訂單 #%s 回饋金"
+msgstr ""
+
+#: src/Modules/Summary/Module.php:23
+#: src/Settings/SettingsScreen.php:119
+msgid "編輯頁即時摘要"
+msgstr ""
+
+#: src/Modules/Summary/Module.php:31
+msgid "編輯優惠券時即時顯示效果摘要與條件衝突提醒"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:27
+msgid "優惠券摘要"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:37
+msgid "編輯欄位時,這裡會即時顯示這張券的效果與衝突提醒。"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:73
+msgid "星期時段"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:79
+#: src/Modules/Templates/Catalog.php:1039
+msgid "免費贈品"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:80
+msgid "不可疊加"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:81
+#: src/Modules/Templates/Catalog.php:1040
+msgid "網址套券"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:99
+#: src/Support/CouponType.php:21
+msgid "購物車固定折抵"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:100
+#: src/Support/CouponType.php:22
+msgid "商品固定折抵"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:103
+msgid "訂單付款後依「回饋金」分頁設定回饋"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:105
+msgid "已啟用功能"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:106
+msgid "提醒"
+msgstr ""
+
+#. translators: %s: discount expressed as a Taiwan 折 number.
+#: src/Modules/Summary/Panel.php:108
+#, php-format
+msgid "約 %s 折"
+msgstr ""
+
+#. translators: %s: percentage off.
+#: src/Modules/Summary/Panel.php:110
+#, php-format
+msgid "折 %s%%"
+msgstr ""
+
+#. translators: %s: fixed amount off.
+#: src/Modules/Summary/Panel.php:112
+#, php-format
+msgid "折抵 %s"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:113
+msgid "無到期日"
+msgstr ""
+
+#. translators: %s: expiry date.
+#: src/Modules/Summary/Panel.php:115
+#, php-format
+msgid "到期:%s"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:116
+msgid "折扣值由階梯表決定"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:117
+msgid "請到「買 X 送 Y」分頁設定觸發與獎勵"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:118
+msgid "階梯折扣僅適用「百分比折扣」,目前折扣類型不符。"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:119
+msgid "購物車最低金額大於最高金額,此券將永遠無法使用。"
+msgstr ""
+
+#: src/Modules/Summary/Panel.php:121
+msgid "(尚未設定)"
+msgstr ""
+
+#: src/Modules/TabIcons/Module.php:23
+#: src/Settings/SettingsScreen.php:115
+msgid "優惠券設定圖示"
+msgstr ""
+
+#: src/Modules/TabIcons/Module.php:31
+msgid "為每個優惠券設定分頁加上統一風格的單色圖示"
+msgstr ""
+
+#: src/Modules/Templates/Applier.php:32
+msgid "找不到指定的優惠券範本。"
+msgstr ""
+
+#. translators: %s: comma-separated required feature module labels.
+#: src/Modules/Templates/Applier.php:46
+#, php-format
+msgid "此範本需先啟用「%s」功能模組。"
+msgstr ""
+
+#. translators: %s: the coupon code.
+#: src/Modules/Templates/Applier.php:65
+#, php-format
+msgid "優惠券代碼「%s」已存在,請換一個。"
+msgstr ""
+
+#: src/Modules/Templates/Applier.php:128
+msgid "套用範本時無法設定折扣類型。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:33
+msgid "新客獲取"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:34
+msgid "提高客單價"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:35
+msgid "運費優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:36
+msgid "促銷・限時"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:37
+msgid "節慶・季節"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:38
+msgid "買送・贈品"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:39
+msgid "會員・回購"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:53
+msgid "新客首購 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:54
+msgid "新顧客的第一筆訂單享 9 折(每位顧客限用一次)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:62
+msgid "新客首購優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:72
+msgid "新客滿 600 折 150"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:73
+msgid "新顧客滿 600 元現折 150 元,鼓勵首購湊單(每人限一次)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:81
+msgid "新客迎新折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:92
+msgid "專屬連結領券"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:93
+msgid "可用網址自動套券,適合 EDM／社群導流(套用後到「網址套券」分頁設定連結代稱)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:100
+msgid "連結導流券"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:111
+msgid "滿 1000 折 100"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:112
+msgid "購物車滿 1000 元即可折抵 100 元。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:119
+msgid "滿額折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:128
+msgid "滿 3000 折 400"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:129
+msgid "購物車滿 3000 元折抵 400 元,推高客單價。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:136
+msgid "大額滿減"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:145
+msgid "滿 2000 享 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:146
+msgid "購物車滿 2000 元即享 88 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:153
+msgid "滿額折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:162
+msgid "滿 3 件 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:163
+msgid "購物車滿 3 件商品即享 9 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:170
+msgid "量購優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:181
+msgid "免運券"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:182
+msgid "套用後所有運送方式免運費(透過運費覆寫)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:189
+msgid "免運優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:198
+msgid "滿 800 免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:199
+msgid "購物車滿 800 元才享免運,兼顧運費成本與湊單。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:206
+msgid "滿額免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:216
+msgid "運費半價"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:217
+msgid "套用後所有運送方式運費打 5 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:224
+msgid "運費折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:236
+msgid "全站 85 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:237
+msgid "全站商品一律 85 折,適合大促銷。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:244
+msgid "全站促銷"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:251
+msgid "週末限定 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:252
+msgid "僅在週六、週日可用的 8 折券(依商店時區判定)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:259
+msgid "週末促銷"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:269
+msgid "歡樂時光 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:270
+msgid "每天 14:00–17:00 限定 9 折,帶動離峰時段下單。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:277
+msgid "離峰時段優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:289
+msgid "限時 75 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:290
+msgid "短期限時促銷(套用後到「排程」分頁設定起訖時間即自動上下架)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:297
+msgid "限時快閃"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:308
+msgid "黑色星期五 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:309
+msgid "黑色星期五大檔 8 折券(建立時設定到期日即成限時券)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:316
+msgid "黑色星期五優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:323
+msgid "網購星期一 85 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:324
+msgid "網購星期一(Cyber Monday)線上專屬 85 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:331
+msgid "網購星期一優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:338
+msgid "雙11 狂歡 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:339
+msgid "雙十一購物節 8 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:346
+msgid "雙11 優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:353
+msgid "雙12 限時 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:354
+msgid "雙十二接力檔 88 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:361
+msgid "雙12 優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:368
+msgid "週年慶 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:369
+msgid "週年慶全館 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:376
+msgid "週年慶優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:383
+msgid "聖誕節 85 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:384
+msgid "聖誕檔期 85 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:391
+msgid "聖誕優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:398
+msgid "聖誕節免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:399
+msgid "聖誕檔期全站免運券(透過運費覆寫)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:406
+msgid "聖誕免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:415
+msgid "跨年新年 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:416
+msgid "跨年 / 元旦新年 88 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:423
+msgid "新年優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:430
+msgid "農曆春節 紅包折 200"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:431
+msgid "農曆春節紅包券,直接折抵 200 元。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:438
+msgid "春節紅包折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:445
+msgid "情人節 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:446
+msgid "情人節檔期 88 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:453
+msgid "情人節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:460
+msgid "母親節 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:461
+msgid "母親節檔期 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:468
+msgid "母親節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:475
+msgid "父親節 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:476
+msgid "父親節檔期 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:483
+msgid "父親節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:490
+msgid "中秋節 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:491
+msgid "中秋檔期 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:498
+msgid "中秋優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:505
+#: src/Modules/Templates/Catalog.php:513
+msgid "雙11 免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:506
+msgid "雙十一全站免運券(透過運費覆寫)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:523
+msgid "618 年中慶 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:524
+msgid "618 年中購物節大檔 8 折券,上半年最重要的折扣戰。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:531
+msgid "618 年中慶"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:538
+msgid "38 婦女節 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:539
+msgid "38 女王節 88 折券,主攻美妝保養與寵愛自己。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:546
+msgid "38 婦女節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:553
+msgid "七夕情人節 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:554
+msgid "七夕情人節 88 折券,情侶送禮檔期。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:561
+msgid "七夕情人節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:568
+msgid "兒童節折 100"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:569
+msgid "兒童節親子檔期直接折 100 元,主打母嬰與親子商品。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:576
+msgid "兒童節折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:583
+msgid "端午節 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:584
+msgid "端午節檔期 9 折券,粽子禮盒與消暑商品。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:591
+msgid "端午節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:598
+msgid "雙十國慶 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:599
+msgid "雙十國慶連假 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:606
+msgid "雙十國慶優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:613
+msgid "萬聖節 85 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:614
+msgid "萬聖節檔期 85 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:621
+msgid "萬聖節優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:628
+msgid "開學季 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:629
+msgid "開學季 9 折券,文具 3C 與生活用品。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:636
+msgid "開學季優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:645
+#: src/Modules/Templates/Catalog.php:653
+msgid "買二送一"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:646
+msgid "買 2 件指定商品送 1 件(套用後到「買 X 送 Y」分頁指定商品)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:666
+#: src/Modules/Templates/Catalog.php:674
+msgid "第二件半價"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:667
+msgid "買 1 件、第二件半價(套用後到「買 X 送 Y」分頁指定商品)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:688
+msgid "滿 1500 送贈品"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:689
+msgid "購物車滿 1500 元自動加贈一件商品(套用後到「免費贈品」分頁指定贈品)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:696
+msgid "滿額贈品"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:710
+msgid "會員專屬 9 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:711
+msgid "僅限已登入的會員(customer 角色)使用的 9 折券。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:718
+msgid "會員專屬優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:729
+msgid "回購禮 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:730
+msgid "回饋已完成至少 1 筆訂單的老顧客 88 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:737
+msgid "回購優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:747
+msgid "高消費會員 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:748
+msgid "回饋累積消費滿 10000 元的高價值客戶 8 折。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:755
+msgid "高消費會員優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:766
+#: src/Modules/Templates/Catalog.php:774
+msgid "累積消費分級折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:767
+msgid "同一張券依購物車金額分級:滿 1000 折 10%、滿 2000 折 15%、滿 3000 折 20%,自動取最高級距。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:785
+msgid "進階規則:滿 600 且 2 件折 80"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:786
+msgid "示範進階規則 AND 組合:購物車滿 600 元「且」滿 2 件才折 80 元。可到「進階規則」分頁再擴充。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:793
+msgid "滿額且滿件折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:803
+msgid "近 30 天未購回訪禮"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:804
+msgid "老顧客距上次下單超過 30 天即可折 100 元,喚回沉睡客(限已登入會員,訪客無購買紀錄)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:811
+msgid "回訪喚回禮"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:821
+msgid "本島免運(限台灣)"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:822
+msgid "收件地址為台灣才免運,海外不適用。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:829
+msgid "本島免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:841
+msgid "重量滿 5kg 免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:842
+msgid "購物車總重量滿 5 公斤免運,適合食品 / 寵糧等重貨(套用後請依實際商品重量調整門檻)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:849
+msgid "重量免運"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:860
+msgid "全站 85 折(上限 500)"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:861
+msgid "全站 85 折,但單筆折抵最多 500 元,保護高客單訂單的毛利。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:868
+msgid "折扣上限保護"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:877
+msgid "自動套用全站 95 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:878
+msgid "顧客進購物車自動帶入的全站 95 折,免輸入代碼(套用後到排程分頁設定活動起訖,避免變成永久折扣)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:885
+msgid "自動套用全站折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:895
+msgid "VIP 不可疊加 8 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:896
+msgid "會員(customer 角色)專屬 8 折,且不可與其他優惠券並用。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:903
+msgid "VIP 專屬不可疊加"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:915
+msgid "指定付款方式專屬折 50"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:916
+msgid "限定特定付款方式才可用的折 50 券(套用後到「付款方式」分頁選擇要限定的付款方式,如 LINE Pay / 街口)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:923
+msgid "付款方式專屬折抵"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:933
+msgid "必含指定分類折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:934
+msgid "購物車含指定分類商品才享 85 折,適合交叉銷售 / 組合促銷(套用後到「商品條件」分頁選擇必含分類)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:941
+msgid "必含分類折扣"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:950
+#: src/Modules/Templates/Catalog.php:958
+msgid "指定分類買三送一"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:951
+msgid "指定分類買 3 件送 1 件(單次,不重複疊送;套用後到「買 X 送 Y」分頁指定分類)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:971
+msgid "生日禮 88 折"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:972
+msgid "壽星生日月專屬 88 折券,每人限用一次(套用後寄給壽星)。"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:980
+msgid "生日禮優惠"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:1036
+#: src/Settings/SettingsScreen.php:67
+msgid "優惠券條件"
+msgstr ""
+
+#: src/Modules/Templates/Catalog.php:1042
+msgid "前台優惠牆"
+msgstr ""
+
+#: src/Modules/Templates/Module.php:32
+msgid "預設好的優惠券範本,一鍵建立草稿券"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:65
+msgid "挑一個範本即可快速建立優惠券。點「套用」可先微調代碼、折扣值與到期日,再一鍵建立草稿券。"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:74
+msgid "最近使用"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:85
+msgid "可用範本"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:93
+msgid "搜尋範本(名稱 / 說明)…"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:94
+msgid "搜尋範本"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:100
+msgid "找不到符合的範本。"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:123
+msgid "全部"
+msgstr ""
+
+#. translators: %s: comma-separated required module labels.
+#: src/Modules/Templates/TemplatePage.php:180
+#, php-format
+msgid "需先啟用「%s」模組"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:184
+#: src/Modules/Templates/TemplatePage.php:201
+msgid "套用此範本"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:214
+msgid "可先調整以下欄位,再建立優惠券草稿。"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:225
+msgid "留空將自動產生"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:231
+msgid "總使用次數上限"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:233
+#: src/Modules/Templates/TemplatePage.php:236
+msgid "不限"
+msgstr ""
+
+#: src/Modules/Templates/TemplatePage.php:239
+msgid "到期日(選填)"
+msgstr ""
+
+#: src/Modules/TypeIcons/Module.php:23
+msgid "優惠券類型圖示"
+msgstr ""
+
+#: src/Modules/TypeIcons/Module.php:31
+msgid "在優惠券列表用不同顏色圖示區分折扣類型"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:36
+msgid "優惠券網址"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:63
+msgid "啟用優惠券網址"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:64
+msgid "產生一個專屬網址 / QR,顧客點擊或掃描即自動把此優惠券套用到購物車。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:71
+msgid "自訂網址代稱"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:73
+msgid "選填。留空則用優惠券代碼。每張券需唯一。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:80
+msgid "套用後導向網址"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:82
+msgid "選填。可用變數 {coupon_code} {coupon_applied} {coupon_error}。留空則導向購物車。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:89
+msgid "成功套用訊息"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:96
+msgid "套用後返回來源頁"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:97
+msgid "勾選後,套用優惠券後返回顧客原本所在的頁面(適合放在文章 / 橫幅的按鈕)。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Fields.php:104
+msgid "儲存後,這裡會顯示分享連結與 QR Code。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:26
+msgid "優惠券網址 / QR(點擊或掃描即套用)"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:34
+msgid "專屬連結 + 伺服器端 QR,顧客一鍵套用"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:88
+msgid "複製連結"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:90
+msgid "下載 QR (PNG)"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:91
+msgid "分享連結"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:92
+msgid "QR Code"
+msgstr ""
+
+#: src/Modules/UrlCoupons/Module.php:93
+msgid "請先儲存優惠券。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/ShareAbility.php:30
+msgid "取優惠券分享連結 / QR"
+msgstr ""
+
+#: src/Modules/UrlCoupons/ShareAbility.php:31
+msgid "取得一張優惠券的「自動套用」分享網址與 QR Code 連結(顧客點擊或掃描即自動套用此券)。若該券尚未開啟網址功能,會回傳 enabled=false 與提示。唯讀。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/ShareService.php:76
+msgid "此優惠券尚未開啟網址套用。請在優惠券的「優惠券網址」分頁勾選啟用,或在設定開啟「以網址查詢字串套用」。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/ShareService.php:89
+#: src/Support/Qr/QrEncoder.php:92
+msgid "QR 內容不可為空。"
+msgstr ""
+
+#: src/Modules/UrlCoupons/UrlHandler.php:245
+msgid "此優惠券無效或無法使用。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:30
+#: src/Settings/SettingsScreen.php:64
+msgid "核心優惠功能"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:32
+#: src/Settings/SettingsScreen.php:65
+msgid "優惠券的折扣機制與結帳驗證。每項預設關閉,需要才開。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:36
+msgid "啟用優惠券條件"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:37
+msgid "在優惠券編輯頁加入排程、角色限制與購物車最低條件,並於結帳時強制驗證。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:43
+msgid "啟用折扣上限"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:44
+#: src/Settings/SettingsScreen.php:69
+msgid "為百分比折扣優惠券設定最高折抵金額(例:打 8 折,但最多折 500)。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:50
+msgid "啟用運費覆寫"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:51
+#: src/Settings/SettingsScreen.php:71
+msgid "套用優惠券時改寫運費:免運、運費百分比折扣或固定折扣(覆寫所有運送方式)。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:57
+msgid "啟用加贈品 / 免費贈品"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:58
+#: src/Settings/SettingsScreen.php:72
+msgid "套用優惠券時自動把指定贈品加入購物車(免費或折扣),顧客無法改數量或移除。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:64
+msgid "啟用買 X 送 Y(BOGO)"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:65
+#: src/Settings/SettingsScreen.php:73
+msgid "新增「買 X 送 Y」折扣型別:買指定商品 / 分類達數量,贈品享免費 / 折扣。可用自然語言建立。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:71
+msgid "啟用疊加控制"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:72
+#: src/Settings/SettingsScreen.php:74
+msgid "控制優惠券能否與其他券並用:互斥券、允許 / 禁止並用的券碼清單,結帳時強制驗證。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:78
+msgid "啟用自動套用優惠券"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:79
+#: src/Settings/SettingsScreen.php:75
+msgid "勾選「自動套用」的優惠券,顧客購物車一符合條件就自動帶入,免輸入代碼。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:91
+#: src/Settings/SettingsScreen.php:81
+msgid "網址 / QR 套用"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:93
+#: src/Settings/SettingsScreen.php:82
+msgid "用專屬連結、QR 或查詢字串讓顧客一鍵套用優惠券。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:97
+msgid "啟用優惠券網址 / QR"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:98
+#: src/Settings/SettingsScreen.php:84
+msgid "為優惠券產生專屬連結 /coupon/代碼 與伺服器端 QR Code,顧客點擊或掃描即自動套用。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:104
+#: src/Settings/SettingsScreen.php:90
+msgid "優惠券網址路徑"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:105
+#: src/Settings/SettingsScreen.php:91
+msgid "專屬連結的路徑前段,例如 coupon → /coupon/代碼。變更後會重整永久連結。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:111
+#: src/Settings/SettingsScreen.php:93
+msgid "允許以查詢字串套用"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:112
+#: src/Settings/SettingsScreen.php:93
+msgid "允許在任何頁面網址加上 ?coupon=代碼 來套用優惠券。預設關閉。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:118
+#: src/Settings/SettingsScreen.php:98
+msgid "查詢字串套用後導向"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:119
+#: src/Settings/SettingsScreen.php:99
+msgid "以 ?coupon= 套用成功後要把顧客導向哪裡。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:124
+#: src/Settings/SettingsScreen.php:101
+msgid "原頁面"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:125
+#: src/Settings/SettingsScreen.php:102
+msgid "購物車"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:126
+#: src/Settings/SettingsScreen.php:103
+msgid "結帳頁"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:136
+#: src/Settings/SettingsScreen.php:109
+msgid "後台介面與呈現"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:138
+#: src/Settings/SettingsScreen.php:110
+msgid "管理選單、範本、報表與優惠券編輯頁的版面呈現。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:142
+msgid "啟用獨立優惠券管理選單"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:143
+#: src/Settings/SettingsScreen.php:112
+msgid "把優惠券管理收進獨立頂層選單「Moksa 優惠券」(全部券 / 新增 / 報表 / 設定),不再埋在 WooCommerce 之下。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:149
+msgid "啟用優惠券範本"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:150
+#: src/Settings/SettingsScreen.php:113
+msgid "新增「優惠券範本」頁,提供預設好的優惠券範本(新客首購 / 滿額折抵 / 免運 / 買二送一…)一鍵建立草稿券。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:156
+msgid "啟用優惠券報表"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:157
+msgid "在 WooCommerce 選單下新增「優惠券報表」頁,統計每張券的使用訂單數與折抵總額。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:163
+msgid "啟用優惠券設定圖示"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:164
+#: src/Settings/SettingsScreen.php:115
+msgid "為優惠券編輯頁的各設定區塊(排程 / 角色 / 購物車 / 運費覆寫…)加上統一風格的單色圖示,分頁與 metabox 兩種呈現皆適用。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:170
+msgid "啟用獨立設定 Metabox"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:171
+msgid "把優惠券各設定區塊(條件 / BOGO / 贈品 / 運費 / 疊加 / 網址 / 前台)從「優惠券資料」分頁改為各自獨立的可收合 metabox,對齊 Advanced Coupons 的版面。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:183
+#: src/Settings/SettingsScreen.php:123
+msgid "前台與寄送"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:185
+#: src/Settings/SettingsScreen.php:124
+msgid "在前台呈現可用優惠券,或把優惠券寄送給顧客。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:189
+msgid "啟用前台優惠券顯示"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:190
+#: src/Settings/SettingsScreen.php:126
+msgid "提供 [moforcoupon_coupons] 短代碼,在前台以卡片顯示商家勾選的可用優惠券(含複製與套用)。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:196
+msgid "啟用優惠券寄送"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:197
+#: src/Settings/SettingsScreen.php:128
+msgid "新增「寄送優惠券」能力:用自然語言把券寄給顧客 Email,可鎖定只限該 Email 使用。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:209
+#: src/Settings/SettingsScreen.php:231
+msgid "AI 與對外開放(MCP)"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:211
+#: src/Settings/SettingsScreen.php:232
+msgid "自然語言助手與對外 MCP 介接。預設全部關閉、唯讀優先。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:215
+msgid "啟用 AI 優惠券助手"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:216
+msgid "在後台用自然語言建立 / 查詢優惠券（需 WordPress 7.0+ 的 AI Client 與已設定的 Connector）。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:222
+msgid "啟用對外 MCP 伺服器"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:223
+msgid "把優惠券能力開放給外部 AI 工具（MCP）。預設關閉。"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:229
+#: src/Settings/SettingsScreen.php:236
+msgid "允許外部 MCP 執行變更"
+msgstr ""
+
+#: src/Settings/SettingsPage.php:230
+msgid "允許破壞性能力（建立 / 更新 / 刪除優惠券）暴露給外部 MCP。預設關閉（僅唯讀）。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:67
+msgid "在優惠券編輯頁加入排程、角色限制、購物車最低、商品 / 分類、收件地區、付款方式、星期時段等條件,並於結帳時強制驗證。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:68
+msgid "用群組與 AND/OR 自由組合條件的進階規則建構器(小計 / 件數 / 商品 / 分類 / 地區 / 付款 / 角色 / 星期 / 時間),在單項條件之外額外把關。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:70
+msgid "同一張百分比優惠券依購物車門檻(小計 / 件數)給不同折扣(例:未滿 1000 折 10%、滿 1000 折 20%),可限定商品 / 分類。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:76
+msgid "新增「回饋金」折扣型別:訂單付款後依百分比 / 固定金額回饋,透過事件交給錢包 / 點數系統(可搭配下方「儲值金錢包」)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:77
+msgid "把回饋金記成顧客的儲值金餘額,結帳時自動折抵下次訂單,並在會員中心顯示餘額。需搭配上方「回饋金」型別。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:84
+msgid "優惠券網址 / QR"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:112
+msgid "獨立優惠券管理選單"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:114
+msgid "統計每張券的使用訂單數與折抵總額(啟用獨立選單時內嵌於儀表板)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:116
+msgid "獨立設定 Metabox"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:116
+msgid "把優惠券各設定區塊(條件 / BOGO / 贈品 / 運費 / 疊加 / 網址 / 前台)集中成一個 WC 原生風格的分頁式 metabox。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:117
+msgid "優惠券列表工具"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:117
+msgid "在優惠券列表加入啟用 / 停用狀態欄、批次啟停與一鍵複製等管理工具。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:118
+msgid "匯入 / 匯出(CSV)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:118
+msgid "以 CSV 匯入 / 匯出優惠券(含階梯、進階規則 JSON 與行銷活動),便於備份、稽核與批次編輯。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:119
+msgid "在優惠券編輯頁顯示即時摘要 metabox:折扣機制、已啟用功能與衝突警告,隨輸入即時更新。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:127
+msgid "購物車省下金額提示"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:127
+msgid "在購物車 / 結帳顯示「您總共省了 NT$X」的提示,強化折扣感受。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:129
+msgid "在 WooCommerce「我的帳戶」加一個「我的優惠券」分頁,列出發放給該顧客(綁定其帳號或 Email)的專屬優惠券,可複製或一鍵套用。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:133
+msgid "再行銷 / 回購券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:134
+msgid "訂單完成後,自動把一張「範本優惠券」複製成顧客專屬券(沿用範本的折扣與所有條件),放進顧客的會員中心並可寄出,鼓勵回購。需同時啟用上方「會員中心優惠券」才看得到。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:136
+msgid "啟用訂單完成後自動發券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:136
+msgid "訂單狀態變為「已完成」時,依下列設定發放回購券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:141
+msgid "範本優惠券代碼"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:142
+msgid "先建立一張正常的優惠券當「範本」(任何券型 / 條件都可),把它的代碼填這裡。系統會在訂單完成後複製它成為顧客專屬的唯一券。建議範本設定「每位顧客限用一次」。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:149
+msgid "哪些已完成訂單要發券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:151
+msgid "每筆已完成訂單"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:152
+msgid "僅顧客首筆訂單(需登入顧客)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:153
+msgid "訂單金額達門檻"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:160
+msgid "訂單金額門檻"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:161
+msgid "發放條件選「達門檻」時生效:訂單總額需 ≥ 此金額。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:167
+msgid "回購券有效天數"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:168
+msgid "發出後幾天內有效(自發放當下起算)。填 0 = 沿用範本本身的到期設定。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:170
+msgid "同時 Email 通知顧客"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:170
+msgid "發券時一併寄送含代碼與一鍵套用連結的 Email 給顧客(需站台郵件設定正常)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:171
+msgid "每天自動檢查顧客的專屬優惠券,即將到期時 Email 提醒,鼓勵在期限前使用。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:176
+msgid "到期前幾天提醒"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:177
+msgid "在優惠券到期日的前幾天寄出提醒(1–60,預設 3)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:183
+msgid "顧客在「帳戶詳細資料」填寫生日後,生日當天自動發放一張專屬優惠券(複製指定範本券),每年一次。需同時啟用「會員中心優惠券」。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:185
+msgid "啟用生日優惠券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:185
+msgid "在帳戶頁加入生日欄位,並於顧客生日當天自動發券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:190
+msgid "生日券範本代碼"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:191
+msgid "生日當天要發放的範本優惠券代碼(會複製成顧客專屬券)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:197
+msgid "生日券有效天數"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:198
+#: src/Settings/SettingsScreen.php:226
+msgid "發出後幾天內有效(填 0 = 沿用範本本身的到期設定)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:203
+msgid "推薦好友(Referral)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:204
+msgid "顧客分享專屬連結,朋友完成首次訂單後,雙方各得一張回饋券(複製指定的範本券)。需同時啟用「會員中心優惠券」才看得到券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:206
+msgid "啟用推薦好友券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:206
+msgid "在會員中心提供專屬推薦連結,並於被推薦的朋友完成訂單後發放回饋券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:211
+msgid "推薦人回饋範本代碼"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:212
+msgid "朋友完成訂單後,要發給「推薦人」的範本優惠券代碼(會複製成推薦人專屬券)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:218
+msgid "好友歡迎範本代碼(選填)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:219
+msgid "同時要發給「被推薦的朋友」的範本優惠券代碼;留空則只回饋推薦人。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:225
+msgid "回饋券有效天數"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:234
+msgid "AI 優惠券助手"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:234
+msgid "在後台用自然語言建立 / 查詢優惠券(需 WordPress 7.0+ 的 AI Client 與已設定的 Connector)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:235
+msgid "對外 MCP 伺服器"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:235
+msgid "把優惠券能力開放給外部 AI 工具(MCP)。預設關閉。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:236
+msgid "允許破壞性能力(建立 / 更新 / 刪除優惠券)暴露給外部 MCP。預設關閉(僅唯讀)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:263
+msgid "啟用 / 關閉各項優惠券功能模組。每項預設關閉,唯讀優先。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:267
+msgid "設定已儲存。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:281
+msgid "儲存設定"
+msgstr ""
+
+#: src/Support/PersonalCoupon.php:33
+msgid "無法產生唯一的優惠券代碼。"
+msgstr ""
+
+#: src/Support/Qr/QrEncoder.php:95
+#: src/Support/Qr/QrEncoder.php:100
+msgid "QR 內容過長,無法產生。"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/index.js:28
+msgid "最多顯示張數"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/index.js:45
+msgid "優惠券卡片(前台顯示)"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/block.json
+msgctxt "block title"
+msgid "Moksa 優惠券卡片"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/block.json
+msgctxt "block description"
+msgid "顯示目前可用的優惠券卡片(等同 [moforcoupon_coupons] 短代碼)。"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/block.json
+msgctxt "block keyword"
+msgid "coupon"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/block.json
+msgctxt "block keyword"
+msgid "優惠券"
+msgstr ""
+
+#: src/Modules/Frontend/blocks/coupon-cards/block.json
+msgctxt "block keyword"
+msgid "moforcoupon"
+msgstr ""
