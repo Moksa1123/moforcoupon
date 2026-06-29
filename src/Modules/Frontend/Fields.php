@@ -70,6 +70,49 @@ final class Fields {
 				'description' => __( '顯示在卡片上的行銷說明(留空則用優惠券描述)。', 'moforcoupon' ),
 			)
 		);
+
+		echo '<p class="form-field"><strong>' . esc_html__( '急迫感(限時 / 限量)', 'moforcoupon' ) . '</strong></p>';
+		woocommerce_wp_checkbox(
+			array(
+				'id'          => Keys::COUNTDOWN_ENABLED,
+				'value'       => get_post_meta( $id, Keys::COUNTDOWN_ENABLED, true ),
+				'label'       => __( '顯示倒數計時', 'moforcoupon' ),
+				'description' => __( '在卡片上顯示倒數到期計時器(需設定到期日或排程結束)。', 'moforcoupon' ),
+			)
+		);
+		woocommerce_wp_select(
+			array(
+				'id'      => Keys::COUNTDOWN_SOURCE,
+				'value'   => get_post_meta( $id, Keys::COUNTDOWN_SOURCE, true ),
+				'label'   => __( '倒數依據', 'moforcoupon' ),
+				'options' => array(
+					'expires'  => __( '優惠券到期日', 'moforcoupon' ),
+					'schedule' => __( '排程結束時間', 'moforcoupon' ),
+				),
+			)
+		);
+		woocommerce_wp_checkbox(
+			array(
+				'id'          => Keys::STOCK_SHOW,
+				'value'       => get_post_meta( $id, Keys::STOCK_SHOW, true ),
+				'label'       => __( '顯示剩餘張數', 'moforcoupon' ),
+				'description' => __( '依「使用次數上限」顯示「僅剩 N 張」(需先設定使用次數上限)。', 'moforcoupon' ),
+			)
+		);
+		woocommerce_wp_text_input(
+			array(
+				'id'                => Keys::STOCK_THRESHOLD,
+				'value'             => get_post_meta( $id, Keys::STOCK_THRESHOLD, true ),
+				'label'             => __( '剩餘張數提示門檻', 'moforcoupon' ),
+				'type'              => 'number',
+				'custom_attributes' => array(
+					'min'  => '0',
+					'step' => '1',
+				),
+				'desc_tip'          => true,
+				'description'       => __( '剩餘張數低於或等於此數時才顯示(0 或留空 = 一律顯示)。', 'moforcoupon' ),
+			)
+		);
 	}
 
 	/**
@@ -89,6 +132,23 @@ final class Fields {
 			delete_post_meta( $post_id, Keys::FRONT_LABEL );
 		} else {
 			update_post_meta( $post_id, Keys::FRONT_LABEL, $label );
+		}
+
+		update_post_meta( $post_id, Keys::COUNTDOWN_ENABLED, isset( $_POST[ Keys::COUNTDOWN_ENABLED ] ) ? 'yes' : '' );
+		update_post_meta( $post_id, Keys::STOCK_SHOW, isset( $_POST[ Keys::STOCK_SHOW ] ) ? 'yes' : '' );
+
+		$source = isset( $_POST[ Keys::COUNTDOWN_SOURCE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::COUNTDOWN_SOURCE ] ) ) : '';
+		if ( in_array( $source, array( 'expires', 'schedule' ), true ) ) {
+			update_post_meta( $post_id, Keys::COUNTDOWN_SOURCE, $source );
+		} else {
+			delete_post_meta( $post_id, Keys::COUNTDOWN_SOURCE );
+		}
+
+		$threshold = isset( $_POST[ Keys::STOCK_THRESHOLD ] ) ? absint( wp_unslash( $_POST[ Keys::STOCK_THRESHOLD ] ) ) : 0;
+		if ( $threshold > 0 ) {
+			update_post_meta( $post_id, Keys::STOCK_THRESHOLD, $threshold );
+		} else {
+			delete_post_meta( $post_id, Keys::STOCK_THRESHOLD );
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}

@@ -120,6 +120,27 @@ final class CouponSettings {
 				'repeat_limit'         => Keys::BOGO_REPEAT_LIMIT,
 				'notice_message'       => Keys::BOGO_NOTICE_MSG,
 			),
+			'nth_item'        => array(
+				'product_ids'    => Keys::NTH_PRODUCT_IDS,
+				'category_ids'   => Keys::NTH_CATEGORY_IDS,
+				'group_by'       => Keys::NTH_GROUP_BY,
+				'n'              => Keys::NTH_N,
+				'reward_mode'    => Keys::NTH_REWARD_MODE,
+				'reward_value'   => Keys::NTH_REWARD_VALUE,
+				'deal_mode'      => Keys::NTH_DEAL_MODE,
+				'repeat_limit'   => Keys::NTH_REPEAT_LIMIT,
+				'notice_message' => Keys::NTH_NOTICE_MSG,
+			),
+			'mixmatch'        => array(
+				'product_ids'    => Keys::MIXMATCH_PRODUCT_IDS,
+				'category_ids'   => Keys::MIXMATCH_CATEGORY_IDS,
+				'quantity'       => Keys::MIXMATCH_QTY,
+				'price_mode'     => Keys::MIXMATCH_PRICE_MODE,
+				'price_value'    => Keys::MIXMATCH_PRICE_VALUE,
+				'deal_mode'      => Keys::MIXMATCH_DEAL_MODE,
+				'repeat_limit'   => Keys::MIXMATCH_REPEAT_LIMIT,
+				'notice_message' => Keys::MIXMATCH_NOTICE_MSG,
+			),
 			'gift'            => array(
 				'enabled'    => Keys::GIFT_ENABLED,
 				'product_id' => Keys::GIFT_PRODUCT_ID,
@@ -140,6 +161,12 @@ final class CouponSettings {
 			'frontend'        => array(
 				'show_in_list' => Keys::SHOW_IN_LIST,
 				'label'        => Keys::FRONT_LABEL,
+			),
+			'urgency'         => array(
+				'countdown_enabled' => Keys::COUNTDOWN_ENABLED,
+				'countdown_source'  => Keys::COUNTDOWN_SOURCE,
+				'stock_show'        => Keys::STOCK_SHOW,
+				'stock_threshold'   => Keys::STOCK_THRESHOLD,
 			),
 			'campaign'        => array(
 				'tag' => Keys::CAMPAIGN,

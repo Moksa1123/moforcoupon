@@ -22,6 +22,8 @@ final class CouponType {
 			'fixed_product'        => __( '商品固定折抵', 'moforcoupon' ),
 			'moforcoupon_bogo'     => __( '買 X 送 Y', 'moforcoupon' ),
 			'moforcoupon_cashback' => __( '回饋金', 'moforcoupon' ),
+			'moforcoupon_nth_item' => __( '第 N 件折扣', 'moforcoupon' ),
+			'moforcoupon_mixmatch' => __( '任選優惠', 'moforcoupon' ),
 		);
 	}
 

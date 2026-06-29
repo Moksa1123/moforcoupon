@@ -6,6 +6,7 @@ namespace MoksaWeb\Moforcoupon\Modules\StoreCredit;
 
 use MoksaWeb\Moforcoupon\Coupon\CouponService;
 use MoksaWeb\Moforcoupon\Modules\CouponSend\SendService;
+use MoksaWeb\Moforcoupon\Plugin;
 use MoksaWeb\Moforcoupon\Support\OrderOnce;
 use MoksaWeb\Moforcoupon\Support\PersonalCoupon;
 
@@ -13,9 +14,15 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Sell store credit as a product. Flag a product as a "gift card" on its edit screen; when an order
- * containing it is paid, the amount becomes store credit for the recipient (an email entered at
- * checkout, or the buyer). A recipient who has no account instead receives a one-off gift coupon by
- * email, so the value is never lost. Reuses the wallet, the coupon issuer and the send service.
+ * containing it is paid, the value is ANNOUNCED via `moforcoupon_giftcard_purchased` so whichever
+ * system owns customer value can credit it. When moforcoupon owns value itself (the `storecredit`
+ * module is on) it also credits its internal wallet — to the recipient (an email entered at
+ * checkout) or the buyer, with a one-off gift coupon emailed when the recipient has no account so
+ * the value is never lost. With an external points/wallet plugin you turn `storecredit` off: the
+ * event still fires and that plugin credits instead, so value lives in exactly one place.
+ *
+ * Always-on (the product flag, recipient field and fulfil/announce must work even when the internal
+ * wallet is off, so an external value system can still be fed). See platform-plan/README.md §3.5-B.
  */
 final class GiftCard {
 
@@ -59,7 +66,9 @@ final class GiftCard {
 	 * @param mixed $checkout
 	 */
 	public static function checkout_field( $checkout ): void {
-		if ( function_exists( 'woocommerce_form_field' ) ) {
+		// Only ask for a recipient when the cart actually contains a gift-card product, so this
+		// field never appears on ordinary checkouts (the class is always-on).
+		if ( function_exists( 'woocommerce_form_field' ) && self::cart_has_giftcard() ) {
 			woocommerce_form_field(
 				self::RECIPIENT_META,
 				array(
@@ -71,6 +80,20 @@ final class GiftCard {
 				''
 			);
 		}
+	}
+
+	/** Whether the current cart contains at least one gift-card product. */
+	private static function cart_has_giftcard(): bool {
+		if ( ! function_exists( 'WC' ) || ! ( WC()->cart instanceof \WC_Cart ) ) {
+			return false;
+		}
+		foreach ( WC()->cart->get_cart() as $line ) {
+			$pid = isset( $line['product_id'] ) ? (int) $line['product_id'] : 0;
+			if ( $pid > 0 && 'yes' === get_post_meta( $pid, self::PRODUCT_META, true ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -109,23 +132,41 @@ final class GiftCard {
 
 		$recipient = (string) $order->get_meta( self::RECIPIENT_META );
 		$buyer     = (int) $order->get_customer_id();
-		$note      = sprintf(
-			/* translators: %s: order number. */
-			__( '訂單 #%s 禮品卡加值', 'moforcoupon' ),
-			$order->get_order_number()
-		);
 
-		if ( '' !== $recipient && is_email( $recipient ) ) {
-			$user = get_user_by( 'email', $recipient );
-			if ( $user ) {
-				Wallet::credit( (int) $user->ID, $amount, $note );
+		// Announce the top-up so whichever system owns customer value can credit it. The recipient
+		// email (or the buyer's billing email) lets the listener resolve the account. Fires once,
+		// regardless of whether the internal wallet (storecredit) is on.
+		$recipient_email = ( '' !== $recipient && is_email( $recipient ) ) ? $recipient : (string) $order->get_billing_email();
+		/**
+		 * Fires when a paid order contains a gift-card / store-credit product.
+		 *
+		 * @param float     $amount          Gift-card value (incl. tax).
+		 * @param string    $recipient_email Who to credit (recipient field, else buyer's billing email).
+		 * @param \WC_Order $order           The paid order.
+		 */
+		do_action( 'moforcoupon_giftcard_purchased', $amount, $recipient_email, $order );
+
+		// Internal wallet is the fallback handler — only when moforcoupon owns value (no external
+		// points system). With an external system you turn `storecredit` off and it credits instead,
+		// so the value never lands in two ledgers.
+		if ( Plugin::instance()->modules()->is_enabled( 'storecredit' ) ) {
+			$note = sprintf(
+				/* translators: %s: order number. */
+				__( '訂單 #%s 禮品卡加值', 'moforcoupon' ),
+				$order->get_order_number()
+			);
+			if ( '' !== $recipient && is_email( $recipient ) ) {
+				$user = get_user_by( 'email', $recipient );
+				if ( $user ) {
+					Wallet::credit( (int) $user->ID, $amount, $note );
+				} else {
+					self::email_gift_coupon( $recipient, $amount );
+				}
+			} elseif ( $buyer > 0 ) {
+				Wallet::credit( $buyer, $amount, $note );
 			} else {
-				self::email_gift_coupon( $recipient, $amount );
+				self::email_gift_coupon( (string) $order->get_billing_email(), $amount );
 			}
-		} elseif ( $buyer > 0 ) {
-			Wallet::credit( $buyer, $amount, $note );
-		} else {
-			self::email_gift_coupon( (string) $order->get_billing_email(), $amount );
 		}
 
 		OrderOnce::mark( $order, self::ISSUED_META, wc_format_decimal( (string) $amount ) );

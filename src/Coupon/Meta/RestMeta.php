@@ -55,6 +55,8 @@ final class RestMeta {
 			Keys::SHIPREGION_ENABLED,
 			Keys::PAYMENT_ENABLED,
 			Keys::RULES_ENABLED,
+			Keys::COUNTDOWN_ENABLED,
+			Keys::STOCK_SHOW,
 		);
 		// Country codes (ISO alpha-2) must stay UPPERCASE; sanitize_key (key_list) would
 		// lowercase them and break the WC_Customer::get_shipping_country() comparison.
@@ -73,6 +75,7 @@ final class RestMeta {
 		$text     = array(
 			Keys::SCHEDULE_MSG_START,
 			Keys::SCHEDULE_MSG_END,
+			Keys::NTH_NOTICE_MSG,
 			Keys::ROLE_MSG,
 			Keys::CART_MSG,
 			Keys::CUST_MSG,
@@ -103,11 +106,18 @@ final class RestMeta {
 			Keys::SHIPREGION_MODE,
 			Keys::PAYMENT_MODE,
 			Keys::CASHBACK_MODE,
+			Keys::COUNTDOWN_SOURCE,
+			Keys::NTH_GROUP_BY,
+			Keys::NTH_REWARD_MODE,
+			Keys::NTH_DEAL_MODE,
+			Keys::MIXMATCH_PRICE_MODE,
+			Keys::MIXMATCH_DEAL_MODE,
 		);
 		$textarea = array(
 			Keys::STACK_ALLOWED,
 			Keys::STACK_DISALLOWED,
 			Keys::BOGO_NOTICE_MSG,
+			Keys::MIXMATCH_NOTICE_MSG,
 		);
 		$decimal  = array(
 			Keys::MIN_SUBTOTAL,
@@ -118,6 +128,8 @@ final class RestMeta {
 			Keys::GIFT_VALUE,
 			Keys::BOGO_REWARD_VALUE,
 			Keys::CASHBACK_VALUE,
+			Keys::NTH_REWARD_VALUE,
+			Keys::MIXMATCH_PRICE_VALUE,
 		);
 		$int      = array(
 			Keys::MIN_QTY,
@@ -128,6 +140,11 @@ final class RestMeta {
 			Keys::BOGO_TRIGGER_QTY,
 			Keys::BOGO_REWARD_QTY,
 			Keys::BOGO_REPEAT_LIMIT,
+			Keys::STOCK_THRESHOLD,
+			Keys::NTH_N,
+			Keys::NTH_REPEAT_LIMIT,
+			Keys::MIXMATCH_QTY,
+			Keys::MIXMATCH_REPEAT_LIMIT,
 		);
 		$slug     = array( Keys::URL_SLUG );
 		$int_list = array(
@@ -141,6 +158,10 @@ final class RestMeta {
 			Keys::BOGO_REWARD_CATEGORY_IDS,
 			Keys::TIERS_TARGET_PRODUCTS,
 			Keys::TIERS_TARGET_CATEGORIES,
+			Keys::NTH_PRODUCT_IDS,
+			Keys::NTH_CATEGORY_IDS,
+			Keys::MIXMATCH_PRODUCT_IDS,
+			Keys::MIXMATCH_CATEGORY_IDS,
 		);
 		// Weekdays are 0–6 (0 = Sunday is VALID), so they need their own sanitizer —
 		// the positive-id list filter would wrongly drop Sunday.

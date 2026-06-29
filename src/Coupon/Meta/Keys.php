@@ -114,6 +114,36 @@ final class Keys {
 	public const BOGO_REPEAT_LIMIT         = '_moforcoupon_bogo_repeat_limit';
 	public const BOGO_NOTICE_MSG           = '_moforcoupon_bogo_notice_msg';
 
+	/*
+	 * Nth-item discount (第二件6折 / 第N件折扣) per-coupon config. A single pool of in-set
+	 * items: every N items, the Nth (cheapest) is discounted. Active only when the coupon's
+	 * native discount_type = 'moforcoupon_nth_item'. group_by: cart (one pool) | product
+	 * (each product its own pool). reward_value for percent is the DISCOUNT % (六折 = 40).
+	 */
+	public const NTH_PRODUCT_IDS  = '_moforcoupon_nth_product_ids';
+	public const NTH_CATEGORY_IDS = '_moforcoupon_nth_category_ids';
+	public const NTH_GROUP_BY     = '_moforcoupon_nth_group_by';
+	public const NTH_N            = '_moforcoupon_nth_n';
+	public const NTH_REWARD_MODE  = '_moforcoupon_nth_reward_mode';
+	public const NTH_REWARD_VALUE = '_moforcoupon_nth_reward_value';
+	public const NTH_DEAL_MODE    = '_moforcoupon_nth_deal_mode';
+	public const NTH_REPEAT_LIMIT = '_moforcoupon_nth_repeat_limit';
+	public const NTH_NOTICE_MSG   = '_moforcoupon_nth_notice_msg';
+
+	/*
+	 * Mix & match bundle pricing (任選 N 件 $X / 任選 N 件 Y 折) per-coupon config. A pool of
+	 * member items: every N units forms a bundle priced as a fixed total or an across-the-board
+	 * percent. Active only when the coupon's native discount_type = 'moforcoupon_mixmatch'.
+	 */
+	public const MIXMATCH_PRODUCT_IDS  = '_moforcoupon_mixmatch_product_ids';
+	public const MIXMATCH_CATEGORY_IDS = '_moforcoupon_mixmatch_category_ids';
+	public const MIXMATCH_QTY          = '_moforcoupon_mixmatch_qty';
+	public const MIXMATCH_PRICE_MODE   = '_moforcoupon_mixmatch_price_mode';
+	public const MIXMATCH_PRICE_VALUE  = '_moforcoupon_mixmatch_price_value';
+	public const MIXMATCH_DEAL_MODE    = '_moforcoupon_mixmatch_deal_mode';
+	public const MIXMATCH_REPEAT_LIMIT = '_moforcoupon_mixmatch_repeat_limit';
+	public const MIXMATCH_NOTICE_MSG   = '_moforcoupon_mixmatch_notice_msg';
+
 	/** Auto-apply flag ('yes'/absent). Canonical store; the id-cache option is derived. */
 	public const AUTO_APPLY = '_moforcoupon_auto_apply';
 
@@ -178,6 +208,16 @@ final class Keys {
 	 */
 	public const SHOW_IN_LIST = '_moforcoupon_show_in_list';
 	public const FRONT_LABEL  = '_moforcoupon_front_label';
+
+	/*
+	 * Urgency display (coupon card): a live countdown to the coupon's deadline + a "N left"
+	 * badge derived from the usage limit. Display-only — "limited stock" enforcement IS WC's
+	 * native usage_limit; these only visualise time-left / remaining redemptions.
+	 */
+	public const COUNTDOWN_ENABLED = '_moforcoupon_countdown_enabled';
+	public const COUNTDOWN_SOURCE  = '_moforcoupon_countdown_source';
+	public const STOCK_SHOW        = '_moforcoupon_stock_show';
+	public const STOCK_THRESHOLD   = '_moforcoupon_stock_threshold';
 
 	/** Free-text campaign tag for grouping coupons into multi-stage activities. */
 	public const CAMPAIGN = '_moforcoupon_campaign';
@@ -255,6 +295,23 @@ final class Keys {
 			self::BOGO_DEAL_MODE,
 			self::BOGO_REPEAT_LIMIT,
 			self::BOGO_NOTICE_MSG,
+			self::NTH_PRODUCT_IDS,
+			self::NTH_CATEGORY_IDS,
+			self::NTH_GROUP_BY,
+			self::NTH_N,
+			self::NTH_REWARD_MODE,
+			self::NTH_REWARD_VALUE,
+			self::NTH_DEAL_MODE,
+			self::NTH_REPEAT_LIMIT,
+			self::NTH_NOTICE_MSG,
+			self::MIXMATCH_PRODUCT_IDS,
+			self::MIXMATCH_CATEGORY_IDS,
+			self::MIXMATCH_QTY,
+			self::MIXMATCH_PRICE_MODE,
+			self::MIXMATCH_PRICE_VALUE,
+			self::MIXMATCH_DEAL_MODE,
+			self::MIXMATCH_REPEAT_LIMIT,
+			self::MIXMATCH_NOTICE_MSG,
 			self::AUTO_APPLY,
 			self::RULES_ENABLED,
 			self::RULES,
@@ -279,6 +336,10 @@ final class Keys {
 			self::SHIP_VALUE,
 			self::SHOW_IN_LIST,
 			self::FRONT_LABEL,
+			self::COUNTDOWN_ENABLED,
+			self::COUNTDOWN_SOURCE,
+			self::STOCK_SHOW,
+			self::STOCK_THRESHOLD,
 			self::CAMPAIGN,
 			self::CASHBACK_MODE,
 			self::CASHBACK_VALUE,

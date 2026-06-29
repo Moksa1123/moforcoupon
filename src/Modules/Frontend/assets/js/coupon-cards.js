@@ -75,4 +75,56 @@
 		event.preventDefault();
 		copy( button.getAttribute( 'data-code' ) || '', button );
 	} );
+
+	// --- Live countdown ---------------------------------------------------------------
+	// The card HTML is cached and shared across visitors, so the server only bakes the target
+	// epoch (data-deadline, UTC ms). We tick the human-readable countdown client-side so it is
+	// never a frozen "3 days left".
+	function formatRemaining( ms ) {
+		var s = Math.floor( ms / 1000 );
+		var d = Math.floor( s / 86400 );
+		s -= d * 86400;
+		var h = Math.floor( s / 3600 );
+		s -= h * 3600;
+		var m = Math.floor( s / 60 );
+		s -= m * 60;
+		function pad( n ) {
+			return ( n < 10 ? '0' : '' ) + n;
+		}
+		return ( d > 0 ? d + 'd ' : '' ) + pad( h ) + ':' + pad( m ) + ':' + pad( s );
+	}
+
+	function tickCountdowns() {
+		var nodes = document.querySelectorAll( '.moforcoupon-coupon__countdown[data-deadline]' );
+		if ( ! nodes.length ) {
+			return false;
+		}
+		var now = Date.now();
+		var anyLive = false;
+		for ( var i = 0; i < nodes.length; i++ ) {
+			var node = nodes[ i ];
+			var deadline = parseInt( node.getAttribute( 'data-deadline' ), 10 );
+			if ( isNaN( deadline ) ) {
+				continue;
+			}
+			var diff = deadline - now;
+			if ( diff <= 0 ) {
+				node.textContent = node.getAttribute( 'data-ended' ) || '已結束';
+				node.classList.add( 'is-ended' );
+				continue;
+			}
+			anyLive = true;
+			node.textContent = formatRemaining( diff );
+		}
+		return anyLive;
+	}
+
+	if ( document.querySelector( '.moforcoupon-coupon__countdown[data-deadline]' ) ) {
+		tickCountdowns();
+		var timer = window.setInterval( function () {
+			if ( ! tickCountdowns() ) {
+				window.clearInterval( timer );
+			}
+		}, 1000 );
+	}
 } )();

@@ -99,8 +99,19 @@ final class CardsCache {
 	 */
 	public static function on_meta_change( $meta_id, $object_id, $meta_key ): void {
 		// SHOW_IN_LIST/FRONT_LABEL change which coupons show and their label; URL_ENABLED/
-		// URL_SLUG change the per-coupon apply link baked into the cached card.
-		$watched = array( Keys::SHOW_IN_LIST, Keys::FRONT_LABEL, Keys::URL_ENABLED, Keys::URL_SLUG );
+		// URL_SLUG change the per-coupon apply link baked into the cached card; the urgency
+		// keys change the countdown target / stock badge baked into the card. (usage_count is
+		// WC-internal, not our meta — the remaining-count display refreshes via the TTL.)
+		$watched = array(
+			Keys::SHOW_IN_LIST,
+			Keys::FRONT_LABEL,
+			Keys::URL_ENABLED,
+			Keys::URL_SLUG,
+			Keys::COUNTDOWN_ENABLED,
+			Keys::COUNTDOWN_SOURCE,
+			Keys::STOCK_SHOW,
+			Keys::STOCK_THRESHOLD,
+		);
 		if ( ! in_array( $meta_key, $watched, true ) ) {
 			return;
 		}

@@ -53,6 +53,7 @@ final class Module extends AbstractModule {
 
 		Checkout::register();
 		Refund::register();
-		GiftCard::register();
+		// GiftCard is registered always-on in Plugin (its announce/event must fire even when this
+		// internal-wallet module is off); the internal crediting inside it self-gates on this module.
 	}
 }

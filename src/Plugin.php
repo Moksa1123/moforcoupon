@@ -104,6 +104,15 @@ final class Plugin {
 		// Always-on: record a private order note for special-effect coupons (BOGO /
 		// shipping override / free gift) whose saving WooCommerce itself does not show.
 		Coupon\OrderCouponNote::register();
+		// Always-on integration points for sibling Moksa plugins (points / membership /
+		// group-buy commission). moforcoupon only announces / gates — it stores no value,
+		// computes no commission, defines no tier. See platform-plan/README.md §3.5.
+		Coupon\CouponRedeemed::register();
+		Coupon\CouponGate::register();
+		// Always-on: the gift-card product flag, recipient field and fulfil/announce must run
+		// even when the internal wallet (storecredit) is off, so an external value system can
+		// be fed via moforcoupon_giftcard_purchased; the internal credit self-gates on the module.
+		Modules\StoreCredit\GiftCard::register();
 		// Always-on (admin): show applied coupons in the order-list quick-preview, which
 		// WooCommerce core omits.
 		if ( is_admin() ) {

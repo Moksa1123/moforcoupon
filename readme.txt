@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 0.4.0
+Stable tag: 0.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,6 +87,15 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 0.5.0 =
+* New "第 N 件折扣" (Nth-item) coupon type: every N of a chosen set (or the whole store) discounts the Nth item — free, percent or a fixed amount — with once / repeat. Covers the common "第二件六折 / 第二件半價" promotion. Buildable with natural language.
+* New "任選優惠 (Mix & Match)" coupon type: pick any N from a set for one fixed bundle total (任選3件$299) or a percent off the whole set, with once / repeat. A fixed total prices the bundle exactly, distributed proportionally and never above an item's own price.
+* Urgency on the front-end coupon cards: a live countdown to the coupon's expiry or schedule end, and a "僅剩 N 張" badge derived from the usage limit (display only — limited stock is enforced by WooCommerce's own usage limit).
+* Cart-abandonment recovery: when a logged-in shopper leaves items behind, an hourly job emails a reminder with an optional incentive coupon (a new hourly WP-Cron heartbeat).
+* Platform integration hooks for companion plugins (points / membership / affiliate): a `moforcoupon_coupon_redeemed` event on paid orders, a `moforcoupon_coupon_allowed_for_user` filter so a membership plugin can gate a coupon (e.g. VIP-only), and a `moforcoupon_giftcard_purchased` event so an external wallet can own the value. The built-in store-credit wallet steps aside when one of these is present.
+* Special-price coupons (BOGO / Nth-item / Mix & Match) are now mutually exclusive — at most one per cart — so two overlapping deals can no longer clobber each other's prices.
+* 36 WordPress Abilities in total (added create-nth-item-coupon and create-mixmatch-coupon), all capability-checked and read-only-by-default over external MCP.
+
 = 0.4.0 =
 * Marketing automation: a "My Account → 我的優惠券" page, post-purchase remarketing coupons, refer-a-friend rewards, birthday coupons, and expiry-reminder emails (a daily WP-Cron heartbeat).
 * Store credit / cashback wallet: cashback becomes a real balance that is auto-applied at checkout and shown in My Account — with correct refund handling (refunds return spent credit and claw back reversed cashback).
@@ -126,6 +135,9 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 * Compatibility: WooCommerce HPOS and cart/checkout blocks.
 
 == Upgrade Notice ==
+
+= 0.5.0 =
+Adds two new coupon types (第 N 件折扣 / 任選優惠 Mix & Match), front-end countdown + "僅剩 N 張" urgency, cart-abandonment recovery emails, and integration hooks for companion points / membership / affiliate plugins. Special-price coupons are now one-per-cart.
 
 = 0.4.0 =
 Adds the full marketing-automation loop (My Account coupons, remarketing, referral, birthday, expiry reminders), a store-credit / cashback wallet with refund handling, gift cards, an AI coupon advisor, campaign + revenue reports, and a free-shipping nudge.

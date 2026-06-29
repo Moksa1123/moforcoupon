@@ -54,8 +54,22 @@ foreach ( array( '_moforcoupon_owner_user', '_moforcoupon_remarketing_issued', '
 // Per-user "recently used templates" list (stored as user meta on the templates page).
 delete_metadata( 'user', 0, 'moforcoupon_recent_templates', '', true );
 
+// Abandoned-cart records (private CPT created by the cart-recovery module).
+$moforcoupon_acarts = get_posts(
+	array(
+		'post_type'   => 'mfc_abandoned_cart',
+		'post_status' => 'any',
+		'numberposts' => -1,
+		'fields'      => 'ids',
+	)
+);
+foreach ( (array) $moforcoupon_acarts as $moforcoupon_acart_id ) {
+	wp_delete_post( (int) $moforcoupon_acart_id, true );
+}
+
 // Scheduled cron events.
 wp_clear_scheduled_hook( 'moforcoupon_cron_daily' );
+wp_clear_scheduled_hook( 'moforcoupon_cron_hourly' );
 
 // Action Scheduler group cleanup (safe no-op if unused).
 if ( function_exists( 'as_unschedule_all_actions' ) ) {

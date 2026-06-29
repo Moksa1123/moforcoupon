@@ -2,49 +2,43 @@
 
 declare( strict_types=1 );
 
-namespace MoksaWeb\Moforcoupon\Modules\Bogo;
+namespace MoksaWeb\Moforcoupon\Modules\MixMatch;
 
 use MoksaWeb\Moforcoupon\Support\SpecialPriceTypes;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * BOGO runtime: turns a 'moforcoupon_bogo' coupon into a real discount by lowering
- * the price of reward line items already in the cart (set_price), never via WC's
- * coupon-amount engine. Works for classic AND Block/Store-API because both run the
- * standard WC_Cart calculation.
+ * Mix & match runtime: turns a 'moforcoupon_mixmatch' coupon into a real discount by lowering the
+ * price of the bundle-priced units already in the cart (set_price), never via WC's coupon-amount
+ * engine. Works for classic AND Block/Store-API because both run the standard WC_Cart calculation.
  *
- * Anti-compounding: the blended reward price is ALWAYS recomputed from the product's
- * untouched catalog price (regular/sale), which set_price() never mutates, so the
- * hook is idempotent no matter how many times WooCommerce recalculates in a request.
- *
- * Keeping the 0-nominal coupon applied: we register NO get_discount_amount filter
- * (WC returns 0 for an unknown type and does not drop a 0-discount coupon) and never
- * throw in is_valid for a 0 discount — only to enforce one BOGO coupon per cart.
+ * Anti-compounding: the blended price is ALWAYS recomputed from the product's untouched catalog
+ * price (regular/sale), memoized per cart-item-key. Keeping the 0-nominal coupon applied: NO
+ * get_discount_amount filter; is_valid only throws to enforce one such coupon per cart.
  */
 final class Frontend {
 
-	private const ORDER_META       = '_moforcoupon_bogo_order_discounts';
-	private const COUPON_LINE_META = '_moforcoupon_bogo_coupon_discount';
+	private const ORDER_META       = '_moforcoupon_mixmatch_order_discounts';
+	private const COUPON_LINE_META = '_moforcoupon_mixmatch_coupon_discount';
 
 	/** @var array<string,array<string,array{name:string,quantity:int,total:float}>> code => key => savings record. */
 	private static array $price_display = array();
 
-	/** @var array<string,string> code => eligibility-notice text (trigger met, reward missing). */
+	/** @var array<string,string> code => "再選 X 件" notice text. */
 	private static array $notices = array();
 
+	/** @var array<string,float> Per cart-item-key base price memo (anti-compounding). */
+	private static array $base_memo = array();
+
 	public static function boot(): void {
-		add_action( 'woocommerce_before_calculate_totals', array( self::class, 'apply' ), (int) apply_filters( 'moforcoupon_bogo_priority', 11 ) );
+		add_action( 'woocommerce_before_calculate_totals', array( self::class, 'apply' ), (int) apply_filters( 'moforcoupon_mixmatch_priority', 11 ) );
 		add_filter( 'woocommerce_coupon_is_valid', array( self::class, 'is_valid' ), 10, 2 );
 		add_filter( 'woocommerce_cart_totals_coupon_html', array( self::class, 'coupon_html' ), 10, 3 );
-		// BOGO savings come from set_price (not a coupon discount line), so feed them into
-		// the shared savings summary when that module is on.
 		add_filter( 'moforcoupon_cart_savings_total', array( self::class, 'add_to_savings' ), 10, 1 );
 		add_action( 'woocommerce_checkout_order_processed', array( self::class, 'on_order_processed' ), 10, 1 );
 		add_action( 'woocommerce_store_api_checkout_order_processed', array( self::class, 'on_block_order' ), 10, 1 );
 	}
-
-	/* ---------------- apply (the engine) ---------------- */
 
 	/**
 	 * @param mixed $cart WC_Cart passed by the hook.
@@ -55,28 +49,25 @@ final class Frontend {
 		}
 		$applied = $cart->get_applied_coupons();
 		if ( empty( $applied ) ) {
-			self::$price_display = array();
-			self::$notices       = array();
+			self::reset();
 			return;
 		}
 
-		// First applied BOGO coupon wins (one per cart — is_valid rejects the rest).
 		$code = '';
 		foreach ( $applied as $applied_code ) {
 			$coupon = new \WC_Coupon( $applied_code );
-			if ( $coupon->is_type( BogoMeta::TYPE ) ) {
+			if ( $coupon->is_type( MixMatchMeta::TYPE ) ) {
 				$code = $applied_code;
 				break;
 			}
 		}
 		if ( '' === $code ) {
-			self::$price_display = array();
-			self::$notices       = array();
+			self::reset();
 			return;
 		}
 
 		$coupon = new \WC_Coupon( $code );
-		$cfg    = BogoMeta::read( $coupon->get_id() );
+		$cfg    = MixMatchMeta::read( $coupon->get_id() );
 
 		$lines = array();
 		foreach ( $cart->get_cart() as $key => $item ) {
@@ -84,24 +75,21 @@ final class Frontend {
 			if ( ! $product instanceof \WC_Product ) {
 				continue;
 			}
-			$role = self::classify( $product, $cfg );
-			if ( 'none' === $role ) {
+			if ( ! self::is_member( $product, $cfg ) ) {
 				continue;
 			}
 			$lines[] = array(
 				'key'   => (string) $key,
 				'qty'   => (int) $item['quantity'],
 				'price' => self::base_price( (string) $key, $product ),
-				'role'  => $role,
 			);
 		}
 
-		$plan = BogoCalc::compute(
+		$plan = MixMatchCalc::compute(
 			array(
-				'trigger_qty'  => $cfg['trigger_qty'],
-				'reward_qty'   => $cfg['reward_qty'],
-				'reward_mode'  => $cfg['reward_mode'],
-				'reward_value' => $cfg['reward_value'],
+				'qty'          => $cfg['qty'],
+				'price_mode'   => $cfg['price_mode'],
+				'price_value'  => $cfg['price_value'],
 				'deal_mode'    => $cfg['deal_mode'],
 				'repeat_limit' => $cfg['repeat_limit'],
 			),
@@ -123,20 +111,8 @@ final class Frontend {
 		}
 
 		self::$price_display = array() === $display ? array() : array( $code => $display );
-		self::$notices       = $plan['reward_short'] ? array( $code => self::notice_text( $cfg, $coupon ) ) : array();
+		self::$notices       = $plan['short'] ? array( $code => self::notice_text( $cfg, $coupon ) ) : array();
 	}
-
-	/**
-	 * The product's catalog price, unaffected by our own set_price (which sets only the
-	 * 'price' prop). Memoized per cart-item-key for the request: regular/sale prices are
-	 * never mutated by set_price, but the last-resort get_price() fallback (custom product
-	 * types with no regular/sale price) WOULD read our mutated price on a later
-	 * before_calculate_totals pass and compound — the memo captures it on the first
-	 * (untouched) pass so the base stays stable across recalcs.
-	 *
-	 * @var array<string,float>
-	 */
-	private static array $base_memo = array();
 
 	private static function base_price( string $key, \WC_Product $product ): float {
 		if ( isset( self::$base_memo[ $key ] ) ) {
@@ -154,25 +130,15 @@ final class Frontend {
 		return $value;
 	}
 
-	private static function classify( \WC_Product $product, array $cfg ): string {
+	/** Whether a product is a member of the set. Empty config (no products AND no categories) = all. */
+	private static function is_member( \WC_Product $product, array $cfg ): bool {
+		$product_ids  = $cfg['product_ids'];
+		$category_ids = $cfg['category_ids'];
+		if ( array() === $product_ids && array() === $category_ids ) {
+			return true;
+		}
 		$pid       = $product->get_id();
 		$parent_id = $product->get_parent_id();
-		if ( self::matches( $pid, $parent_id, $cfg['trigger_product_ids'], $cfg['trigger_category_ids'] ) ) {
-			return 'trigger';
-		}
-		if ( self::matches( $pid, $parent_id, $cfg['reward_product_ids'], $cfg['reward_category_ids'] ) ) {
-			return 'reward';
-		}
-		return 'none';
-	}
-
-	/**
-	 * @param int            $pid          Product ID.
-	 * @param int            $parent_id    Parent product ID (variations), or 0.
-	 * @param array<int,int> $product_ids  Configured product IDs.
-	 * @param array<int,int> $category_ids Configured category term IDs.
-	 */
-	private static function matches( int $pid, int $parent_id, array $product_ids, array $category_ids ): bool {
 		if ( in_array( $pid, $product_ids, true ) || ( $parent_id && in_array( $parent_id, $product_ids, true ) ) ) {
 			return true;
 		}
@@ -185,7 +151,10 @@ final class Frontend {
 		return false;
 	}
 
-	/* ---------------- validity (one BOGO per cart, keep 0-discount alive) ---------------- */
+	private static function reset(): void {
+		self::$price_display = array();
+		self::$notices       = array();
+	}
 
 	/**
 	 * @param mixed $valid
@@ -194,16 +163,14 @@ final class Frontend {
 	 * @throws \Exception When another special-price coupon already holds the cart (one per cart).
 	 */
 	public static function is_valid( $valid, $coupon ) {
-		if ( ! $coupon instanceof \WC_Coupon || ! $coupon->is_type( BogoMeta::TYPE ) ) {
+		if ( ! $coupon instanceof \WC_Coupon || ! $coupon->is_type( MixMatchMeta::TYPE ) ) {
 			return $valid;
 		}
 		// At most one set_price special-price coupon (BOGO / Nth-item / Mix & Match) per cart, so
-		// overlapping item sets cannot clobber each other's prices. 0 nominal discount never throws.
+		// overlapping item sets cannot clobber each other's prices.
 		SpecialPriceTypes::assert_single( $coupon );
 		return $valid;
 	}
-
-	/* ---------------- classic display ---------------- */
 
 	/**
 	 * @param mixed $html
@@ -212,12 +179,11 @@ final class Frontend {
 	 * @return mixed
 	 */
 	public static function coupon_html( $html, $coupon, $discount_html = '' ) {
-		if ( ! $coupon instanceof \WC_Coupon || ! $coupon->is_type( BogoMeta::TYPE ) ) {
+		if ( ! $coupon instanceof \WC_Coupon || ! $coupon->is_type( MixMatchMeta::TYPE ) ) {
 			return $html;
 		}
 		$code = $coupon->get_code();
 
-		// Strip the cosmetic $0.00 amount when the BOGO coupon contributes no WC discount line.
 		if ( is_string( $html ) && '' !== (string) $discount_html && function_exists( 'WC' ) && WC()->cart instanceof \WC_Cart ) {
 			$amount = (float) WC()->cart->get_coupon_discount_amount( $code, WC()->cart->display_cart_ex_tax );
 			if ( 0.0 === $amount ) {
@@ -230,15 +196,12 @@ final class Frontend {
 			return $html . $summary;
 		}
 		if ( isset( self::$notices[ $code ] ) ) {
-			return $html . '<div class="moforcoupon-bogo-hint" style="margin:6px 0 0;font-size:.9em;color:#996800;">' . esc_html( self::$notices[ $code ] ) . '</div>';
+			return $html . '<div class="moforcoupon-mixmatch-hint" style="margin:6px 0 0;font-size:.9em;color:#996800;">' . esc_html( self::$notices[ $code ] ) . '</div>';
 		}
 		return $html;
 	}
 
 	/**
-	 * Contribute this request's BOGO savings (set_price reductions, which never appear as a
-	 * coupon discount line) to the shared savings-summary total.
-	 *
 	 * @param mixed $total Running savings total.
 	 * @return float
 	 */
@@ -265,23 +228,21 @@ final class Frontend {
 				wp_kses_post( wc_price( (float) $record['total'] ) )
 			);
 		}
-		return '<ul class="moforcoupon-bogo-summary" style="margin:6px 0 0;font-size:.9em;list-style:none;padding:0;">' . $rows . '</ul>';
+		return '<ul class="moforcoupon-mixmatch-summary" style="margin:6px 0 0;font-size:.9em;list-style:none;padding:0;">' . $rows . '</ul>';
 	}
 
 	private static function notice_text( array $cfg, \WC_Coupon $coupon ): string {
 		$msg = trim( (string) ( $cfg['notice_msg'] ?? '' ) );
 		if ( '' === $msg ) {
-			/* translators: %s: coupon code. */
-			$msg = sprintf( __( '您已符合「%s」的買 X 送 Y 資格 —— 把贈品加入購物車即可享有折扣。', 'moforcoupon' ), $coupon->get_code() );
+			/* translators: %d: required item count N. */
+			$msg = sprintf( __( '任選 %d 件即可享優惠價。', 'moforcoupon' ), (int) ( $cfg['qty'] ?? 1 ) );
 		}
 		return str_replace(
-			array( '{bogo_qty}', '{coupon_code}' ),
-			array( (string) ( $cfg['reward_qty'] ?? 1 ), $coupon->get_code() ),
+			array( '{mixmatch_qty}', '{coupon_code}' ),
+			array( (string) ( $cfg['qty'] ?? 1 ), $coupon->get_code() ),
 			$msg
 		);
 	}
-
-	/* ---------------- order persistence (classic + block) ---------------- */
 
 	/**
 	 * @param mixed $order_id
@@ -320,8 +281,6 @@ final class Frontend {
 			}
 		}
 		$order->save();
-
-		self::$price_display = array();
-		self::$notices       = array();
+		self::reset();
 	}
 }

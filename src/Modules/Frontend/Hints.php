@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace MoksaWeb\Moforcoupon\Modules\Frontend;
 
 use MoksaWeb\Moforcoupon\Coupon\Meta\Keys;
+use MoksaWeb\Moforcoupon\Support\Urgency;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -61,6 +62,19 @@ final class Hints {
 
 		if ( $coupon->get_exclude_sale_items() ) {
 			$hints[] = __( '特價商品不適用', 'moforcoupon' );
+		}
+
+		// "Only N left" urgency badge, derived from the native usage limit (display only — WC
+		// enforces the limit itself). Hidden when usage is unlimited, to avoid a misleading "0 left".
+		if ( 'yes' === $coupon->get_meta( Keys::STOCK_SHOW, true ) ) {
+			$remaining = Urgency::remaining( (int) $coupon->get_usage_limit(), (int) $coupon->get_usage_count() );
+			if ( Urgency::should_show_stock( $remaining, (int) $coupon->get_meta( Keys::STOCK_THRESHOLD, true ) ) ) {
+				$hints[] = sprintf(
+					/* translators: %d: remaining redemptions. */
+					__( '僅剩 %d 張', 'moforcoupon' ),
+					(int) $remaining
+				);
+			}
 		}
 
 		/**
