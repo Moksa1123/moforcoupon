@@ -39,6 +39,10 @@ final class Frontend {
 		add_filter( 'woocommerce_coupon_is_valid', array( self::class, 'is_valid' ), 10, 2 );
 		add_filter( 'woocommerce_cart_totals_coupon_html', array( self::class, 'coupon_html' ), 10, 3 );
 		add_filter( 'moforcoupon_cart_savings_total', array( self::class, 'add_to_savings' ), 10, 1 );
+		// Make the discount transparent on the created order: restore each discounted line's
+		// pre-discount subtotal to its original catalog price (set_price lowered the unit price, so WC
+		// would otherwise record subtotal == total and show no discount). Fires on classic + Store API.
+		add_action( 'woocommerce_checkout_create_order_line_item', array( self::class, 'order_line_subtotal' ), 10, 3 );
 		add_action( 'woocommerce_checkout_order_processed', array( self::class, 'on_order_processed' ), 10, 1 );
 		add_action( 'woocommerce_store_api_checkout_order_processed', array( self::class, 'on_block_order' ), 10, 1 );
 	}
@@ -60,8 +64,8 @@ final class Frontend {
 
 		$code = '';
 		foreach ( $applied as $applied_code ) {
-			$coupon = new \WC_Coupon( $applied_code );
-			if ( $coupon->is_type( NthItemMeta::TYPE ) ) {
+			$coupon = SpecialPriceTypes::safe_coupon( (string) $applied_code );
+			if ( $coupon instanceof \WC_Coupon && $coupon->is_type( NthItemMeta::TYPE ) ) {
 				$code = $applied_code;
 				break;
 			}
@@ -259,6 +263,30 @@ final class Frontend {
 	}
 
 	/* ---------------- order persistence (classic + block) ---------------- */
+
+	/**
+	 * Restore a discounted line's pre-discount subtotal to its original catalog price so the order
+	 * transparently shows the saving (original → discounted) instead of recording subtotal == total.
+	 * The line total is left at the discounted (set_price) figure, so the order total is unchanged.
+	 *
+	 * @param mixed $item          WC_Order_Item_Product.
+	 * @param mixed $cart_item_key Cart item key.
+	 * @param mixed $values        Cart item.
+	 */
+	public static function order_line_subtotal( $item, $cart_item_key, $values ): void {
+		if ( ! $item instanceof \WC_Order_Item_Product ) {
+			return;
+		}
+		foreach ( self::$price_display as $records ) {
+			if ( isset( $records[ (string) $cart_item_key ] ) ) {
+				$saving = (float) ( $records[ (string) $cart_item_key ]['total'] ?? 0 );
+				if ( $saving > 0.0 ) {
+					$item->set_subtotal( (float) $item->get_subtotal() + $saving );
+				}
+				return;
+			}
+		}
+	}
 
 	/**
 	 * @param mixed $order_id

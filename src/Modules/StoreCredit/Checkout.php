@@ -24,7 +24,9 @@ final class Checkout {
 	}
 
 	private static function fee_label(): string {
-		return __( '儲值金折抵', 'moforcoupon' );
+		// "使用儲值金", not "折抵" — this is the customer paying with their wallet balance, not a
+		// discount/promotion. The misleading "折抵" wording read like a price reduction on the order.
+		return __( '使用儲值金', 'moforcoupon' );
 	}
 
 	/** Apply the logged-in customer's credit as a negative fee, capped at the cart's pre-credit total. */
@@ -87,7 +89,7 @@ final class Checkout {
 		echo '<p class="moforcoupon-store-credit">' . esc_html(
 			sprintf(
 				/* translators: %s: formatted balance. */
-				__( '您目前的儲值金餘額:%s(結帳時自動折抵)', 'moforcoupon' ),
+				__( '您目前的儲值金餘額:%s(結帳時自動用於付款)', 'moforcoupon' ),
 				wp_strip_all_tags( wc_price( $balance ) )
 			)
 		) . '</p>';

@@ -23,6 +23,20 @@ final class SpecialPriceTypes {
 	/** @var array<int,string> Discount-type slugs that discount via set_price(). */
 	public const TYPES = array( 'moforcoupon_bogo', 'moforcoupon_nth_item', 'moforcoupon_mixmatch' );
 
+	/**
+	 * Construct a coupon from an applied cart code without ever throwing. A cart can carry a
+	 * dangling code (a coupon deleted while still applied to a session), and `new WC_Coupon($code)`
+	 * can throw "Invalid coupon" — which must never fatal the cart from a before_calculate_totals
+	 * hook. Returns null for an unreadable code so callers can simply skip it.
+	 */
+	public static function safe_coupon( string $code ): ?\WC_Coupon {
+		try {
+			return new \WC_Coupon( $code );
+		} catch ( \Exception $e ) {
+			return null;
+		}
+	}
+
 	/** Whether a coupon is one of the set_price special-price types. */
 	public static function is_special( \WC_Coupon $coupon ): bool {
 		foreach ( self::TYPES as $type ) {
@@ -49,8 +63,8 @@ final class SpecialPriceTypes {
 			if ( strtolower( (string) $applied_code ) === strtolower( $coupon->get_code() ) ) {
 				return; // Reached self first → this is the kept one.
 			}
-			$other = new \WC_Coupon( $applied_code );
-			if ( self::is_special( $other ) ) {
+			$other = self::safe_coupon( (string) $applied_code );
+			if ( $other instanceof \WC_Coupon && self::is_special( $other ) ) {
 				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- esc_html applied.
 				throw new \Exception( esc_html__( '每次只能使用一張特惠折扣型(買 X 送 Y / 第 N 件折扣 / 任選優惠)優惠券。', 'moforcoupon' ) );
 			}

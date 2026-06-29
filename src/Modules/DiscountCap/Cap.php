@@ -37,8 +37,17 @@ final class Cap {
 			return;
 		}
 		self::$budgets = array();
-		foreach ( $cart->get_coupons() as $coupon ) {
-			if ( ! $coupon instanceof \WC_Coupon || 'percent' !== $coupon->get_discount_type() ) {
+		// Iterate the applied CODES and construct each coupon defensively: a cart can carry a
+		// dangling code (e.g. a coupon deleted while still applied to a session), and constructing
+		// it can throw "Invalid coupon" — which must never fatal the whole cart from our hook.
+		// WC removes such invalid coupons later in the same calculation; we just skip them here.
+		foreach ( $cart->get_applied_coupons() as $code ) {
+			try {
+				$coupon = new \WC_Coupon( $code );
+			} catch ( \Exception $e ) {
+				continue;
+			}
+			if ( 'percent' !== $coupon->get_discount_type() ) {
 				continue;
 			}
 			$cap = (float) $coupon->get_meta( Keys::DISCOUNT_CAP, true );

@@ -45,7 +45,7 @@ final class GiftCard {
 				array(
 					'id'          => self::PRODUCT_META,
 					'label'       => __( '禮品卡 / 儲值', 'moforcoupon' ),
-					'description' => __( '購買此商品後,金額會成為顧客的儲值金(結帳時自動折抵)。', 'moforcoupon' ),
+					'description' => __( '購買此商品後,金額會成為顧客的儲值金(結帳時自動用於付款)。', 'moforcoupon' ),
 				)
 			);
 		}

@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 0.5.0
+Stable tag: 0.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,6 +87,11 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 0.5.1 =
+* Fix: set_price coupons (BOGO / Nth-item / Mix & Match) now record their saving transparently on the created order — the line keeps its original pre-discount subtotal and the discount shows in the order totals (previously the saving was blended into the unit price, so the order read subtotal == total with no visible discount).
+* Fix: a coupon left dangling in a cart session (e.g. deleted while still applied) could throw "Invalid coupon" and fatal the whole cart / Store API checkout via the discount-cap module; coupon construction is now exception-safe across the discount-cap and special-price modules.
+* Store credit at checkout is now labelled "使用儲值金" (store credit used) instead of "折抵", so it reads as a payment from the customer's balance rather than a discount.
+
 = 0.5.0 =
 * New "第 N 件折扣" (Nth-item) coupon type: every N of a chosen set (or the whole store) discounts the Nth item — free, percent or a fixed amount — with once / repeat. Covers the common "第二件六折 / 第二件半價" promotion. Buildable with natural language.
 * New "任選優惠 (Mix & Match)" coupon type: pick any N from a set for one fixed bundle total (任選3件$299) or a percent off the whole set, with once / repeat. A fixed total prices the bundle exactly, distributed proportionally and never above an item's own price.
@@ -135,6 +140,9 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 * Compatibility: WooCommerce HPOS and cart/checkout blocks.
 
 == Upgrade Notice ==
+
+= 0.5.1 =
+Fixes: BOGO / Nth-item / Mix & Match savings now show transparently on orders; a coupon deleted while still in a cart can no longer fatal checkout; store credit at checkout is relabelled "使用儲值金".
 
 = 0.5.0 =
 Adds two new coupon types (第 N 件折扣 / 任選優惠 Mix & Match), front-end countdown + "僅剩 N 張" urgency, cart-abandonment recovery emails, and integration hooks for companion points / membership / affiliate plugins. Special-price coupons are now one-per-cart.
