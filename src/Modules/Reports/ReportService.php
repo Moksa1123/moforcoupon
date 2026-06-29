@@ -173,6 +173,109 @@ final class ReportService {
 		);
 	}
 
+	/**
+	 * Per-campaign rollup of coupon performance, for coupons tagged with a campaign. An order is
+	 * counted once per campaign it touches; discount sums only that campaign's coupon lines.
+	 *
+	 * @return array<int,array{campaign:string,coupons:int,orders:int,discount:float,revenue:float}>
+	 */
+	public static function by_campaign(): array {
+		$code_campaign = self::code_campaign_map();
+		if ( array() === $code_campaign ) {
+			return array();
+		}
+
+		$camps = array();
+		if ( function_exists( 'wc_get_orders' ) && function_exists( 'wc_get_is_paid_statuses' ) ) {
+			$orders = wc_get_orders(
+				array(
+					'status' => wc_get_is_paid_statuses(),
+					'type'   => 'shop_order',
+					'limit'  => -1,
+					'return' => 'objects',
+				)
+			);
+			foreach ( $orders as $order ) {
+				if ( ! $order instanceof \WC_Order ) {
+					continue;
+				}
+				$order_total = (float) $order->get_total();
+				$seen        = array();
+				foreach ( $order->get_items( 'coupon' ) as $item ) {
+					if ( ! $item instanceof \WC_Order_Item_Coupon ) {
+						continue;
+					}
+					$campaign = $code_campaign[ strtolower( (string) $item->get_code() ) ] ?? '';
+					if ( '' === $campaign ) {
+						continue;
+					}
+					if ( ! isset( $camps[ $campaign ] ) ) {
+						$camps[ $campaign ] = array(
+							'campaign' => $campaign,
+							'coupons'  => array(),
+							'orders'   => 0,
+							'discount' => 0.0,
+							'revenue'  => 0.0,
+						);
+					}
+					$camps[ $campaign ]['coupons'][ strtolower( (string) $item->get_code() ) ] = true;
+					$camps[ $campaign ]['discount'] += (float) $item->get_discount();
+					if ( ! isset( $seen[ $campaign ] ) ) {
+						++$camps[ $campaign ]['orders'];
+						$camps[ $campaign ]['revenue'] += $order_total;
+						$seen[ $campaign ]              = true;
+					}
+				}
+			}
+		}
+
+		$rows = array();
+		foreach ( $camps as $c ) {
+			$rows[] = array(
+				'campaign' => $c['campaign'],
+				'coupons'  => count( $c['coupons'] ),
+				'orders'   => $c['orders'],
+				'discount' => round( $c['discount'], 2 ),
+				'revenue'  => round( $c['revenue'], 2 ),
+			);
+		}
+		usort( $rows, static fn( array $a, array $b ): int => $b['discount'] <=> $a['discount'] );
+		return $rows;
+	}
+
+	/**
+	 * code (lowercased) => campaign tag, for every coupon that carries a non-empty campaign.
+	 *
+	 * @return array<string,string>
+	 */
+	private static function code_campaign_map(): array {
+		$map = array();
+		$ids = get_posts(
+			array(
+				'post_type'   => 'shop_coupon',
+				'post_status' => 'any',
+				'numberposts' => -1,
+				'fields'      => 'ids',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin report, runs behind the hourly cache.
+				'meta_query'  => array(
+					array(
+						'key'     => \MoksaWeb\Moforcoupon\Coupon\Meta\Keys::CAMPAIGN,
+						'value'   => '',
+						'compare' => '!=',
+					),
+				),
+			)
+		);
+		foreach ( array_map( 'intval', (array) $ids ) as $id ) {
+			$code     = (string) get_the_title( $id );
+			$campaign = trim( (string) get_post_meta( $id, \MoksaWeb\Moforcoupon\Coupon\Meta\Keys::CAMPAIGN, true ) );
+			if ( '' !== $code && '' !== $campaign ) {
+				$map[ strtolower( $code ) ] = $campaign;
+			}
+		}
+		return $map;
+	}
+
 	public static function flush(): void {
 		delete_transient( self::CACHE_KEY );
 	}

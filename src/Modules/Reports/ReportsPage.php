@@ -72,6 +72,7 @@ final class ReportsPage {
 		echo '</p>';
 
 		self::render_overview();
+		self::render_campaigns();
 
 		echo '<table class="wp-list-table widefat fixed striped">';
 		echo '<thead><tr>';
@@ -143,6 +144,27 @@ final class ReportsPage {
 			}
 			echo '</tbody></table>';
 		}
+	}
+
+	/** Per-campaign rollup table (only shown when coupons carry campaign tags). */
+	private static function render_campaigns(): void {
+		$rows = ReportService::by_campaign();
+		if ( array() === $rows ) {
+			return;
+		}
+		echo '<h2 style="margin:18px 0 6px;font-size:14px;">' . esc_html__( '行銷活動成效', 'moforcoupon' ) . '</h2>';
+		echo '<table class="wp-list-table widefat fixed striped" style="max-width:680px;margin-bottom:18px;">';
+		echo '<thead><tr><th>' . esc_html__( '活動', 'moforcoupon' ) . '</th><th>' . esc_html__( '券數', 'moforcoupon' )
+			. '</th><th>' . esc_html__( '使用訂單數', 'moforcoupon' ) . '</th><th>' . esc_html__( '折抵總額', 'moforcoupon' )
+			. '</th><th>' . esc_html__( '帶券營收', 'moforcoupon' ) . '</th></tr></thead><tbody>';
+		foreach ( $rows as $row ) {
+			echo '<tr><td><strong>' . esc_html( (string) $row['campaign'] ) . '</strong></td>';
+			echo '<td>' . esc_html( (string) (int) $row['coupons'] ) . '</td>';
+			echo '<td>' . esc_html( (string) (int) $row['orders'] ) . '</td>';
+			echo '<td>' . wp_kses_post( wc_price( (float) $row['discount'] ) ) . '</td>';
+			echo '<td>' . wp_kses_post( wc_price( (float) $row['revenue'] ) ) . '</td></tr>';
+		}
+		echo '</tbody></table>';
 	}
 
 	private static function refresh_requested(): bool {

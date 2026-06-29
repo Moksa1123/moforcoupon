@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 0.3.0
+Stable tag: 0.4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,6 +87,16 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 0.4.0 =
+* Marketing automation: a "My Account → 我的優惠券" page, post-purchase remarketing coupons, refer-a-friend rewards, birthday coupons, and expiry-reminder emails (a daily WP-Cron heartbeat).
+* Store credit / cashback wallet: cashback becomes a real balance that is auto-applied at checkout and shown in My Account — with correct refund handling (refunds return spent credit and claw back reversed cashback).
+* Gift cards: sell store credit as a product; the amount lands in the recipient's wallet, or is emailed to them as a one-off gift coupon when they have no account.
+* AI coupon advisor: new abilities that suggest coupons from your own data (lift average order value, move slow-selling stock, duplicate the best performer) and audit coupons (expiring-but-unused, expired-but-live, over-discounting).
+* Reports: a revenue / daily-trend overview and a per-campaign performance report.
+* Free-shipping threshold nudge ("再買 NT$X 免運") on the cart and checkout.
+* 34 WordPress Abilities in total (added remarketing config, revenue overview, campaign report, suggest / audit), all capability-checked and read-only-by-default over external MCP.
+* Hardening: consistent coupon-type labels everywhere (no raw slugs in reports or emails), a prefix-based uninstall cleanup, and shared internals (CouponType / PersonalCoupon / OrderOnce / Cron) for less duplication.
+
 = 0.3.0 =
 * Tiered discounts, redesigned: choose the ladder basis (cart subtotal / quantity / weight), add/remove tier rows dynamically, and set each tier as a percentage OR a fixed amount — even mixing both in one ladder (the best actual discount for the cart wins). Fixed tiers distribute proportionally across the targeted lines.
 * Advanced rule builder: product / category conditions now use WooCommerce's own search dropdown instead of raw IDs, and a new "this coupon's usage count" rule enables first-N-customer limits.
@@ -116,6 +126,9 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 * Compatibility: WooCommerce HPOS and cart/checkout blocks.
 
 == Upgrade Notice ==
+
+= 0.4.0 =
+Adds the full marketing-automation loop (My Account coupons, remarketing, referral, birthday, expiry reminders), a store-credit / cashback wallet with refund handling, gift cards, an AI coupon advisor, campaign + revenue reports, and a free-shipping nudge.
 
 = 0.3.0 =
 Adds dynamic tier rows, cart savings + tier-progress messaging, CSV import/export, a live editor summary, coupon-list bulk/duplicate tools, a cashback coupon type, a Gutenberg coupon-wall block, more AI/MCP abilities and a new advanced rule type.

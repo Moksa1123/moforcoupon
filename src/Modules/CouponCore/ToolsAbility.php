@@ -237,6 +237,66 @@ final class ToolsAbility {
 		);
 
 		wp_register_ability(
+			'moforcoupon/coupon-campaign-report',
+			[
+				'label'               => __( '優惠券活動報表', 'moforcoupon' ),
+				'description'         => __( '依「行銷活動」標籤彙總每檔活動的券數、使用訂單數、折抵與營收(只算已付款訂單),依折抵由高到低。唯讀。', 'moforcoupon' ),
+				'category'            => self::CATEGORY,
+				'input_schema'        => self::empty_input(),
+				'output_schema'       => [
+					'type'       => 'object',
+					'properties' => [
+						'count' => [ 'type' => 'integer' ],
+						'rows'  => [ 'type' => 'array' ],
+					],
+				],
+				'execute_callback'    => [ self::class, 'execute_campaign_report' ],
+				'permission_callback' => [ self::class, 'can_read' ],
+				'meta'                => self::read_meta(),
+			]
+		);
+
+		wp_register_ability(
+			'moforcoupon/suggest-coupons',
+			[
+				'label'               => __( '建議優惠券', 'moforcoupon' ),
+				'description'         => __( '依店家數據(帶券客單價、滯銷商品、目前最有效的券、帶券活躍度)提出具體的優惠券建議,每筆附可直接建立的參數。唯讀分析。', 'moforcoupon' ),
+				'category'            => self::CATEGORY,
+				'input_schema'        => self::empty_input(),
+				'output_schema'       => [
+					'type'       => 'object',
+					'properties' => [
+						'count'       => [ 'type' => 'integer' ],
+						'suggestions' => [ 'type' => 'array' ],
+					],
+				],
+				'execute_callback'    => [ self::class, 'execute_suggest' ],
+				'permission_callback' => [ self::class, 'can_read' ],
+				'meta'                => self::read_meta(),
+			]
+		);
+
+		wp_register_ability(
+			'moforcoupon/audit-coupons',
+			[
+				'label'               => __( '優惠券健檢', 'moforcoupon' ),
+				'description'         => __( '揪出需要處理的券:已過期卻仍啟用、7 天內到期但從未使用、百分比折扣過高(毛利風險)。唯讀。', 'moforcoupon' ),
+				'category'            => self::CATEGORY,
+				'input_schema'        => self::empty_input(),
+				'output_schema'       => [
+					'type'       => 'object',
+					'properties' => [
+						'count'  => [ 'type' => 'integer' ],
+						'issues' => [ 'type' => 'array' ],
+					],
+				],
+				'execute_callback'    => [ self::class, 'execute_audit' ],
+				'permission_callback' => [ self::class, 'can_read' ],
+				'meta'                => self::read_meta(),
+			]
+		);
+
+		wp_register_ability(
 			'moforcoupon/list-templates',
 			[
 				'label'               => __( '列出優惠券範本', 'moforcoupon' ),
@@ -671,6 +731,60 @@ final class ToolsAbility {
 		$input = is_array( $input ) ? $input : [];
 		$days  = isset( $input['days'] ) ? (int) $input['days'] : 30;
 		return ReportService::overview( $days );
+	}
+
+	/**
+	 * @param mixed $input
+	 * @return array<string,mixed>
+	 */
+	public static function execute_campaign_report( $input ): array {
+		if ( ! self::can_read() ) {
+			return [
+				'count' => 0,
+				'rows'  => [],
+			];
+		}
+		$rows = ReportService::by_campaign();
+		return [
+			'count' => count( $rows ),
+			'rows'  => $rows,
+		];
+	}
+
+	/**
+	 * @param mixed $input
+	 * @return array<string,mixed>
+	 */
+	public static function execute_suggest( $input ): array {
+		if ( ! self::can_read() ) {
+			return [
+				'count'       => 0,
+				'suggestions' => [],
+			];
+		}
+		$s = Advisor::suggestions();
+		return [
+			'count'       => count( $s ),
+			'suggestions' => $s,
+		];
+	}
+
+	/**
+	 * @param mixed $input
+	 * @return array<string,mixed>
+	 */
+	public static function execute_audit( $input ): array {
+		if ( ! self::can_read() ) {
+			return [
+				'count'  => 0,
+				'issues' => [],
+			];
+		}
+		$i = Advisor::audit();
+		return [
+			'count'  => count( $i ),
+			'issues' => $i,
+		];
 	}
 
 	/**

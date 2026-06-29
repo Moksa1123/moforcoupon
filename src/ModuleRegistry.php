@@ -45,6 +45,7 @@ final class ModuleRegistry {
 		'storecredit'   => Modules\StoreCredit\Module::class,
 		'referral'      => Modules\Referral\Module::class,
 		'birthday'      => Modules\Birthday\Module::class,
+		'nudge'         => Modules\Nudge\Module::class,
 		'templates'     => Modules\Templates\Module::class,
 		'tabicons'      => Modules\TabIcons\Module::class,
 		'metaboxes'     => Modules\Metaboxes\Module::class,

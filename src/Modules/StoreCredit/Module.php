@@ -52,5 +52,7 @@ final class Module extends AbstractModule {
 		);
 
 		Checkout::register();
+		Refund::register();
+		GiftCard::register();
 	}
 }

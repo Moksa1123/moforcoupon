@@ -125,6 +125,7 @@ final class SettingsScreen {
 				'fields' => array(
 					self::toggle( 'moforcoupon_frontend_enabled', __( '前台優惠券顯示', 'moforcoupon' ), __( '提供 [moforcoupon_coupons] 短代碼,在前台以卡片顯示商家勾選的可用優惠券(含複製與套用)。', 'moforcoupon' ) ),
 					self::toggle( 'moforcoupon_savings_enabled', __( '購物車省下金額提示', 'moforcoupon' ), __( '在購物車 / 結帳顯示「您總共省了 NT$X」的提示,強化折扣感受。', 'moforcoupon' ) ),
+					self::toggle( 'moforcoupon_nudge_enabled', __( '免運門檻提示', 'moforcoupon' ), __( '在購物車 / 結帳顯示「再買 NT$X 即可免運」,推動客單價(讀取店家設定的免運門檻)。', 'moforcoupon' ) ),
 					self::toggle( 'moforcoupon_send_enabled', __( '優惠券寄送', 'moforcoupon' ), __( '新增「寄送優惠券」能力:用自然語言把券寄給顧客 Email,可鎖定只限該 Email 使用。', 'moforcoupon' ) ),
 					self::toggle( 'moforcoupon_myaccount_enabled', __( '會員中心優惠券', 'moforcoupon' ), __( '在 WooCommerce「我的帳戶」加一個「我的優惠券」分頁,列出發放給該顧客(綁定其帳號或 Email)的專屬優惠券,可複製或一鍵套用。', 'moforcoupon' ) ),
 				),
