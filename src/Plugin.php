@@ -88,6 +88,7 @@ final class Plugin {
 		// and — when the independent AdminMenu is off — a fallback menu under WooCommerce
 		// so the toggles stay reachable (you need them to turn the independent menu on).
 		add_action( 'admin_post_' . Settings\SettingsScreen::ACTION, array( Settings\SettingsScreen::class, 'handle' ) );
+		add_action( 'admin_enqueue_scripts', array( Settings\SettingsScreen::class, 'enqueue_admin' ) );
 		if ( ! $this->modules->is_enabled( 'adminmenu' ) ) {
 			add_action( 'admin_menu', array( Settings\SettingsScreen::class, 'register_fallback' ) );
 		}
@@ -109,10 +110,6 @@ final class Plugin {
 		// computes no commission, defines no tier. See platform-plan/README.md §3.5.
 		Coupon\CouponRedeemed::register();
 		Coupon\CouponGate::register();
-		// Always-on: the gift-card product flag, recipient field and fulfil/announce must run
-		// even when the internal wallet (storecredit) is off, so an external value system can
-		// be fed via moforcoupon_giftcard_purchased; the internal credit self-gates on the module.
-		Modules\StoreCredit\GiftCard::register();
 		// Always-on (admin): show applied coupons in the order-list quick-preview, which
 		// WooCommerce core omits.
 		if ( is_admin() ) {

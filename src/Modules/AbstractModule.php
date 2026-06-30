@@ -33,6 +33,16 @@ abstract class AbstractModule {
 		return [];
 	}
 
+	/**
+	 * Module keys this one needs to be fully useful. Enabling a module whose requirement is off
+	 * isn't an error (it just does less), so this drives a soft advisory rather than a hard block.
+	 *
+	 * @return array<int,string>
+	 */
+	public function requires(): array {
+		return array();
+	}
+
 	public function settings_section(): string {
 		return '';
 	}

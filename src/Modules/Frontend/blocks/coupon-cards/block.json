@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "moforcoupon/coupon-cards",
 	"version": "1.0.0",
 	"title": "Moksa 優惠券卡片",

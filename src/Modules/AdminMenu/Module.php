@@ -40,6 +40,7 @@ final class Module extends AbstractModule {
 
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( Menu::class, 'register' ), 9 );
+			add_action( 'admin_enqueue_scripts', array( Dashboard::class, 'enqueue_admin' ) );
 			// Late pass: remove WooCommerce's leftover "Coupons" pointer entry.
 			add_action( 'admin_menu', array( Menu::class, 'hide_legacy_coupon_menu' ), 999 );
 			// Pin coupon CPT screens to our top-level menu for correct highlighting.

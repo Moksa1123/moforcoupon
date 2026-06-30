@@ -104,8 +104,6 @@ final class TemplatePage {
 		echo '</section>';
 
 		self::modal();
-		self::styles();
-		self::script();
 
 		echo '</div>'; // .wrap
 	}
@@ -338,9 +336,8 @@ final class TemplatePage {
 		return $labels[ $type_key ] ?? __( '其他', 'moforcoupon' );
 	}
 
-	private static function styles(): void {
-		echo '<style>'
-			. '.moforcoupon-tpl-h2{font-size:15px;margin:22px 0 12px;color:#1d2327}'
+	private static function css(): string {
+		return '.moforcoupon-tpl-h2{font-size:15px;margin:22px 0 12px;color:#1d2327}'
 			. '.moforcoupon-tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}'
 			. '.moforcoupon-tpl-layout{display:flex;gap:20px;align-items:flex-start}'
 			. '.moforcoupon-tpl-cats{flex:0 0 180px;position:sticky;top:46px}'
@@ -382,74 +379,19 @@ final class TemplatePage {
 			. '.moforcoupon-tpl-fields .f-check label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500}'
 			. '.moforcoupon-tpl-fields .f-check input{width:auto;margin:0}'
 			. '.moforcoupon-tpl-actions{margin:6px 0 0}'
-			. '@media(max-width:782px){.moforcoupon-tpl-layout{flex-direction:column}.moforcoupon-tpl-cats{position:static;flex-basis:auto;width:100%}.moforcoupon-tpl-cats ul{display:flex;flex-wrap:wrap;gap:6px}}'
-			. '</style>';
+			. '@media(max-width:782px){.moforcoupon-tpl-layout{flex-direction:column}.moforcoupon-tpl-cats{position:static;flex-basis:auto;width:100%}.moforcoupon-tpl-cats ul{display:flex;flex-wrap:wrap;gap:6px}}';
 	}
 
-	private static function script(): void {
-		echo '<script>(function(){'
-			// category + keyword filter (combined)
-			. "var cats=document.querySelector('.moforcoupon-tpl-cats');"
-			. "var main=document.querySelector('.moforcoupon-tpl-main');"
-			. 'if(main){'
-			. "var links=cats?cats.querySelectorAll('a[data-filter]'):[];"
-			. "var cards=main.querySelectorAll('.moforcoupon-tpl-card');"
-			. "var empty=main.querySelector('.moforcoupon-tpl-empty');"
-			. "var search=main.querySelector('.moforcoupon-tpl-search input');"
-			. "var curCat='all',curQ='';"
-			. 'function apply(){var shown=0;cards.forEach(function(c){'
-			. "var okCat=(curCat==='all'||c.getAttribute('data-cat')===curCat);"
-			. "var okQ=(curQ===''||(c.getAttribute('data-search')||'').indexOf(curQ)!==-1);"
-			. "var ok=okCat&&okQ;c.style.display=ok?'':'none';if(ok)shown++;});"
-			. 'if(empty)empty.hidden=shown>0;}'
-			. "if(cats){cats.addEventListener('click',function(e){"
-			. "var a=e.target.closest('a[data-filter]');if(!a)return;e.preventDefault();"
-			. "curCat=a.getAttribute('data-filter');"
-			. 'links.forEach(function(l){l.classList.toggle(\'current\',l===a);});apply();});}'
-			. "if(search){search.addEventListener('input',function(){curQ=search.value.toLowerCase().trim();apply();});}"
-			. '}'
-			// quick-configure modal
-			. "var modal=document.querySelector('.moforcoupon-tpl-modal');"
-			. 'if(modal){'
-			. "var dlg=modal.querySelector('.moforcoupon-tpl-dialog');"
-			. "var title=modal.querySelector('#moforcoupon-tpl-modal-title');"
-			. "var fId=modal.querySelector('input[name=template_id]');"
-			. "var fCode=modal.querySelector('input[name=code]');"
-			. "var fAmt=modal.querySelector('input[name=amount]');"
-			. "var amtRow=modal.querySelector('.f-amount');"
-			. "var unit=modal.querySelector('.unit');"
-			. "var fUl=modal.querySelector('input[name=usage_limit]');"
-			. "var fUlpu=modal.querySelector('input[name=usage_limit_per_user]');"
-			. "var fDesc=modal.querySelector('textarea[name=description]');"
-			. "var fIndiv=modal.querySelector('input[name=individual_use]');"
-			. 'var lastFocus=null;'
-			. 'function open(b){'
-			. 'lastFocus=b;'
-			. "fId.value=b.getAttribute('data-id');"
-			. "title.textContent=b.getAttribute('data-label');"
-			. "fCode.value='';fCode.placeholder=(b.getAttribute('data-prefix')||'')+'-… ('+'留空自動產生'+')';"
-			. "if(b.getAttribute('data-amount-editable')==='1'){amtRow.hidden=false;fAmt.value=b.getAttribute('data-amount');unit.textContent=b.getAttribute('data-unit')||'';}"
-			. "else{amtRow.hidden=true;fAmt.value='';}"
-			. "fUl.value=b.getAttribute('data-usage-limit')||'';"
-			. "fUlpu.value=b.getAttribute('data-usage-pu')||'';"
-			. "fDesc.value=b.getAttribute('data-description')||'';"
-			. "fIndiv.checked=b.getAttribute('data-individual')==='1';"
-			. 'modal.hidden=false;fCode.focus();'
-			. '}'
-			. 'function close(){modal.hidden=true;if(lastFocus){lastFocus.focus();lastFocus=null;}}'
-			. "document.querySelectorAll('.moforcoupon-tpl-apply').forEach(function(b){b.addEventListener('click',function(){open(b);});});"
-			. "modal.querySelector('.moforcoupon-tpl-backdrop').addEventListener('click',close);"
-			. "modal.querySelector('.moforcoupon-tpl-cancel').addEventListener('click',close);"
-			. "document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close();});"
-			// Focus trap: keep Tab cycling inside the open dialog.
-			. "dlg.addEventListener('keydown',function(e){"
-			. "if(e.key!=='Tab'||modal.hidden)return;"
-			. "var f=Array.prototype.filter.call(dlg.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex=\"-1\"])'),function(el){return el.offsetParent!==null;});"
-			. 'if(!f.length)return;var first=f[0],last=f[f.length-1];'
-			. 'if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}'
-			. 'else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}'
-			. '});'
-			. '}'
-			. '})();</script>';
+	/** Enqueue this page's CSS (inline on the core 'common' handle) + the filter/modal JS, screen-gated. */
+	public static function enqueue_admin( string $hook = '' ): void {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen || false === strpos( (string) $screen->id, self::SLUG ) ) {
+			return;
+		}
+		wp_add_inline_style( 'common', self::css() );
+		$rel = 'src/Modules/Templates/assets/js/templates-admin.js';
+		$ver = file_exists( MOFORCOUPON_PLUGIN_DIR . $rel ) ? (string) filemtime( MOFORCOUPON_PLUGIN_DIR . $rel ) : MOFORCOUPON_VERSION;
+		wp_enqueue_script( 'moforcoupon-templates-admin', MOFORCOUPON_PLUGIN_URL . $rel, array(), $ver, true );
+		wp_localize_script( 'moforcoupon-templates-admin', 'moforcouponTpl', array( 'autoGen' => __( '留空自動產生', 'moforcoupon' ) ) );
 	}
 }

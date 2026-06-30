@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace MoksaWeb\Moforcoupon\Modules\MixMatch;
 
+use MoksaWeb\Moforcoupon\Support\DiscountTypeRegistry;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -24,7 +26,7 @@ final class Type {
 	 */
 	public static function add_type( $types ) {
 		if ( is_array( $types ) ) {
-			$types[ MixMatchMeta::TYPE ] = __( '任選優惠(Mix & Match)', 'moforcoupon' );
+			$types[ MixMatchMeta::TYPE ] = DiscountTypeRegistry::admin_label( MixMatchMeta::TYPE );
 		}
 		return $types;
 	}

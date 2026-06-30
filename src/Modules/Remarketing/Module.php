@@ -32,6 +32,11 @@ final class Module extends AbstractModule {
 		return __( '訂單完成後依條件把指定範本券複製成顧客專屬券,自動進入會員中心並可寄出', 'moforcoupon' );
 	}
 
+	/** Issued personal coupons surface on the "我的優惠券" account page — enable it or customers can't find them. */
+	public function requires(): array {
+		return array( 'myaccount' );
+	}
+
 	public function boot(): void {
 		Runtime::boot();
 		add_action( 'wp_abilities_api_init', array( Ability::class, 'register' ) );

@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace MoksaWeb\Moforcoupon\Modules\Bogo;
 
+use MoksaWeb\Moforcoupon\Support\DiscountTypeRegistry;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -25,7 +27,7 @@ final class Type {
 	 */
 	public static function add_type( $types ) {
 		if ( is_array( $types ) ) {
-			$types[ BogoMeta::TYPE ] = __( '買 X 送 Y(BOGO)', 'moforcoupon' );
+			$types[ BogoMeta::TYPE ] = DiscountTypeRegistry::admin_label( BogoMeta::TYPE );
 		}
 		return $types;
 	}

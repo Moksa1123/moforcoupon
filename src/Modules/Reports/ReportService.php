@@ -13,7 +13,13 @@ defined( 'ABSPATH' ) || exit;
  */
 final class ReportService {
 
-	private const CACHE_KEY = 'moforcoupon_report_cache';
+	private const CACHE_KEY  = 'moforcoupon_report_cache';
+	private const VER_OPTION = 'moforcoupon_report_ver';
+
+	/** Cache-buster shared by overview()/by_campaign(); bumped on flush() so all variants lapse at once. */
+	private static function ver(): int {
+		return (int) get_option( self::VER_OPTION, 0 );
+	}
 
 	/**
 	 * Pure: fold a flat list of coupon lines into per-code totals.
@@ -112,7 +118,16 @@ final class ReportService {
 	 * @return array{days:int,coupon_orders:int,coupon_revenue:float,total_discount:float,avg_order_value:float,daily:array<int,array{date:string,orders:int,discount:float,revenue:float}>}
 	 */
 	public static function overview( int $days = 30 ): array {
-		$days           = ( $days >= 1 && $days <= 365 ) ? $days : 30;
+		$days = ( $days >= 1 && $days <= 365 ) ? $days : 30;
+
+		// Cache the full-order scan: this is exposed via an ability / MCP, so repeated calls
+		// must not each fire a limit=-1 order query. Version-keyed so flush() lapses it at once.
+		$cache_key = 'moforcoupon_report_overview_' . self::ver() . '_' . $days;
+		$cached    = get_transient( $cache_key );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+
 		$daily          = array();
 		$coupon_orders  = 0;
 		$coupon_revenue = 0.0;
@@ -163,7 +178,7 @@ final class ReportService {
 		}
 		ksort( $daily );
 
-		return array(
+		$result = array(
 			'days'            => $days,
 			'coupon_orders'   => $coupon_orders,
 			'coupon_revenue'  => round( $coupon_revenue, 2 ),
@@ -171,6 +186,8 @@ final class ReportService {
 			'avg_order_value' => $coupon_orders > 0 ? round( $coupon_revenue / $coupon_orders, 2 ) : 0.0,
 			'daily'           => array_values( $daily ),
 		);
+		set_transient( $cache_key, $result, HOUR_IN_SECONDS );
+		return $result;
 	}
 
 	/**
@@ -185,14 +202,24 @@ final class ReportService {
 			return array();
 		}
 
+		// Cache (version-keyed, exposed via ability/MCP) + bound the scan to a recent window so an
+		// unbounded order table can't be walked on every call.
+		$window_days = max( 1, (int) apply_filters( 'moforcoupon_campaign_report_days', 365 ) );
+		$cache_key   = 'moforcoupon_report_campaign_' . self::ver() . '_' . $window_days;
+		$cached      = get_transient( $cache_key );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+
 		$camps = array();
 		if ( function_exists( 'wc_get_orders' ) && function_exists( 'wc_get_is_paid_statuses' ) ) {
 			$orders = wc_get_orders(
 				array(
-					'status' => wc_get_is_paid_statuses(),
-					'type'   => 'shop_order',
-					'limit'  => -1,
-					'return' => 'objects',
+					'status'       => wc_get_is_paid_statuses(),
+					'type'         => 'shop_order',
+					'limit'        => -1,
+					'date_created' => '>=' . ( time() - $window_days * DAY_IN_SECONDS ),
+					'return'       => 'objects',
 				)
 			);
 			foreach ( $orders as $order ) {
@@ -240,6 +267,7 @@ final class ReportService {
 			);
 		}
 		usort( $rows, static fn( array $a, array $b ): int => $b['discount'] <=> $a['discount'] );
+		set_transient( $cache_key, $rows, HOUR_IN_SECONDS );
 		return $rows;
 	}
 
@@ -278,6 +306,9 @@ final class ReportService {
 
 	public static function flush(): void {
 		delete_transient( self::CACHE_KEY );
+		// Bump the shared version so every per-days overview()/by_campaign() transient lapses
+		// at once (we can't enumerate the per-window keys to delete them individually).
+		update_option( self::VER_OPTION, self::ver() + 1, false );
 	}
 
 	/**

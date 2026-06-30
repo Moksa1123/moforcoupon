@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace MoksaWeb\Moforcoupon\Modules\NthItem;
 
+use MoksaWeb\Moforcoupon\Support\DiscountTypeRegistry;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -25,7 +27,7 @@ final class Type {
 	 */
 	public static function add_type( $types ) {
 		if ( is_array( $types ) ) {
-			$types[ NthItemMeta::TYPE ] = __( '第 N 件折扣', 'moforcoupon' );
+			$types[ NthItemMeta::TYPE ] = DiscountTypeRegistry::admin_label( NthItemMeta::TYPE );
 		}
 		return $types;
 	}

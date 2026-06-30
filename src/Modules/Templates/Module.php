@@ -36,8 +36,11 @@ final class Module extends AbstractModule {
 		// The apply action runs from any admin context (form post → admin-post.php).
 		add_action( 'admin_post_moforcoupon_apply_template', array( TemplatePage::class, 'handle' ) );
 
-		if ( is_admin() && ! \MoksaWeb\Moforcoupon\Plugin::instance()->modules()->is_enabled( 'adminmenu' ) ) {
-			add_action( 'admin_menu', array( TemplatePage::class, 'register' ) );
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', array( TemplatePage::class, 'enqueue_admin' ) );
+			if ( ! \MoksaWeb\Moforcoupon\Plugin::instance()->modules()->is_enabled( 'adminmenu' ) ) {
+				add_action( 'admin_menu', array( TemplatePage::class, 'register' ) );
+			}
 		}
 	}
 }

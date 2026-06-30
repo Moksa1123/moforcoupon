@@ -76,8 +76,19 @@ final class Dashboard {
 			ReportsPage::render_table( admin_url( 'admin.php?page=' . Menu::TOPLEVEL ) );
 		}
 
-		echo '<style>'
-			. '.moforcoupon-hub-stats{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 24px}'
+		echo '</div>';
+	}
+
+	/** Enqueue the dashboard CSS inline on the core admin 'common' handle (no raw <style>). */
+	public static function enqueue_admin( string $hook = '' ): void {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( $screen && false !== strpos( (string) $screen->id, Menu::TOPLEVEL ) ) {
+			wp_add_inline_style( 'common', self::css() );
+		}
+	}
+
+	private static function css(): string {
+		return '.moforcoupon-hub-stats{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 24px}'
 			. '.moforcoupon-hub-stats .tile{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px 24px;min-width:140px}'
 			. '.moforcoupon-hub-stats .tile .num{font-size:28px;font-weight:600;line-height:1.2}'
 			. '.moforcoupon-hub-stats .tile .lbl{color:#646970;font-size:13px}'
@@ -85,10 +96,7 @@ final class Dashboard {
 			. '.moforcoupon-hub-links a.card{display:block;background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px 20px;text-decoration:none;color:inherit}'
 			. '.moforcoupon-hub-links a.card:hover{border-color:#2271b1;box-shadow:0 1px 3px rgba(0,0,0,.08)}'
 			. '.moforcoupon-hub-links a.card .t{font-size:15px;font-weight:600;color:#2271b1}'
-			. '.moforcoupon-hub-links a.card .d{color:#646970;font-size:13px;margin-top:4px}'
-			. '</style>';
-
-		echo '</div>';
+			. '.moforcoupon-hub-links a.card .d{color:#646970;font-size:13px;margin-top:4px}';
 	}
 
 	private static function stat_tile( string $label, string $value ): void {

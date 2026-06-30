@@ -3,7 +3,7 @@
  * Plugin Name:        Moksa Coupons for WooCommerce
  * Plugin URI:         https://moksaweb.com/moforcoupon
  * Description:        AI-powered WooCommerce coupon toolkit. Create coupons with natural language, plus BOGO, cart conditions, role restrictions, scheduling and URL coupons. Exposes coupon abilities to the WordPress Abilities API, AI Client and MCP.
- * Version:            0.5.1
+ * Version:            1.0.0
  * Requires at least:  7.0
  * Tested up to:       7.0
  * Requires PHP:       8.2
@@ -12,7 +12,7 @@
  * WC tested up to:    10.9
  * Author:             MoksaWeb
  * Author URI:         https://moksaweb.com/
- * License:            GPLv3
+ * License:            GPLv3 or later
  * License URI:        https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:        moforcoupon
  * Domain Path:        /languages
@@ -25,7 +25,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit;
 
 /* Constants */
-const MOFORCOUPON_VERSION    = '0.5.1';
+const MOFORCOUPON_VERSION    = '1.0.0';
 const MOFORCOUPON_MIN_PHP    = '8.2';
 const MOFORCOUPON_MIN_WP     = '7.0';
 const MOFORCOUPON_MIN_WC     = '10.7';
@@ -86,6 +86,17 @@ add_action(
 		\MoksaWeb\Moforcoupon\Plugin::instance()->boot();
 	},
 	5
+);
+
+/*
+ * Activation: seed a safe, additive set of modules on the very first activation so a fresh
+ * install is immediately useful instead of blank. Idempotent + respects prior user choices.
+ */
+register_activation_hook(
+	__FILE__,
+	static function (): void {
+		\MoksaWeb\Moforcoupon\Support\Activation::on_activate();
+	}
 );
 
 /*

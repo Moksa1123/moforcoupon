@@ -6,8 +6,8 @@ Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 0.5.1
-License: GPLv3
+Stable tag: 1.0.0
+License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 AI-first WooCommerce coupon toolkit: BOGO, cart conditions, role limits, scheduling, URL coupons, auto-apply and one-click templates.
@@ -21,6 +21,8 @@ Every feature is a separate module that is **off by default**; turn on only what
 = Coupon features =
 
 * **BOGO (Buy X Get Y)** — buy N of a product/category, get M free or discounted.
+* **Nth-item discount (第 N 件折扣)** — every N of a chosen set (or the whole store) discounts the Nth item — free, percent or a fixed amount (e.g. 第二件半價), once or repeating.
+* **Mix & Match (任選優惠)** — pick any N from a set for one fixed bundle total (任選 3 件 $299) or a percent off the whole set.
 * **Cart conditions** — minimum subtotal / quantity, customer-history rules (first-order-only, min/max orders or spend), required/excluded products and categories.
 * **Role restrictions** — limit a coupon to chosen user roles.
 * **Scheduling** — start/end date-time and day-of-week / time-of-day windows, enforced at checkout.
@@ -30,7 +32,7 @@ Every feature is a separate module that is **off by default**; turn on only what
 * **Discount cap** — cap the maximum amount a percentage coupon can discount.
 * **Auto-apply** — apply qualifying coupons automatically, no code needed.
 * **URL coupons** — a pretty `/coupon/<code>` link (with server-side QR) and an optional `?coupon=` apply, that auto-applies on click.
-* **Coupon templates** — 40+ ready-made presets (new customer, spend-and-save, free shipping, BOGO, seasonal sales…) you can apply, tweak and create in one click.
+* **Coupon templates** — 50+ ready-made presets (new customer, spend-and-save, free shipping, BOGO, Nth-item, seasonal sales…) you can apply, tweak and create in one click.
 * **Reports** — per-coupon usage and total discount, cached hourly.
 * **Front-end coupon wall** — a `[moforcoupon_coupons]` shortcode that lists your advertised coupons as copy-to-clipboard cards.
 
@@ -87,74 +89,33 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
-= 0.5.1 =
-* Fix: set_price coupons (BOGO / Nth-item / Mix & Match) now record their saving transparently on the created order — the line keeps its original pre-discount subtotal and the discount shows in the order totals (previously the saving was blended into the unit price, so the order read subtotal == total with no visible discount).
-* Fix: a coupon left dangling in a cart session (e.g. deleted while still applied) could throw "Invalid coupon" and fatal the whole cart / Store API checkout via the discount-cap module; coupon construction is now exception-safe across the discount-cap and special-price modules.
-* Store credit at checkout is now labelled "使用儲值金" (store credit used) instead of "折抵", so it reads as a payment from the customer's balance rather than a discount.
+= 1.0.0 =
+First public release. A free, modular, AI-first WooCommerce coupon toolkit — every feature is a separate module, off by default, enabled under "Moksa 優惠券 → 設定".
 
-= 0.5.0 =
-* New "第 N 件折扣" (Nth-item) coupon type: every N of a chosen set (or the whole store) discounts the Nth item — free, percent or a fixed amount — with once / repeat. Covers the common "第二件六折 / 第二件半價" promotion. Buildable with natural language.
-* New "任選優惠 (Mix & Match)" coupon type: pick any N from a set for one fixed bundle total (任選3件$299) or a percent off the whole set, with once / repeat. A fixed total prices the bundle exactly, distributed proportionally and never above an item's own price.
-* Urgency on the front-end coupon cards: a live countdown to the coupon's expiry or schedule end, and a "僅剩 N 張" badge derived from the usage limit (display only — limited stock is enforced by WooCommerce's own usage limit).
-* Cart-abandonment recovery: when a logged-in shopper leaves items behind, an hourly job emails a reminder with an optional incentive coupon (a new hourly WP-Cron heartbeat).
-* Platform integration hooks for companion plugins (points / membership / affiliate): a `moforcoupon_coupon_redeemed` event on paid orders, a `moforcoupon_coupon_allowed_for_user` filter so a membership plugin can gate a coupon (e.g. VIP-only), and a `moforcoupon_giftcard_purchased` event so an external wallet can own the value. The built-in store-credit wallet steps aside when one of these is present.
-* Special-price coupons (BOGO / Nth-item / Mix & Match) are now mutually exclusive — at most one per cart — so two overlapping deals can no longer clobber each other's prices.
-* 36 WordPress Abilities in total (added create-nth-item-coupon and create-mixmatch-coupon), all capability-checked and read-only-by-default over external MCP.
+Coupon types & discounts:
+* BOGO (Buy X Get Y), Nth-item discount (第 N 件折扣) and Mix & Match (任選優惠) set-price mechanics — at most one special-price coupon per cart, and their savings show transparently on the created order.
+* Tiered discounts (ladder by subtotal / quantity / weight, percent or fixed, best-for-cart wins), a percentage discount cap, free gift, shipping override (free / percent / fixed), stacking control and auto-apply.
 
-= 0.4.0 =
-* Marketing automation: a "My Account → 我的優惠券" page, post-purchase remarketing coupons, refer-a-friend rewards, birthday coupons, and expiry-reminder emails (a daily WP-Cron heartbeat).
-* Store credit / cashback wallet: cashback becomes a real balance that is auto-applied at checkout and shown in My Account — with correct refund handling (refunds return spent credit and claw back reversed cashback).
-* Gift cards: sell store credit as a product; the amount lands in the recipient's wallet, or is emailed to them as a one-off gift coupon when they have no account.
-* AI coupon advisor: new abilities that suggest coupons from your own data (lift average order value, move slow-selling stock, duplicate the best performer) and audit coupons (expiring-but-unused, expired-but-live, over-discounting).
-* Reports: a revenue / daily-trend overview and a per-campaign performance report.
-* Free-shipping threshold nudge ("再買 NT$X 免運") on the cart and checkout.
-* 34 WordPress Abilities in total (added remarketing config, revenue overview, campaign report, suggest / audit), all capability-checked and read-only-by-default over external MCP.
-* Hardening: consistent coupon-type labels everywhere (no raw slugs in reports or emails), a prefix-based uninstall cleanup, and shared internals (CouponType / PersonalCoupon / OrderOnce / Cron) for less duplication.
+Conditions & rules:
+* Cart conditions (minimum subtotal / quantity, customer-history, required / excluded products and categories), scheduling (date-time + day/time windows), role restrictions, shipping-region and payment-method conditions — all enforced at checkout, classic and block.
+* A visual AND/OR advanced rule builder with 25 condition types.
 
-= 0.3.0 =
-* Tiered discounts, redesigned: choose the ladder basis (cart subtotal / quantity / weight), add/remove tier rows dynamically, and set each tier as a percentage OR a fixed amount — even mixing both in one ladder (the best actual discount for the cart wins). Fixed tiers distribute proportionally across the targeted lines.
-* Advanced rule builder: product / category conditions now use WooCommerce's own search dropdown instead of raw IDs, and a new "this coupon's usage count" rule enables first-N-customer limits.
-* New cart/checkout messaging: a "您總共省了 NT$X" savings summary and a tiered-coupon progress nudge ("再消費 NT$X 即可升級折扣") to drive average order value.
-* Coupon list enhancements: an enabled/disabled status column, bulk enable/disable, and a one-click duplicate row action.
-* CSV import / export of coupons (native fields plus tiered / advanced-rule JSON and campaign) for backup, audit and bulk editing.
-* Live coupon-summary metabox on the editor showing the discount mechanic, enabled features and conflict warnings as you type.
-* Front-end coupon cards: eligibility hints (滿額 / 限會員 / 含免運…), responsive single-column layout and accessibility (focus styles, copy announcement).
-* Programmatic REST: a proper PUT/PATCH update route so integrations can edit a coupon without delete-and-recreate.
-* AI / MCP: locale-aware assistant prompt, a structured field diff in the confirm card, more abilities (discovery, scheduled-coupon list, bulk reschedule expiry), and MCP resources + prompts in addition to tools.
-* New rule type "this coupon's usage count" (enables first-N-customers limits) — 26 advanced rule types in all.
-* New cashback / loyalty coupon type with its own editor tab (reward = percent of order or a fixed amount); grants a post-order reward via the moforcoupon_cashback_awarded hook for store-credit / points integrations.
-* Coupon-settings metabox accessibility & polish: keyboard (arrow-key) tab navigation with ARIA roles, screen-reader labels on the tier table, and assorted layout hardening.
-* New Gutenberg block for the coupon wall, a template keyword search, an AI-prompt + tier-percent + savings + report-row + coupon-saved filter surface for extensions, a translation .pot, and assorted performance fixes (report N+1, customer-history query caps, MCP cache invalidation).
+Distribution & front-end:
+* URL coupons with a pretty /coupon/<code> link and server-side QR plus an optional ?coupon= apply, 50+ one-click coupon templates, a [moforcoupon_coupons] front-end coupon wall (shortcode + Gutenberg block) with eligibility hints and a live expiry countdown, a cart "您總共省了 NT$X" savings summary and a free-shipping threshold nudge.
 
-= 0.2.0 =
-* Tiered discounts: one coupon gives a different percentage by cart subtotal / quantity threshold (e.g. spend 1000 → 10% off, 2000 → 20% off).
-* Visual AND/OR advanced rule builder with 25 condition types, including cart weight, shipping zone/country, payment method, ordered product/category, custom taxonomy and custom user / cart-item meta.
-* Shipping-region and payment-method coupon conditions.
-* More abilities for the WordPress Abilities API / AI assistant / MCP server: discovery & lookup (list rule types, settings schema, payment gateways, shipping zones, countries, validate rules), a coupon performance report, list / apply templates, plus propose-and-confirm shortcuts to create a tiered coupon, restore a deleted coupon and expire coupons immediately. New write abilities stay behind the same destructive opt-in and confirmation flow.
-* 11 new Taiwan-focused coupon templates (tiered spend, advanced-rule combo, win-back, Taiwan-only free shipping, weight-based free shipping, capped percentage, auto-applied site-wide, VIP non-stacking, payment-specific, category-required, category buy-3-get-1).
+Management:
+* An independent "Moksa 優惠券" admin menu with a dashboard, per-coupon / revenue / per-campaign reports, a consolidated tabbed coupon-settings metabox with type icons, a live editor summary, coupon-list status / bulk / duplicate tools, CSV import / export, a "我的優惠券" My Account page, post-purchase remarketing coupons and expiry-reminder emails.
 
-= 0.1.0 =
-* Initial release.
-* Coupon features: BOGO, cart conditions (subtotal / quantity / customer history / required / excluded products and categories), role restrictions, scheduling (date-time and day/time windows), free gift, shipping override, stacking control, discount cap, auto-apply, URL coupons with QR, coupon templates, per-coupon reports, and a front-end coupon-wall shortcode.
-* AI / platform: every coupon action registered as a WordPress Ability, an optional in-dashboard AI assistant via the WordPress AI Client, REST endpoints, and an optional MCP server. All AI/MCP features are off by default and capability-checked; destructive external MCP access is a separate opt-in with a propose/apply confirmation flow.
-* Compatibility: WooCommerce HPOS and cart/checkout blocks.
+AI, Abilities & MCP (optional, off by default):
+* Every coupon action is a capability-checked WordPress Ability, reachable from an in-dashboard AI assistant (WordPress 7.0 AI Client), the REST API and an optional self-built MCP server. Destructive abilities stay disabled over external MCP unless separately opted in, and run as a propose / apply confirmation flow.
+
+Platform integration:
+* Companion-plugin hooks so a separate points / membership / group-buy plugin can own value, identity and attribution: a moforcoupon_coupon_redeemed event on paid orders and a moforcoupon_coupon_allowed_for_user filter (e.g. for VIP-gated coupons).
+
+Quality:
+* A single source of truth for coupon-type labels (no raw slugs in reports / emails), cached reports and a bounded customer-history lookup, first-run safe-default module seeding, a soft cross-module dependency advisory, a prefix-based uninstall cleanup, and a WordPress.org-clean build.
 
 == Upgrade Notice ==
 
-= 0.5.1 =
-Fixes: BOGO / Nth-item / Mix & Match savings now show transparently on orders; a coupon deleted while still in a cart can no longer fatal checkout; store credit at checkout is relabelled "使用儲值金".
-
-= 0.5.0 =
-Adds two new coupon types (第 N 件折扣 / 任選優惠 Mix & Match), front-end countdown + "僅剩 N 張" urgency, cart-abandonment recovery emails, and integration hooks for companion points / membership / affiliate plugins. Special-price coupons are now one-per-cart.
-
-= 0.4.0 =
-Adds the full marketing-automation loop (My Account coupons, remarketing, referral, birthday, expiry reminders), a store-credit / cashback wallet with refund handling, gift cards, an AI coupon advisor, campaign + revenue reports, and a free-shipping nudge.
-
-= 0.3.0 =
-Adds dynamic tier rows, cart savings + tier-progress messaging, CSV import/export, a live editor summary, coupon-list bulk/duplicate tools, a cashback coupon type, a Gutenberg coupon-wall block, more AI/MCP abilities and a new advanced rule type.
-
-= 0.2.0 =
-Adds tiered discounts, a visual AND/OR advanced rule builder, shipping-region and payment conditions, more AI / MCP abilities, and 11 new Taiwan templates.
-
-= 0.1.0 =
-Initial public release.
+= 1.0.0 =
+First public release.

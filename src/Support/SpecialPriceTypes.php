@@ -20,9 +20,6 @@ defined( 'ABSPATH' ) || exit;
  */
 final class SpecialPriceTypes {
 
-	/** @var array<int,string> Discount-type slugs that discount via set_price(). */
-	public const TYPES = array( 'moforcoupon_bogo', 'moforcoupon_nth_item', 'moforcoupon_mixmatch' );
-
 	/**
 	 * Construct a coupon from an applied cart code without ever throwing. A cart can carry a
 	 * dangling code (a coupon deleted while still applied to a session), and `new WC_Coupon($code)`
@@ -37,9 +34,9 @@ final class SpecialPriceTypes {
 		}
 	}
 
-	/** Whether a coupon is one of the set_price special-price types. */
+	/** Whether a coupon is one of the set_price special-price types (per {@see DiscountTypeRegistry}). */
 	public static function is_special( \WC_Coupon $coupon ): bool {
-		foreach ( self::TYPES as $type ) {
+		foreach ( DiscountTypeRegistry::special_slugs() as $type ) {
 			if ( $coupon->is_type( $type ) ) {
 				return true;
 			}

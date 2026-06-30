@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace MoksaWeb\Moforcoupon\Modules\Frontend;
 
 use MoksaWeb\Moforcoupon\Coupon\Meta\Keys;
+use MoksaWeb\Moforcoupon\Support\DiscountTypeRegistry;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -40,8 +41,7 @@ final class Catalog {
 
 	/** Stable type key (for badge class + icon), independent of locale. */
 	public static function type_key( string $type ): string {
-		$known = array( 'percent', 'fixed_cart', 'fixed_product', 'moforcoupon_bogo', 'moforcoupon_nth_item', 'moforcoupon_mixmatch', 'moforcoupon_cashback' );
-		return in_array( $type, $known, true ) ? $type : 'other';
+		return DiscountTypeRegistry::type_key( $type );
 	}
 
 	/**

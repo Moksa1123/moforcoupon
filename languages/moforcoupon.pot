@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Moksa Coupons for WooCommerce 0.3.0\n"
+"Project-Id-Version: Moksa Coupons for WooCommerce 0.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/moforcoupon\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-29T08:19:53+00:00\n"
+"POT-Creation-Date: 2026-06-29T09:08:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: moforcoupon\n"
@@ -344,7 +344,7 @@ msgstr ""
 #: src/Modules/Remarketing/Ability.php:125
 #: src/Modules/Templates/TemplatePage.php:262
 #: src/Modules/UrlCoupons/ShareAbility.php:86
-#: src/Settings/SettingsScreen.php:347
+#: src/Settings/SettingsScreen.php:376
 #: src/Support/GuardedOps.php:23
 msgid "權限不足。"
 msgstr ""
@@ -469,7 +469,7 @@ msgstr ""
 #: src/Modules/AdminMenu/Menu.php:126
 #: src/Settings/SettingsScreen.php:47
 #: src/Settings/SettingsScreen.php:48
-#: src/Settings/SettingsScreen.php:262
+#: src/Settings/SettingsScreen.php:291
 msgid "優惠券設定"
 msgstr ""
 
@@ -1057,7 +1057,7 @@ msgid "生日(用於生日優惠券)"
 msgstr ""
 
 #: src/Modules/Birthday/Module.php:24
-#: src/Settings/SettingsScreen.php:183
+#: src/Settings/SettingsScreen.php:212
 msgid "生日優惠券"
 msgstr ""
 
@@ -1274,6 +1274,35 @@ msgstr ""
 
 #: src/Modules/Bogo/Module.php:33
 msgid "買指定商品送贈品 / 折扣,支援可重複"
+msgstr ""
+
+#: src/Modules/CartRecovery/Module.php:24
+#: src/Settings/SettingsScreen.php:183
+msgid "棄單挽回"
+msgstr ""
+
+#: src/Modules/CartRecovery/Module.php:32
+msgid "顧客結帳填了 Email 卻沒付款時,自動 Email 提醒(可附優惠券)把訂單救回來"
+msgstr ""
+
+#. translators: %s: site name.
+#: src/Modules/CartRecovery/Recovery.php:87
+#, php-format
+msgid "您在 %s 的購物車還在等您"
+msgstr ""
+
+#: src/Modules/CartRecovery/Recovery.php:90
+msgid "您好,您的購物車裡還有商品尚未結帳:"
+msgstr ""
+
+#. translators: %s: coupon code.
+#: src/Modules/CartRecovery/Recovery.php:102
+#, php-format
+msgid "回來結帳就送您優惠券:%s"
+msgstr ""
+
+#: src/Modules/CartRecovery/Recovery.php:108
+msgid "完成結帳"
 msgstr ""
 
 #: src/Modules/Cashback/Fields.php:36
@@ -4401,12 +4430,12 @@ msgid "新增「寄送優惠券」能力:用自然語言把券寄給顧客 Email
 msgstr ""
 
 #: src/Settings/SettingsPage.php:209
-#: src/Settings/SettingsScreen.php:232
+#: src/Settings/SettingsScreen.php:261
 msgid "AI 與對外開放(MCP)"
 msgstr ""
 
 #: src/Settings/SettingsPage.php:211
-#: src/Settings/SettingsScreen.php:233
+#: src/Settings/SettingsScreen.php:262
 msgid "自然語言助手與對外 MCP 介接。預設全部關閉、唯讀優先。"
 msgstr ""
 
@@ -4427,7 +4456,7 @@ msgid "把優惠券能力開放給外部 AI 工具（MCP）。預設關閉。"
 msgstr ""
 
 #: src/Settings/SettingsPage.php:229
-#: src/Settings/SettingsScreen.php:237
+#: src/Settings/SettingsScreen.php:266
 msgid "允許外部 MCP 執行變更"
 msgstr ""
 
@@ -4588,99 +4617,143 @@ msgid "在優惠券到期日的前幾天寄出提醒(1–60,預設 3)。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:184
-msgid "顧客在「帳戶詳細資料」填寫生日後,生日當天自動發放一張專屬優惠券(複製指定範本券),每年一次。需同時啟用「會員中心優惠券」。"
+msgid "顧客在結帳填了 Email 卻沒完成付款時,自動 Email 提醒(可附優惠券)把訂單救回來。下單後就停止提醒。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:186
-msgid "啟用生日優惠券"
+msgid "啟用棄單挽回"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:186
-msgid "在帳戶頁加入生日欄位,並於顧客生日當天自動發券。"
+msgid "記錄結帳中的購物車,棄單一段時間後自動寄信提醒。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:191
-msgid "生日券範本代碼"
+msgid "棄單幾小時後提醒"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:192
-msgid "生日當天要發放的範本優惠券代碼(會複製成顧客專屬券)。"
+msgid "購物車最後更新後超過幾小時沒下單就視為棄單並寄信(1–168,預設 4)。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:198
-msgid "生日券有效天數"
+#: src/Settings/SettingsScreen.php:194
+msgid "提醒信附優惠券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:194
+msgid "寄提醒信時,同時發一張專屬優惠券當誘因(需填下方範本代碼)。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:199
-#: src/Settings/SettingsScreen.php:227
-msgid "發出後幾天內有效(填 0 = 沿用範本本身的到期設定)。"
+msgid "挽回券範本代碼"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:204
-msgid "推薦好友(Referral)"
+#: src/Settings/SettingsScreen.php:200
+msgid "勾選上方時生效:要複製成顧客專屬挽回券的範本優惠券代碼。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:205
-msgid "顧客分享專屬連結,朋友完成首次訂單後,雙方各得一張回饋券(複製指定的範本券)。需同時啟用「會員中心優惠券」才看得到券。"
-msgstr ""
-
-#: src/Settings/SettingsScreen.php:207
-msgid "啟用推薦好友券"
+#: src/Settings/SettingsScreen.php:206
+msgid "挽回券有效天數"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:207
-msgid "在會員中心提供專屬推薦連結,並於被推薦的朋友完成訂單後發放回饋券。"
-msgstr ""
-
-#: src/Settings/SettingsScreen.php:212
-msgid "推薦人回饋範本代碼"
+msgid "製造急迫感,建議短一點(填 0 = 沿用範本到期)。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:213
-msgid "朋友完成訂單後,要發給「推薦人」的範本優惠券代碼(會複製成推薦人專屬券)。"
+msgid "顧客在「帳戶詳細資料」填寫生日後,生日當天自動發放一張專屬優惠券(複製指定範本券),每年一次。需同時啟用「會員中心優惠券」。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:219
-msgid "好友歡迎範本代碼(選填)"
+#: src/Settings/SettingsScreen.php:215
+msgid "啟用生日優惠券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:215
+msgid "在帳戶頁加入生日欄位,並於顧客生日當天自動發券。"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:220
+msgid "生日券範本代碼"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:221
+msgid "生日當天要發放的範本優惠券代碼(會複製成顧客專屬券)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:227
+msgid "生日券有效天數"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:228
+#: src/Settings/SettingsScreen.php:256
+msgid "發出後幾天內有效(填 0 = 沿用範本本身的到期設定)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:233
+msgid "推薦好友(Referral)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:234
+msgid "顧客分享專屬連結,朋友完成首次訂單後,雙方各得一張回饋券(複製指定的範本券)。需同時啟用「會員中心優惠券」才看得到券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:236
+msgid "啟用推薦好友券"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:236
+msgid "在會員中心提供專屬推薦連結,並於被推薦的朋友完成訂單後發放回饋券。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:241
+msgid "推薦人回饋範本代碼"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:242
+msgid "朋友完成訂單後,要發給「推薦人」的範本優惠券代碼(會複製成推薦人專屬券)。"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:248
+msgid "好友歡迎範本代碼(選填)"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:249
 msgid "同時要發給「被推薦的朋友」的範本優惠券代碼;留空則只回饋推薦人。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:226
+#: src/Settings/SettingsScreen.php:255
 msgid "回饋券有效天數"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:235
+#: src/Settings/SettingsScreen.php:264
 msgid "AI 優惠券助手"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:235
+#: src/Settings/SettingsScreen.php:264
 msgid "在後台用自然語言建立 / 查詢優惠券(需 WordPress 7.0+ 的 AI Client 與已設定的 Connector)。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:236
+#: src/Settings/SettingsScreen.php:265
 msgid "對外 MCP 伺服器"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:236
+#: src/Settings/SettingsScreen.php:265
 msgid "把優惠券能力開放給外部 AI 工具(MCP)。預設關閉。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:237
+#: src/Settings/SettingsScreen.php:266
 msgid "允許破壞性能力(建立 / 更新 / 刪除優惠券)暴露給外部 MCP。預設關閉(僅唯讀)。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:264
+#: src/Settings/SettingsScreen.php:293
 msgid "啟用 / 關閉各項優惠券功能模組。每項預設關閉,唯讀優先。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:268
+#: src/Settings/SettingsScreen.php:297
 msgid "設定已儲存。"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:282
+#: src/Settings/SettingsScreen.php:311
 msgid "儲存設定"
 msgstr ""
 

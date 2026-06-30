@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
+class ComposerStaticInit502d0376e11afa7119c57b2a37fe34c9
 {
     public static $prefixLengthsPsr4 = array (
         'M' =>
@@ -52,9 +52,6 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
         'MoksaWeb\\Moforcoupon\\Modules\\AutoApply\\Fields' => __DIR__ . '/../..' . '/src/Modules/AutoApply/Fields.php',
         'MoksaWeb\\Moforcoupon\\Modules\\AutoApply\\Frontend' => __DIR__ . '/../..' . '/src/Modules/AutoApply/Frontend.php',
         'MoksaWeb\\Moforcoupon\\Modules\\AutoApply\\Module' => __DIR__ . '/../..' . '/src/Modules/AutoApply/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Birthday\\AccountField' => __DIR__ . '/../..' . '/src/Modules/Birthday/AccountField.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Birthday\\Module' => __DIR__ . '/../..' . '/src/Modules/Birthday/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Birthday\\Runtime' => __DIR__ . '/../..' . '/src/Modules/Birthday/Runtime.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\Ability' => __DIR__ . '/../..' . '/src/Modules/Bogo/Ability.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\BogoCalc' => __DIR__ . '/../..' . '/src/Modules/Bogo/BogoCalc.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\BogoMeta' => __DIR__ . '/../..' . '/src/Modules/Bogo/BogoMeta.php',
@@ -63,14 +60,6 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\Frontend' => __DIR__ . '/../..' . '/src/Modules/Bogo/Frontend.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\Module' => __DIR__ . '/../..' . '/src/Modules/Bogo/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Bogo\\Type' => __DIR__ . '/../..' . '/src/Modules/Bogo/Type.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\CartRecovery\\Capture' => __DIR__ . '/../..' . '/src/Modules/CartRecovery/Capture.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\CartRecovery\\Module' => __DIR__ . '/../..' . '/src/Modules/CartRecovery/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\CartRecovery\\Recovery' => __DIR__ . '/../..' . '/src/Modules/CartRecovery/Recovery.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\CartRecovery\\Store' => __DIR__ . '/../..' . '/src/Modules/CartRecovery/Store.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Cashback\\Fields' => __DIR__ . '/../..' . '/src/Modules/Cashback/Fields.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Cashback\\Module' => __DIR__ . '/../..' . '/src/Modules/Cashback/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Cashback\\Runtime' => __DIR__ . '/../..' . '/src/Modules/Cashback/Runtime.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Cashback\\Type' => __DIR__ . '/../..' . '/src/Modules/Cashback/Type.php',
         'MoksaWeb\\Moforcoupon\\Modules\\CouponConditions\\Fields' => __DIR__ . '/../..' . '/src/Modules/CouponConditions/Fields.php',
         'MoksaWeb\\Moforcoupon\\Modules\\CouponConditions\\Module' => __DIR__ . '/../..' . '/src/Modules/CouponConditions/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\CouponConditions\\Validator' => __DIR__ . '/../..' . '/src/Modules/CouponConditions/Validator.php',
@@ -130,8 +119,6 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
         'MoksaWeb\\Moforcoupon\\Modules\\NthItem\\Type' => __DIR__ . '/../..' . '/src/Modules/NthItem/Type.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Nudge\\Module' => __DIR__ . '/../..' . '/src/Modules/Nudge/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Nudge\\Nudge' => __DIR__ . '/../..' . '/src/Modules/Nudge/Nudge.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Referral\\Module' => __DIR__ . '/../..' . '/src/Modules/Referral/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\Referral\\Service' => __DIR__ . '/../..' . '/src/Modules/Referral/Service.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Remarketing\\Ability' => __DIR__ . '/../..' . '/src/Modules/Remarketing/Ability.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Remarketing\\Module' => __DIR__ . '/../..' . '/src/Modules/Remarketing/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Remarketing\\Rules' => __DIR__ . '/../..' . '/src/Modules/Remarketing/Rules.php',
@@ -149,11 +136,6 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
         'MoksaWeb\\Moforcoupon\\Modules\\StackingControl\\Module' => __DIR__ . '/../..' . '/src/Modules/StackingControl/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\StackingControl\\StackConfig' => __DIR__ . '/../..' . '/src/Modules/StackingControl/StackConfig.php',
         'MoksaWeb\\Moforcoupon\\Modules\\StackingControl\\Validator' => __DIR__ . '/../..' . '/src/Modules/StackingControl/Validator.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\StoreCredit\\Checkout' => __DIR__ . '/../..' . '/src/Modules/StoreCredit/Checkout.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\StoreCredit\\GiftCard' => __DIR__ . '/../..' . '/src/Modules/StoreCredit/GiftCard.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\StoreCredit\\Module' => __DIR__ . '/../..' . '/src/Modules/StoreCredit/Module.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\StoreCredit\\Refund' => __DIR__ . '/../..' . '/src/Modules/StoreCredit/Refund.php',
-        'MoksaWeb\\Moforcoupon\\Modules\\StoreCredit\\Wallet' => __DIR__ . '/../..' . '/src/Modules/StoreCredit/Wallet.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Summary\\Module' => __DIR__ . '/../..' . '/src/Modules/Summary/Module.php',
         'MoksaWeb\\Moforcoupon\\Modules\\Summary\\Panel' => __DIR__ . '/../..' . '/src/Modules/Summary/Panel.php',
         'MoksaWeb\\Moforcoupon\\Modules\\TabIcons\\Icons' => __DIR__ . '/../..' . '/src/Modules/TabIcons/Icons.php',
@@ -172,12 +154,16 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
         'MoksaWeb\\Moforcoupon\\Plugin' => __DIR__ . '/../..' . '/src/Plugin.php',
         'MoksaWeb\\Moforcoupon\\Settings\\SettingsScreen' => __DIR__ . '/../..' . '/src/Settings/SettingsScreen.php',
         'MoksaWeb\\Moforcoupon\\Support\\AbilityMeta' => __DIR__ . '/../..' . '/src/Support/AbilityMeta.php',
+        'MoksaWeb\\Moforcoupon\\Support\\Activation' => __DIR__ . '/../..' . '/src/Support/Activation.php',
         'MoksaWeb\\Moforcoupon\\Support\\CouponPresenter' => __DIR__ . '/../..' . '/src/Support/CouponPresenter.php',
         'MoksaWeb\\Moforcoupon\\Support\\CouponType' => __DIR__ . '/../..' . '/src/Support/CouponType.php',
         'MoksaWeb\\Moforcoupon\\Support\\Cron' => __DIR__ . '/../..' . '/src/Support/Cron.php',
+        'MoksaWeb\\Moforcoupon\\Support\\DiscountTypeRegistry' => __DIR__ . '/../..' . '/src/Support/DiscountTypeRegistry.php',
         'MoksaWeb\\Moforcoupon\\Support\\GuardedOps' => __DIR__ . '/../..' . '/src/Support/GuardedOps.php',
+        'MoksaWeb\\Moforcoupon\\Support\\ModuleDependencies' => __DIR__ . '/../..' . '/src/Support/ModuleDependencies.php',
         'MoksaWeb\\Moforcoupon\\Support\\OrderOnce' => __DIR__ . '/../..' . '/src/Support/OrderOnce.php',
         'MoksaWeb\\Moforcoupon\\Support\\PersonalCoupon' => __DIR__ . '/../..' . '/src/Support/PersonalCoupon.php',
+        'MoksaWeb\\Moforcoupon\\Support\\PriceMath' => __DIR__ . '/../..' . '/src/Support/PriceMath.php',
         'MoksaWeb\\Moforcoupon\\Support\\Qr\\QrEncoder' => __DIR__ . '/../..' . '/src/Support/Qr/QrEncoder.php',
         'MoksaWeb\\Moforcoupon\\Support\\Qr\\QrSvg' => __DIR__ . '/../..' . '/src/Support/Qr/QrSvg.php',
         'MoksaWeb\\Moforcoupon\\Support\\Rules' => __DIR__ . '/../..' . '/src/Support/Rules.php',
@@ -190,9 +176,9 @@ class ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit84c7fe7082caf5d49060eb15a06ae7bb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit502d0376e11afa7119c57b2a37fe34c9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit502d0376e11afa7119c57b2a37fe34c9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit502d0376e11afa7119c57b2a37fe34c9::$classMap;
 
         }, null, ClassLoader::class);
     }

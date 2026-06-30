@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace MoksaWeb\Moforcoupon\Modules\MixMatch;
 
+use MoksaWeb\Moforcoupon\Support\PriceMath;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -101,11 +103,10 @@ final class MixMatchCalc {
 					: $line['price'] * ( 1 - $factor );
 				$unit_discount = max( 0.0, min( $line['price'], $unit_discount ) );
 
-				$blended                 = $line['price'] - ( ( $unit_discount * $take ) / $line['qty'] );
 				$rewards[ $line['key'] ] = array(
 					'disc_qty'      => $take,
 					'unit_discount' => $unit_discount,
-					'blended_price' => max( 0.0, $blended ),
+					'blended_price' => PriceMath::blended_price( $line['price'], $unit_discount, $take, (int) $line['qty'] ),
 				);
 				$total_discount         += $unit_discount * $take;
 			}

@@ -281,21 +281,22 @@ final class Validator {
 		$count = 0;
 		$spent = 0.0;
 		if ( $user_id > 0 && function_exists( 'wc_get_orders' ) && function_exists( 'wc_get_is_paid_statuses' ) ) {
-			$orders = wc_get_orders(
+			// Hot path (runs per coupon validation): count via a COUNT query — return ids and read
+			// paginate->total — instead of hydrating every order object. Lifetime spend comes from
+			// WooCommerce's own paid-status aggregate (cached in the _money_spent user meta). Both
+			// keep the exact "paid statuses only" semantics of the previous object scan.
+			$result = wc_get_orders(
 				array(
 					'customer_id' => $user_id,
 					'status'      => wc_get_is_paid_statuses(),
 					'type'        => 'shop_order',
-					'limit'       => -1,
-					'return'      => 'objects',
+					'limit'       => 1,
+					'return'      => 'ids',
+					'paginate'    => true,
 				)
 			);
-			$count  = count( $orders );
-			foreach ( $orders as $order ) {
-				if ( $order instanceof \WC_Order ) {
-					$spent += (float) $order->get_total();
-				}
-			}
+			$count  = ( is_object( $result ) && isset( $result->total ) ) ? (int) $result->total : 0;
+			$spent  = function_exists( 'wc_get_customer_total_spent' ) ? (float) wc_get_customer_total_spent( $user_id ) : 0.0;
 		}
 		self::$history_cache[ $user_id ] = array(
 			'count' => $count,

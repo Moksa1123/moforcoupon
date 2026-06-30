@@ -6,6 +6,7 @@ namespace MoksaWeb\Moforcoupon\Modules\Frontend;
 
 use MoksaWeb\Moforcoupon\Coupon\Meta\Keys;
 use MoksaWeb\Moforcoupon\Support\CouponPresenter;
+use MoksaWeb\Moforcoupon\Support\DiscountTypeRegistry;
 use MoksaWeb\Moforcoupon\Support\Urgency;
 
 defined( 'ABSPATH' ) || exit;
@@ -74,17 +75,8 @@ final class CouponCard {
 	}
 
 	private static function badge( string $type_key ): string {
-		$map = array(
-			'percent'              => __( '百分比折扣', 'moforcoupon' ),
-			'fixed_cart'           => __( '購物車折抵', 'moforcoupon' ),
-			'fixed_product'        => __( '商品折抵', 'moforcoupon' ),
-			'moforcoupon_bogo'     => __( '買 X 送 Y', 'moforcoupon' ),
-			'moforcoupon_nth_item' => __( '第 N 件折扣', 'moforcoupon' ),
-			'moforcoupon_mixmatch' => __( '任選優惠', 'moforcoupon' ),
-			'moforcoupon_cashback' => __( '回饋金', 'moforcoupon' ),
-			'other'                => __( '優惠', 'moforcoupon' ),
-		);
-		return $map[ $type_key ] ?? $map['other'];
+		$slug = DiscountTypeRegistry::type_key( $type_key );
+		return 'other' === $slug ? __( '優惠', 'moforcoupon' ) : DiscountTypeRegistry::badge( $slug );
 	}
 
 	private static function discount_text( \WC_Coupon $coupon ): string {

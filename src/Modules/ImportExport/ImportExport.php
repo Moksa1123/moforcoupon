@@ -201,6 +201,16 @@ final class ImportExport {
 			exit;
 		}
 
+		// Server-side type whitelist: only accept a real CSV / plain-text upload (never trust the
+		// client). The file is then read purely as CSV rows — never executed — and every value is
+		// re-sanitized below.
+		$file_name = isset( $_FILES['csv']['name'] ) ? sanitize_file_name( wp_unslash( (string) $_FILES['csv']['name'] ) ) : '';
+		$file_type = wp_check_filetype_and_ext( $tmp, $file_name );
+		if ( ! in_array( (string) ( $file_type['ext'] ?? '' ), array( 'csv', 'txt' ), true ) ) {
+			wp_safe_redirect( add_query_arg( 'moforcoupon_import', 'badtype', $back ) );
+			exit;
+		}
+
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- reading the just-uploaded temp file row by row.
 		$handle = fopen( $tmp, 'r' );
 		if ( false === $handle ) {

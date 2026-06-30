@@ -32,6 +32,10 @@ final class Block {
 			$ver,
 			true
 		);
+		// Wire just-in-time translations for the editor script's wp.i18n.__() strings.
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'moforcoupon-coupon-cards-editor', 'moforcoupon' );
+		}
 		register_block_type( $dir, array( 'render_callback' => array( self::class, 'render' ) ) );
 	}
 

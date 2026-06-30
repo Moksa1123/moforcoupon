@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace MoksaWeb\Moforcoupon\Settings;
 
 use MoksaWeb\Moforcoupon\Plugin;
+use MoksaWeb\Moforcoupon\Support\ModuleDependencies;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -75,8 +76,6 @@ final class SettingsScreen {
 					self::toggle( 'moforcoupon_mixmatch_enabled', __( '任選優惠(Mix & Match)', 'moforcoupon' ), __( '新增「任選優惠」折扣型別:指定一組商品(或全站),任選 N 件以整組固定總價或整組百分比折扣結算(例:任選3件$299),可重複。可用自然語言建立。', 'moforcoupon' ) ),
 					self::toggle( 'moforcoupon_stacking_enabled', __( '疊加控制', 'moforcoupon' ), __( '控制優惠券能否與其他券並用:互斥券、允許 / 禁止並用的券碼清單,結帳時強制驗證。', 'moforcoupon' ) ),
 					self::toggle( 'moforcoupon_autoapply_enabled', __( '自動套用優惠券', 'moforcoupon' ), __( '勾選「自動套用」的優惠券,顧客購物車一符合條件就自動帶入,免輸入代碼。', 'moforcoupon' ) ),
-					self::toggle( 'moforcoupon_cashback_enabled', __( '回饋金 / 點數(Cashback)', 'moforcoupon' ), __( '新增「回饋金」折扣型別:訂單付款後依百分比 / 固定金額回饋,透過事件交給錢包 / 點數系統(可搭配下方「儲值金錢包」)。', 'moforcoupon' ) ),
-					self::toggle( 'moforcoupon_storecredit_enabled', __( '儲值金 / 回饋金錢包', 'moforcoupon' ), __( '把回饋金記成顧客的儲值金餘額,結帳時自動折抵下次訂單,並在會員中心顯示餘額。需搭配上方「回饋金」型別。', 'moforcoupon' ) ),
 				),
 			),
 			array(
@@ -182,84 +181,6 @@ final class SettingsScreen {
 				),
 			),
 			array(
-				'title'  => __( '棄單挽回', 'moforcoupon' ),
-				'desc'   => __( '顧客在結帳填了 Email 卻沒完成付款時,自動 Email 提醒(可附優惠券)把訂單救回來。下單後就停止提醒。', 'moforcoupon' ),
-				'fields' => array(
-					self::toggle( 'moforcoupon_cartrecovery_enabled', __( '啟用棄單挽回', 'moforcoupon' ), __( '記錄結帳中的購物車,棄單一段時間後自動寄信提醒。', 'moforcoupon' ) ),
-					array(
-						'id'      => 'moforcoupon_cartrecovery_hours',
-						'type'    => 'text',
-						'default' => '4',
-						'title'   => __( '棄單幾小時後提醒', 'moforcoupon' ),
-						'desc'    => __( '購物車最後更新後超過幾小時沒下單就視為棄單並寄信(1–168,預設 4)。', 'moforcoupon' ),
-					),
-					self::toggle( 'moforcoupon_cartrecovery_coupon', __( '提醒信附優惠券', 'moforcoupon' ), __( '寄提醒信時,同時發一張專屬優惠券當誘因(需填下方範本代碼)。', 'moforcoupon' ) ),
-					array(
-						'id'      => 'moforcoupon_cartrecovery_template',
-						'type'    => 'text',
-						'default' => '',
-						'title'   => __( '挽回券範本代碼', 'moforcoupon' ),
-						'desc'    => __( '勾選上方時生效:要複製成顧客專屬挽回券的範本優惠券代碼。', 'moforcoupon' ),
-					),
-					array(
-						'id'      => 'moforcoupon_cartrecovery_expiry_days',
-						'type'    => 'text',
-						'default' => '7',
-						'title'   => __( '挽回券有效天數', 'moforcoupon' ),
-						'desc'    => __( '製造急迫感,建議短一點(填 0 = 沿用範本到期)。', 'moforcoupon' ),
-					),
-				),
-			),
-			array(
-				'title'  => __( '生日優惠券', 'moforcoupon' ),
-				'desc'   => __( '顧客在「帳戶詳細資料」填寫生日後,生日當天自動發放一張專屬優惠券(複製指定範本券),每年一次。需同時啟用「會員中心優惠券」。', 'moforcoupon' ),
-				'fields' => array(
-					self::toggle( 'moforcoupon_birthday_enabled', __( '啟用生日優惠券', 'moforcoupon' ), __( '在帳戶頁加入生日欄位,並於顧客生日當天自動發券。', 'moforcoupon' ) ),
-					array(
-						'id'      => 'moforcoupon_birthday_template',
-						'type'    => 'text',
-						'default' => '',
-						'title'   => __( '生日券範本代碼', 'moforcoupon' ),
-						'desc'    => __( '生日當天要發放的範本優惠券代碼(會複製成顧客專屬券)。', 'moforcoupon' ),
-					),
-					array(
-						'id'      => 'moforcoupon_birthday_expiry_days',
-						'type'    => 'text',
-						'default' => '30',
-						'title'   => __( '生日券有效天數', 'moforcoupon' ),
-						'desc'    => __( '發出後幾天內有效(填 0 = 沿用範本本身的到期設定)。', 'moforcoupon' ),
-					),
-				),
-			),
-			array(
-				'title'  => __( '推薦好友(Referral)', 'moforcoupon' ),
-				'desc'   => __( '顧客分享專屬連結,朋友完成首次訂單後,雙方各得一張回饋券(複製指定的範本券)。需同時啟用「會員中心優惠券」才看得到券。', 'moforcoupon' ),
-				'fields' => array(
-					self::toggle( 'moforcoupon_referral_enabled', __( '啟用推薦好友券', 'moforcoupon' ), __( '在會員中心提供專屬推薦連結,並於被推薦的朋友完成訂單後發放回饋券。', 'moforcoupon' ) ),
-					array(
-						'id'      => 'moforcoupon_referral_referrer_template',
-						'type'    => 'text',
-						'default' => '',
-						'title'   => __( '推薦人回饋範本代碼', 'moforcoupon' ),
-						'desc'    => __( '朋友完成訂單後,要發給「推薦人」的範本優惠券代碼(會複製成推薦人專屬券)。', 'moforcoupon' ),
-					),
-					array(
-						'id'      => 'moforcoupon_referral_friend_template',
-						'type'    => 'text',
-						'default' => '',
-						'title'   => __( '好友歡迎範本代碼(選填)', 'moforcoupon' ),
-						'desc'    => __( '同時要發給「被推薦的朋友」的範本優惠券代碼;留空則只回饋推薦人。', 'moforcoupon' ),
-					),
-					array(
-						'id'      => 'moforcoupon_referral_expiry_days',
-						'type'    => 'text',
-						'default' => '30',
-						'title'   => __( '回饋券有效天數', 'moforcoupon' ),
-						'desc'    => __( '發出後幾天內有效(填 0 = 沿用範本本身的到期設定)。', 'moforcoupon' ),
-					),
-				),
-			),
-			array(
 				'title'  => __( 'AI 與對外開放(MCP)', 'moforcoupon' ),
 				'desc'   => __( '自然語言助手與對外 MCP 介接。預設全部關閉、唯讀優先。', 'moforcoupon' ),
 				'fields' => array(
@@ -284,6 +205,20 @@ final class SettingsScreen {
 		);
 	}
 
+	/**
+	 * Whether the module behind a `moforcoupon_<key>_enabled` toggle exists in this build. Lets a
+	 * trimmed package (a deferred module's files excluded) hide the toggle instead of showing a
+	 * control that can never boot. Non-module options (no matching registry key) always pass.
+	 */
+	private static function module_available( string $option ): bool {
+		if ( ! str_starts_with( $option, 'moforcoupon_' ) || ! str_ends_with( $option, '_enabled' ) ) {
+			return true;
+		}
+		$key     = substr( $option, 12, -8 ); // strip 'moforcoupon_' (12) + '_enabled' (8).
+		$modules = Plugin::instance()->modules()->all();
+		return ! isset( $modules[ $key ] ) || class_exists( $modules[ $key ] );
+	}
+
 	public static function render(): void {
 		if ( ! current_user_can( self::CAP ) ) {
 			return;
@@ -299,6 +234,8 @@ final class SettingsScreen {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( '設定已儲存。', 'moforcoupon' ) . '</p></div>';
 		}
 
+		self::dependency_notices();
+
 		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		echo '<input type="hidden" name="action" value="' . esc_attr( self::ACTION ) . '">';
 		wp_nonce_field( self::NONCE );
@@ -313,20 +250,39 @@ final class SettingsScreen {
 			. esc_html__( '儲存設定', 'moforcoupon' ) . '</button></p>';
 		echo '</form>';
 
-		self::styles();
 		echo '</div>';
+	}
+
+	/** Warn when an enabled module's recommended companion module is off (soft advisory, not a block). */
+	private static function dependency_notices(): void {
+		$gaps = ModuleDependencies::unmet( Plugin::instance()->modules() );
+		foreach ( $gaps as $gap ) {
+			echo '<div class="notice notice-warning"><p>' . esc_html(
+				sprintf(
+					/* translators: 1: enabled module name, 2: comma-separated names of the modules it needs. */
+					__( '「%1$s」已啟用,建議一併啟用「%2$s」,否則部分功能不會生效。', 'moforcoupon' ),
+					(string) $gap['module'],
+					implode( '、', $gap['missing'] )
+				)
+			) . '</p></div>';
+		}
 	}
 
 	/**
 	 * @param array<string,mixed> $group
 	 */
 	private static function group_card( array $group ): void {
+		$fields = is_array( $group['fields'] ?? null ) ? $group['fields'] : array();
+		// Skip a card whose every field is for a module absent from this (possibly trimmed) build.
+		$visible = array_filter( $fields, static fn( $f ): bool => self::module_available( (string) ( $f['id'] ?? '' ) ) );
+		if ( array() === $visible ) {
+			return;
+		}
 		echo '<section class="moforcoupon-set-card">';
 		echo '<h2>' . esc_html( (string) ( $group['title'] ?? '' ) ) . '</h2>';
 		if ( ! empty( $group['desc'] ) ) {
 			echo '<p class="card-desc">' . esc_html( (string) $group['desc'] ) . '</p>';
 		}
-		$fields = is_array( $group['fields'] ?? null ) ? $group['fields'] : array();
 		foreach ( $fields as $field ) {
 			self::field_row( $field );
 		}
@@ -337,7 +293,12 @@ final class SettingsScreen {
 	 * @param array<string,mixed> $field
 	 */
 	private static function field_row( array $field ): void {
-		$id    = (string) ( $field['id'] ?? '' );
+		$id = (string) ( $field['id'] ?? '' );
+		// In a trimmed build a module's files may be absent (the registry already skips booting it);
+		// don't render a toggle for a module whose class does not exist.
+		if ( ! self::module_available( $id ) ) {
+			return;
+		}
 		$type  = (string) ( $field['type'] ?? 'checkbox' );
 		$title = (string) ( $field['title'] ?? '' );
 		$desc  = (string) ( $field['desc'] ?? '' );
@@ -426,9 +387,16 @@ final class SettingsScreen {
 		update_option( $id, $clean );
 	}
 
-	private static function styles(): void {
-		echo '<style>'
-			. '.moforcoupon-set-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px;margin:16px 0 8px}'
+	/** Enqueue this page's CSS as inline style on the core admin 'common' handle (no raw <style>). */
+	public static function enqueue_admin( string $hook = '' ): void {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( $screen && false !== strpos( (string) $screen->id, self::SLUG ) ) {
+			wp_add_inline_style( 'common', self::css() );
+		}
+	}
+
+	private static function css(): string {
+		return '.moforcoupon-set-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px;margin:16px 0 8px}'
 			. '.moforcoupon-set-card{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:18px 22px}'
 			. '.moforcoupon-set-card h2{font-size:15px;margin:0 0 4px;color:#1d2327}'
 			. '.moforcoupon-set-card .card-desc{color:#646970;font-size:13px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid #f0f0f1}'
@@ -439,7 +407,6 @@ final class SettingsScreen {
 			. '.set-label,.set-field{display:flex;flex-direction:column}'
 			. '.set-title{font-weight:600;color:#1d2327}'
 			. '.set-desc{color:#646970;font-size:12px;line-height:1.5;margin-top:2px}'
-			. '.set-field{gap:4px}.set-field input,.set-field select{margin-top:4px;max-width:320px}'
-			. '</style>';
+			. '.set-field{gap:4px}.set-field input,.set-field select{margin-top:4px;max-width:320px}';
 	}
 }

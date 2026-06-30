@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace MoksaWeb\Moforcoupon\Modules\NthItem;
 
+use MoksaWeb\Moforcoupon\Support\PriceMath;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -117,11 +119,10 @@ final class NthItemCalc {
 					continue;
 				}
 				$unit_discount           = self::unit_discount( $mode, $value, $line['price'] );
-				$blended                 = $line['price'] - ( ( $unit_discount * $take ) / $line['qty'] );
 				$rewards[ $line['key'] ] = array(
 					'disc_qty'      => $take,
 					'unit_discount' => $unit_discount,
-					'blended_price' => max( 0.0, $blended ),
+					'blended_price' => PriceMath::blended_price( $line['price'], $unit_discount, $take, (int) $line['qty'] ),
 				);
 				$total_discount         += $unit_discount * $take;
 				$remaining              -= $take;
@@ -138,22 +139,10 @@ final class NthItemCalc {
 	}
 
 	/**
-	 * Per-unit discount for a discounted item, clamped to the unit price so a line can never be
-	 * driven negative. percent value is the DISCOUNT percent (六折 = 40 → 40% off).
+	 * Per-unit discount for a discounted item, clamped to the unit price. Thin facade over
+	 * {@see PriceMath::unit_discount} (kept for the existing public API + its unit tests).
 	 */
 	public static function unit_discount( string $mode, float $value, float $price ): float {
-		switch ( $mode ) {
-			case 'free':
-				$discount = $price;
-				break;
-			case 'fixed_per_item':
-				$discount = $value;
-				break;
-			case 'percent':
-			default:
-				$discount = $price * ( max( 0.0, min( 100.0, $value ) ) / 100 );
-				break;
-		}
-		return max( 0.0, min( $price, $discount ) );
+		return PriceMath::unit_discount( $mode, $value, $price );
 	}
 }
